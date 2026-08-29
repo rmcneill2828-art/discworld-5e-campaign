@@ -1,0 +1,277 @@
+<title>Names Worth Knowing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 34rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  .layout{ display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 3rem; max-width: 78rem; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
+  nav.toc{ position: sticky; top: 1.5rem; align-self: start; }
+  nav.toc .eyebrow{ display: block; margin-bottom: 0.7rem; }
+  nav.toc ol{ list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); }
+  nav.toc a{ display: block; padding: 0.33rem 0 0.33rem 0.9rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; font-size: 0.84rem; }
+  nav.toc a:hover{ color: var(--ink); }
+  nav.toc a.active{ color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .toc-toggle{ display: none; }
+
+  main.content{ min-width: 0; max-width: 46rem; }
+  .intro{ padding-bottom: 1.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
+  .intro p{ margin: 0 0 1rem; }
+
+  .card{ padding: 1.9rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 1rem; }
+  .card:last-child{ border-bottom: none; }
+  .card-head{ display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.15rem; }
+  .card-head h2{ font-size: 1.4rem; margin: 0; }
+  .card-tag{ font-family: "Courier Prime", monospace; font-size: 0.68rem; color: var(--brass); border: 1px solid var(--brass); border-radius: 2px; padding: 0.14rem 0.5rem; white-space: nowrap; }
+  .where{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); margin: 0 0 0.9rem; }
+
+  .traits{ display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.4rem; margin-bottom: 0.9rem; }
+  @media (max-width: 560px){ .traits{ grid-template-columns: 1fr; } }
+  .traits dt{ font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brass); margin-bottom: 0.25rem; }
+  .traits dd{ margin: 0; font-size: 0.95rem; }
+
+  .tip{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.7rem 0.95rem; border-radius: 2px; font-size: 0.92rem; }
+  .tip .eyebrow{ margin-bottom: 0.25rem; color: inherit; opacity: 0.75; }
+
+  footer.colophon{ max-width: 46rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; padding-top: 1.4rem; }
+    nav.toc{ position: static; border: 1px solid var(--rule); background: var(--bg-raised); padding: 0.85rem 1rem; }
+    nav.toc ol{ border-left: none; display: none; margin-top: 0.6rem; }
+    nav.toc ol.open{ display: block; }
+    .toc-toggle{ display: inline-flex; align-items: center; gap: 0.4rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink); font-family: "Courier Prime", monospace; font-size: 0.76rem; padding: 0.32rem 0.65rem; cursor: pointer; border-radius: 2px; }
+    main.content{ max-width: none; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">NPC Roster</div>
+    <h1>Names Worth Knowing</h1>
+    <p class="subtitle">Twelve recurring faces, and how to play them — personality, demeanor, and the tone each one takes.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a> and <a href="https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318">Playing It Straight</a></p>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="NPC index">
+      <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocList">☰ Index</button>
+      <span class="eyebrow">NPC Index</span>
+      <ol id="tocList">
+        <li><a href="#vetinari">Lord Vetinari</a></li>
+        <li><a href="#vimes">Commander Vimes</a></li>
+        <li><a href="#ridcully">Archchancellor Ridcully</a></li>
+        <li><a href="#librarian">The Librarian</a></li>
+        <li><a href="#death">Death</a></li>
+        <li><a href="#weatherwax">Granny Weatherwax</a></li>
+        <li><a href="#ogg">Nanny Ogg</a></li>
+        <li><a href="#detritus">Sergeant Detritus</a></li>
+        <li><a href="#angua">Angua von Uberwald</a></li>
+        <li><a href="#reg">Reg Shoe</a></li>
+        <li><a href="#cohen">Cohen the Barbarian</a></li>
+        <li><a href="#dibbler">C.M.O.T. Dibbler</a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+      <div class="intro">
+        <p>Each entry gives you three things to hold onto at the table: what drives them, how they carry themselves, and — most useful mid-scene — how they actually sound. Reading the Tone line out loud a couple of times before a session is usually enough to run the voice convincingly.</p>
+        <p>These are recurring cast, not statted opposition — treat every fight with any of them as a sign the story has gone somewhere it probably shouldn't.</p>
+      </div>
+
+      <article class="card" id="vetinari">
+        <div class="card-head"><h2>Lord Vetinari</h2><span class="card-tag">The Palace</span></div>
+        <p class="where">Where: the Patrician's Palace, or wherever he's decided the conversation should happen instead</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Preternaturally patient, sees six moves ahead, believes fear of consequence governs better than law ever could. Cares more than he lets on.</dd></div>
+          <div><dt>Demeanor</dt><dd>Still. Doesn't fidget, doesn't raise his voice, doesn't need to.</dd></div>
+          <div><dt>Tone</dt><dd>Precise, economical sentences. Answers questions with questions. Never explains himself twice.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Use him to redirect a stalled plot without ever giving a direct order — he suggests, and lets the party discover why refusing was the wrong call.</div>
+      </article>
+
+      <article class="card" id="vimes">
+        <div class="card-head"><h2>Commander Vimes</h2><span class="card-tag">City Watch</span></div>
+        <p class="where">Where: Pseudopolis Yard</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Cynical about power, incorruptible about people. Drinks less than he used to, and is prouder of that than of anything on his record.</dd></div>
+          <div><dt>Demeanor</dt><dd>Perpetually tired, perpetually alert — a man doing a job he resents, who'd fight anyone trying to take it from him.</dd></div>
+          <div><dt>Tone</dt><dd>Blunt, working-class cadence. Distrusts fancy words. Swears when he means it, not for effect.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Give the party a case he personally cares about, and let his approval — rare, understated — feel like the actual reward.</div>
+      </article>
+
+      <article class="card" id="ridcully">
+        <div class="card-head"><h2>Archchancellor Ridcully</h2><span class="card-tag">Unseen University</span></div>
+        <p class="where">Where: Unreal Estate, usually mid-lecture or mid-hunt</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Booming and practical, allergic to faculty politics even while charging headfirst into it. Thinks most magical problems have a simple, physical solution.</dd></div>
+          <div><dt>Demeanor</dt><dd>Loud, outdoorsy, built like he'd rather be hunting than lecturing — and frequently is.</dd></div>
+          <div><dt>Tone</dt><dd>Hearty, declarative, prone to mixing his metaphors mid-sentence without noticing.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Perfect for cutting through overcomplicated wizard bureaucracy with a solution the party wouldn't have dared suggest themselves.</div>
+      </article>
+
+      <article class="card" id="librarian">
+        <div class="card-head"><h2>The Librarian</h2><span class="card-tag">Unseen University</span></div>
+        <p class="where">Where: the University Library, always</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Patient, protective of the books, entirely unbothered by his own condition. Not a monkey. An orangutan.</dd></div>
+          <div><dt>Demeanor</dt><dd>Communicates almost entirely through gesture and a single, versatile word, understood by everyone who's been around him for more than a day.</dd></div>
+          <div><dt>Tone</dt><dd>"Ook," repeated with different emphasis. Tone of voice carries the meaning — never the word choice.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>A great non-verbal puzzle NPC — let players work out what he wants through context and repetition, never subtitle him directly.</div>
+      </article>
+
+      <article class="card" id="death">
+        <div class="card-head"><h2>Death</h2><span class="card-tag">Cosmology</span></div>
+        <p class="where">Where: everywhere, eventually</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Endlessly curious about mortal life, fond of cats and curry, professionally unsentimental but personally kind.</dd></div>
+          <div><dt>Demeanor</dt><dd>Perfectly still until he moves — and when he moves, nothing else in the room is more certain.</dd></div>
+          <div><dt>Tone</dt><dd>SPEAKS IN SMALL CAPITALS. Short, declarative sentences. Never raises his voice, because he's never needed to.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Reserve him for moments that matter — his presence should never feel routine, even though death itself very much is his routine.</div>
+      </article>
+
+      <article class="card" id="weatherwax">
+        <div class="card-head"><h2>Granny Weatherwax</h2><span class="card-tag">Witch, Ramtops</span></div>
+        <p class="where">Where: visiting from Lancre, rarely explains why</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Ferociously principled, allergic to being thanked, more afraid of the harm her own power could do than anything else on the Disc.</dd></div>
+          <div><dt>Demeanor</dt><dd>Upright, unblinking — the specific authority of someone who has never once needed to raise her voice to be obeyed.</dd></div>
+          <div><dt>Tone</dt><dd>Short, flat sentences. States things as fact. Doesn't ask questions she already knows the answer to.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>The model for an unbeatable NPC stare-down — see The Look, the <a href="https://claude.ai/code/artifact/25b598ef-1f13-4631-8181-c7a55ce05e2b">Circle of Headology</a> capstone, for the mechanical version.</div>
+      </article>
+
+      <article class="card" id="ogg">
+        <div class="card-head"><h2>Nanny Ogg</h2><span class="card-tag">Witch, Ramtops</span></div>
+        <p class="where">Where: also visiting from Lancre, always explains why, at length</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Warm, shameless, deceptively sharp under the bawdy-song exterior. Runs a family roughly the size of a small army.</dd></div>
+          <div><dt>Demeanor</dt><dd>Comfortable everywhere, in everyone's business, uninvited and somehow still welcome.</dd></div>
+          <div><dt>Tone</dt><dd>Familiar, chatty, laced with a joke that gets funnier the third time she tells it. Everyone's "my duck," regardless of size, species, or rank.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>The warm counterweight to Granny's severity — use her to get information out of an NPC who'd never talk to the Watch directly.</div>
+      </article>
+
+      <article class="card" id="detritus">
+        <div class="card-head"><h2>Sergeant Detritus</h2><span class="card-tag">City Watch</span></div>
+        <p class="where">Where: Pseudopolis Yard</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Straightforward, loyal, smarter than his slow, cold-weather delivery suggests once the temperature actually drops.</dd></div>
+          <div><dt>Demeanor</dt><dd>Enormous. Moves like a landslide that's decided to be polite about it.</dd></div>
+          <div><dt>Tone</dt><dd>Simple sentence structure that gets noticeably more articulate in cold rooms or cold weather — a fact he'll mention if you ask, and probably even if you don't.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Great for an interrogation scene set somewhere cold — let the players notice the shift themselves.</div>
+      </article>
+
+      <article class="card" id="angua">
+        <div class="card-head"><h2>Angua von Uberwald</h2><span class="card-tag">City Watch</span></div>
+        <p class="where">Where: Pseudopolis Yard, or wherever the trail leads</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Competent, guarded, permanently negotiating with her own nature. Better at the job than she'll ever admit.</dd></div>
+          <div><dt>Demeanor</dt><dd>Composed and watchful, keeping a careful distance until she's decided you're worth trusting.</dd></div>
+          <div><dt>Tone</dt><dd>Dry, economical, occasionally self-deprecating about the werewolf thing in a way that shuts down further questions.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Useful for tracking or truth-sensing beats — let her senses catch something the party missed entirely.</div>
+      </article>
+
+      <article class="card" id="reg">
+        <div class="card-head"><h2>Reg Shoe</h2><span class="card-tag">Civilian</span></div>
+        <p class="where">Where: wherever the cause needs him, usually Sator Square with a sign</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>Earnest, relentlessly optimistic about undead rights, completely unbothered by his own decomposition.</dd></div>
+          <div><dt>Demeanor</dt><dd>Enthusiastic in a way that outpaces the room's patience for him — and doesn't notice that it has.</dd></div>
+          <div><dt>Tone</dt><dd>Speeches. Full, well-structured speeches, delivered whether or not anyone actually asked for one.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Comic relief with real heart — play his cause completely straight even when his delivery isn't.</div>
+      </article>
+
+      <article class="card" id="cohen">
+        <div class="card-head"><h2>Cohen the Barbarian</h2><span class="card-tag">Civilian</span></div>
+        <p class="where">Where: passing through, usually the Mended Drum</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>A genuine legend, increasingly annoyed that legend-work has gotten so complicated, sharper than his joints have any right to be.</dd></div>
+          <div><dt>Demeanor</dt><dd>Old. Visibly, audibly old — and still the most dangerous person in most rooms he walks into.</dd></div>
+          <div><dt>Tone</dt><dd>Gruff, matter-of-fact about violence, mildly baffled by anything invented in the last forty years.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>A living argument that competence beats youth — a strong mentor or rival for a Barbarian or Fighter PC.</div>
+      </article>
+
+      <article class="card" id="dibbler">
+        <div class="card-head"><h2>C.M.O.T. Dibbler</h2><span class="card-tag">Civilian, Sator Square</span></div>
+        <p class="where">Where: wherever a crowd's gathering, selling something to it</p>
+        <dl class="traits">
+          <div><dt>Personality</dt><dd>A confidence man with a genuine, if wildly inconsistent, sense of loyalty to the city he keeps trying to profit from.</dd></div>
+          <div><dt>Demeanor</dt><dd>Always mid-sales-pitch, even when nobody's buying, even when he's the one being questioned.</dd></div>
+          <div><dt>Tone</dt><dd>Rapid, salesman patter, always three sentences ahead of whatever's actually true.</dd></div>
+        </dl>
+        <div class="tip"><span class="eyebrow">GM Tip</span>A reliable source of terrible information delivered with total confidence — excellent for red herrings and comic relief.</div>
+      </article>
+
+    </main>
+  </div>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var list = document.getElementById('tocList');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = new Map();
+    sections.forEach(function(sec, i){ map.set(sec, links[i]); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  }
+})();
+</script>
