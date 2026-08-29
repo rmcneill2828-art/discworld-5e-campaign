@@ -13,6 +13,7 @@ This repo contains original game-prep material only (setting primers, character 
 - [`playing-it-straight.html`](playing-it-straight.html) — GM craft guide to Discworld's comedy and satire: nine techniques (deadpan literalism, bureaucracy meets the fantastic, subverted tropes, and more) each with a before/after rewrite, plus a table quick-reference checklist. Also published as a [Claude Artifact](https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318).
 - [`the-skull-dice.html`](the-skull-dice.html) — two d20 character-creation tables (why you're in Ankh-Morpork, how you got there), blending funny and serious results into an instant backstory. Also published as a [Claude Artifact](https://claude.ai/code/artifact/7d3959e3-6da1-4e7c-990c-d94cf5b28715).
 - [`first-day-in-the-city.html`](first-day-in-the-city.html) — one-page Session Zero quick-start: six steps through character creation, a fill-in worksheet, and three pregens, tying together every other document. Also published as a [Claude Artifact](https://claude.ai/code/artifact/85f41ec2-c60a-44e7-8714-ab3a5db383aa).
+- [`ankh-morpork-gazetteer.html`](ankh-morpork-gazetteer.html) — thirteen key city locations with a schematic map, a description, and an adventure seed each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/20a2281d-d886-489c-8f8f-c739078ad99e).
 
 ## Status
 
