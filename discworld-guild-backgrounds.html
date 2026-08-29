@@ -1,0 +1,443 @@
+<title>Guild Registration Dossiers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0;
+    --bg-raised: #f1ecdd;
+    --ink: #2b2620;
+    --ink-soft: #5a5340;
+    --ink-faint: #857c62;
+    --rule: #c9bfa0;
+    --rule-strong: #a89b76;
+    --accent: #5d3f80;
+    --accent-soft: #8a6fae;
+    --accent-tint: #ded1ec;
+    --brass: #7a5c26;
+    --brass-tint: #e6d7ab;
+    --wax: #8c2f2f;
+    --wax-tint: #edd6d0;
+    --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead h1{ font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.05rem; margin: 0 auto 1.2rem; max-width: 38rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.78rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  .layout{ display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 3rem; max-width: 76rem; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
+  nav.toc{ position: sticky; top: 1.5rem; align-self: start; }
+  nav.toc .eyebrow{ display: block; margin-bottom: 0.7rem; }
+  nav.toc ol{ list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); }
+  nav.toc a{ display: block; padding: 0.35rem 0 0.35rem 0.9rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; font-size: 0.85rem; }
+  nav.toc a:hover{ color: var(--ink); }
+  nav.toc a.active{ color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .toc-toggle{ display: none; }
+
+  main.content{ min-width: 0; max-width: 46rem; }
+  .intro{ padding-bottom: 2rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
+  .intro p{ margin: 0 0 1rem; }
+
+  .dossier{ padding: 2.4rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 1rem; }
+  .dossier:last-child{ border-bottom: none; }
+
+  .dossier-head{ display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+  .dossier-head h2{ font-size: 1.55rem; margin: 0; }
+  .dossier-tag{ font-family: "Courier Prime", monospace; font-size: 0.7rem; color: var(--brass); border: 1px solid var(--brass); border-radius: 2px; padding: 0.15rem 0.5rem; white-space: nowrap; }
+  .flavor{ font-family: "Fraunces", serif; font-style: italic; color: var(--ink-soft); margin: 0 0 1.2rem; }
+
+  .statblock{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1rem 1.2rem; margin: 0 0 1.1rem; font-size: 0.92rem; }
+  .statblock dl{ display: grid; grid-template-columns: 9rem 1fr; gap: 0.45rem 0.8rem; margin: 0; }
+  .statblock dt{ font-family: "Courier Prime", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); align-self: baseline; }
+  .statblock dd{ margin: 0; }
+
+  .feature{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.85rem 1.1rem; margin: 0 0 1.2rem; border-radius: 2px; font-size: 0.95rem; }
+  .feature .fname{ font-family: "Fraunces", serif; font-weight: 600; font-style: italic; color: var(--ink); display: block; margin-bottom: 0.25rem; }
+
+  .traits{ display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.4rem; }
+  @media (max-width: 560px){ .traits{ grid-template-columns: 1fr; } }
+  .traits h3{ font-size: 0.72rem; font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brass); margin: 0 0 0.4rem; font-weight: 400; }
+  .traits ul{ margin: 0 0 0.9rem; padding-left: 1.1rem; font-size: 0.92rem; }
+  .traits li{ margin-bottom: 0.3rem; }
+
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem; font-size: 0.9rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+
+  .callout{ background: var(--wax-tint); border-left: 3px solid var(--wax); padding: 0.8rem 1rem; margin: 1.4rem 0 0; border-radius: 2px; font-size: 0.92rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  footer.colophon{ max-width: 46rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; padding-top: 1.4rem; }
+    nav.toc{ position: static; border: 1px solid var(--rule); background: var(--bg-raised); padding: 0.85rem 1rem; }
+    nav.toc ol{ border-left: none; display: none; margin-top: 0.6rem; }
+    nav.toc ol.open{ display: block; }
+    .toc-toggle{ display: inline-flex; align-items: center; gap: 0.4rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink); font-family: "Courier Prime", monospace; font-size: 0.76rem; padding: 0.32rem 0.65rem; cursor: pointer; border-radius: 2px; }
+    main.content{ max-width: none; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <h1>Guild Registration Dossiers</h1>
+    <p class="subtitle">Eight 5e backgrounds for the Origins system — pick one, pair it with any class, and it's official.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a></p>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Dossier index">
+      <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocList">☰ Index</button>
+      <span class="eyebrow">Dossier Index</span>
+      <ol id="tocList">
+        <li><a href="#watchman">Watchman</a></li>
+        <li><a href="#thief">Thieves' Guild Journeyman</a></li>
+        <li><a href="#assassin">Assassins' Guild Alumnus</a></li>
+        <li><a href="#alchemist">Alchemists' Guild Apprentice</a></li>
+        <li><a href="#merchant">Merchants' Guild Factor</a></li>
+        <li><a href="#fool">Fools' Guild Graduate</a></li>
+        <li><a href="#uu">Unseen University Hanger-on</a></li>
+        <li><a href="#civilian">Civilian, Street-born</a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+      <div class="intro">
+        <p>Each dossier below is a standard 5e Background — two skill proficiencies, tool or language proficiencies, starting equipment, and one feature — reflavored for a Discworld Origin. Nothing here interacts with class. Take any dossier with any class; see the Charter's <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d#origins">Origins section</a> for how mismatches should play at the table.</p>
+        <p>Personality traits, ideals, bonds, and flaws are offered as a short curated list rather than full randomizer tables — pick one from each column, reroll nothing, steal freely.</p>
+      </div>
+
+      <article class="dossier" id="watchman">
+        <div class="dossier-head"><h2>Watchman</h2><span class="dossier-tag">City Watch</span></div>
+        <p class="flavor">You wear the badge. The badge, increasingly, wears you.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Athletics, Insight</dd>
+            <dt>Tools</dt><dd>One gaming set, thieves' tools (you know the tricks even if you don't use them)</dd>
+            <dt>Equipment</dt><dd>A badge of office, a set of manacles, a lantern, plain city-watch dress, a belt pouch (10 gp)</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Official Business</span>
+          You can requisition minor Watch resources — a holding cell for a night, access to a crime scene, a runner to carry a message across the city — by invoking your rank. Overreach and your superiors hear about it. Off duty, most citizens assume you're still on the clock.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I write everything down. You never know what'll matter later.</li><li>I've stopped being surprised by anything.</li><li>I talk to the job like it can hear me.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Law.</strong> The law protects everyone, even the people it's inconvenient for.</li><li><strong>Order.</strong> A city that follows rules is a city people can survive in.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>My commanding officer took a chance on me once. I don't forget that.</li><li>Someone I swore to protect, I didn't. I'm still making up for it.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I follow procedure past the point it's helping anyone.</li><li>I trust the badge more than I trust the person wearing it.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="thief">
+        <div class="dossier-head"><h2>Thieves' Guild Journeyman</h2><span class="dossier-tag">Guild</span></div>
+        <p class="flavor">Theft is legal. Theft without a license is the crime.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Sleight of Hand, Stealth</dd>
+            <dt>Tools</dt><dd>Thieves' tools, one gaming set</dd>
+            <dt>Equipment</dt><dd>A crowbar, dark hooded clothes, a Guild registration chit, a belt pouch (15 gp)</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Guild License</span>
+          Theft committed within your quota and the Guild's rules of engagement is, on paper, legal. Caught within license, the Guild will vouch for you to the Watch — once. Fall behind on quota and it's the Guild, not the law, you should worry about.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I case a room out of habit, even ones I'm invited into.</li><li>I'm generous with what I take — spread it around, spread the risk.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Fair Trade.</strong> Everyone gets robbed the same amount. That's the whole point of the quota.</li><li><strong>Freedom.</strong> Rules are for people who need them.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>My old mentor is doing time for a job I should've been on. I owe them.</li><li>I'm saving toward buying out of the Guild entirely.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I can't walk past an unlocked door without trying it.</li><li>I'm behind on quota and it's starting to show.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="assassin">
+        <div class="dossier-head"><h2>Assassins' Guild Alumnus</h2><span class="dossier-tag">Guild</span></div>
+        <p class="flavor">Not murder. An inhumation — invoiced, and paid in advance.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Deception, Stealth</dd>
+            <dt>Tools</dt><dd>Poisoner's kit, one musical instrument (finishing-school manners)</dd>
+            <dt>Equipment</dt><dd>A set of fine clothes, a concealed blade, a Guild membership chit, 25 gp</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Inhumation Contract</span>
+          You can have the Guild's clerks draw up a legitimate, invoiced contract against a target for a fee — slow, expensive, and untouchable by law. You can also, through the same clerks, learn whether someone else already has a contract out on a given name.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I have exquisite manners and no small talk.</li><li>I notice exits before I notice people.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Professionalism.</strong> Do the job cleanly, get paid, go home.</li><li><strong>Tradition.</strong> The Guild's rules exist for a reason — mostly to stop this becoming murder.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>My Guild-house tutor is the closest thing I have to family.</li><li>I've never taken a contract on someone who didn't deserve it. I intend to keep it that way.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I look down on anyone who kills without paperwork.</li><li>Old Guild-house rivalries still get under my skin.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="alchemist">
+        <div class="dossier-head"><h2>Alchemists' Guild Apprentice</h2><span class="dossier-tag">Guild</span></div>
+        <p class="flavor">The eyebrows grow back. Eventually.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Arcana, Investigation</dd>
+            <dt>Tools</dt><dd>Alchemist's supplies</dd>
+            <dt>Equipment</dt><dd>A portable alchemy kit, a singed lab coat, a logbook of "promising" experiments, 10 gp</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Guild Insurance</span>
+          Guild-registered mishaps — explosions, chemical fires, the odd collapsed wall — are covered. The Guild pays out for property damage caused in the course of documented research, no questions asked, within reason. "Within reason" is decided after the fact.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I narrate my own experiments out loud, mostly for the record.</li><li>I've been banned from three taverns for "testing."</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Discovery.</strong> Somebody has to find out what happens. Might as well be me.</li><li><strong>Caution — theoretically.</strong> I believe in safety procedures. I just haven't gotten to them yet.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>My old lab partner lost a hand to a formula I mixed. I owe them, permanently.</li><li>I'm chasing a formula my mentor never finished.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I underestimate how much of anything is "too much."</li><li>I keep unstable samples on my person "for convenience."</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="merchant">
+        <div class="dossier-head"><h2>Merchants' Guild Factor</h2><span class="dossier-tag">Guild</span></div>
+        <p class="flavor">Everything's negotiable. Even the things that aren't.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Persuasion, Insight</dd>
+            <dt>Tools</dt><dd>One gaming set, and one language of your choice</dd>
+            <dt>Equipment</dt><dd>A ledger, fine clothes, a signet seal, 20 gp in trade goods</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Guild Credit</span>
+          In most cities the Guild trades with, you can arrange lodging, cargo space, or a modest loan through fellow members. Reputation is currency here — a factor who doesn't repay a favor doesn't get a second one.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I price everything in my head, out of habit, including friendships.</li><li>I remember every debt owed to me and every one I owe.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Prosperity.</strong> A city that trades well is a city that doesn't need to fight.</li><li><strong>Reputation.</strong> My word is worth more than my gold, so I guard it accordingly.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>My family's trading house is one bad season from ruin. Everything I do is for it.</li><li>A rival factor ruined someone I care about. I intend to out-trade them into the ground.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I'll take a bad deal rather than walk away from the table.</li><li>I assume everyone's angle is money, because mine usually is.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="fool">
+        <div class="dossier-head"><h2>Fools' Guild Graduate</h2><span class="dossier-tag">Guild</span></div>
+        <p class="flavor">The joke has been pre-approved. The laughter has not.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Performance, Acrobatics</dd>
+            <dt>Tools</dt><dd>Disguise kit, one musical instrument</dd>
+            <dt>Equipment</dt><dd>Motley (folds down small), a slapstick, a Guild-issued joke license, 5 gp</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Licensed Fool</span>
+          Your material is, technically, Guild-approved — which means you can say things in front of powerful people that would get anyone else arrested, provided you can produce the license and insist, with a straight face, that it was a joke.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I have never once landed the joke on the first try.</li><li>I take my act more seriously than anything else in my life.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Truth.</strong> A joke can say what a straight sentence can't. That's the point of me.</li><li><strong>Craft.</strong> Comedy is a discipline. I resent that nobody treats it as one.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>My Guild examiner failed me twice. I'm still trying to prove them wrong.</li><li>The one time my material actually landed, it got someone in real trouble. I haven't been reckless since.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I can't resist a bit, even when the room clearly needs me to stop.</li><li>I've forgotten how to say a serious thing seriously.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="uu">
+        <div class="dossier-head"><h2>Unseen University Hanger-on</h2><span class="dossier-tag">University</span></div>
+        <p class="flavor">Technically enrolled. Technically.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Arcana, History</dd>
+            <dt>Tools</dt><dd>One language of your choice (fragments of Old High Nomic)</dd>
+            <dt>Equipment</dt><dd>A stack of overdue library books, ink and quill, a University scarf or pin, 10 gp</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Library Privileges</span>
+          You can research in the University Library under supervision (the Library has its own opinions about who's welcome) and petition faculty for minor magical consultation. Replies are slow, often tangential, and occasionally useful.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I quote footnotes nobody asked for, mid-conversation.</li><li>I've been lost in the University stacks for entire afternoons and don't mention it.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Knowledge.</strong> Somewhere in this library is the answer. I intend to outlast the search.</li><li><strong>Belonging.</strong> I may not be faculty, but this place is mine as much as theirs.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>A professor let me stay after I should've been expelled. I haven't figured out why.</li><li>I'm chasing a thesis nobody else at the University takes seriously.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I namedrop faculty who wouldn't recognize me on the street.</li><li>I trust a book over a person's word, every time.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="dossier" id="civilian">
+        <div class="dossier-head"><h2>Civilian, Street-born</h2><span class="dossier-tag">Unaffiliated</span></div>
+        <p class="flavor">Nobody vouches for you. Nobody can hold anything over you, either.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Skills</dt><dd>Insight, Persuasion</dd>
+            <dt>Tools</dt><dd>One artisan's tools or vehicles (land), your choice</dd>
+            <dt>Equipment</dt><dd>Common clothes, a keepsake of no obvious value, a small debt to someone, 5 gp</dd>
+          </dl>
+        </div>
+        <div class="feature">
+          <span class="fname">Feature — Off the Books</span>
+          No Guild roster, Watch file, or University record has your name in it. You're invisible to quotas, licenses, and enrollment — which cuts both ways: no institution will back you up, but none can be turned against you either. People underestimate you right up until they don't.
+        </div>
+        <div class="traits">
+          <div>
+            <h3>Personality</h3>
+            <ul><li>I read a room before I read anything else in it.</li><li>I've learned to disappear in a crowd; I still do it without meaning to.</li></ul>
+          </div>
+          <div>
+            <h3>Ideal</h3>
+            <ul><li><strong>Independence.</strong> Nobody's ever looked out for me but me. I intend to keep it that way.</li><li><strong>Community.</strong> The street looks after its own, because nobody else will.</li></ul>
+          </div>
+          <div>
+            <h3>Bond</h3>
+            <ul><li>Someone fed me when I had nothing. I've never forgotten the address.</li><li>I'm still paying off the debt that's in my starting equipment. It's older than it looks.</li></ul>
+          </div>
+          <div>
+            <h3>Flaw</h3>
+            <ul><li>I don't trust an offer that doesn't have a catch, and I'm usually right.</li><li>I've stolen out of habit, even when I didn't need to.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="callout">
+        <span class="eyebrow">Building your own dossier</span>
+        Want a Guild not covered here (Musicians', Beggars', Seamstresses')? Pick two skills that fit its trade, one relevant tool or language, plausible starting equipment, and a feature that grants <em>access</em> rather than combat power — a door, a contact, a legal loophole. That's the whole formula.
+      </div>
+    </main>
+  </div>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var list = document.getElementById('tocList');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = new Map();
+    sections.forEach(function(sec, i){ map.set(sec, links[i]); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  }
+})();
+</script>
