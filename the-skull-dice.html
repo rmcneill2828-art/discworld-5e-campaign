@@ -1,0 +1,167 @@
+<title>The Skull Dice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2.1rem, 5vw, 3rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.1rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 58rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+
+  section{ padding: 2.2rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  h2{ font-size: 1.5rem; margin: 0 0 0.9rem; }
+  p{ margin: 0 0 1rem; max-width: 42rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.14rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; max-width: 42rem; }
+
+  .tables{ display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 780px){ .tables{ grid-template-columns: 1fr; } }
+  .tables h3{ font-family: "Courier Prime", monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brass); margin: 0 0 0.8rem; }
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+  td.roll{ font-family: "Courier Prime", monospace; font-variant-numeric: tabular-nums; color: var(--brass); width: 2.2rem; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; margin: 1.1rem 0; border-radius: 2px; font-size: 0.95rem; max-width: 42rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .worked{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem; max-width: 42rem; }
+  .worked .roll-pair{ font-family: "Courier Prime", monospace; font-size: 0.78rem; color: var(--brass); margin-bottom: 0.5rem; }
+  .worked p{ margin: 0; font-family: "Fraunces", serif; font-style: italic; color: var(--ink-soft); max-width: none; }
+
+  footer.colophon{ max-width: 58rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Character Creation Tables</div>
+    <h1>The Skull Dice</h1>
+    <p class="subtitle">Every character starts in Ankh-Morpork. Why, and how they got there, is a roll of the gods' own dice.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="intro">
+      <p class="lede">Somewhere above the Disc, something is shaking a cup made of bone. Nobody's proven it. Nobody who's tried to disprove it has had especially good luck since.</p>
+      <p>Every character in this campaign starts in Ankh-Morpork, full stop — that part isn't negotiable, the same way the city itself never quite feels negotiable. The <em>why</em> and the <em>how</em> are where the dice come in. Roll once on each table below, or pick freely if a result doesn't fit the character you already have in mind — either way, you'll have the start of a backstory in about ten seconds, and the two results together are usually funnier, sadder, or stranger than anything either of you would have written alone.</p>
+      <div class="callout">
+        <span class="eyebrow">How to use this</span>
+        Roll a d20 on <strong>Why You're Here</strong>, then a d20 on <strong>How You Got Here</strong>. Read them together as one line. Keep both, swap one, ignore the dice entirely and just pick two that spark something — all three are the intended way to play this. It also doubles as a fast NPC-background generator for the GM between sessions.
+      </div>
+    </section>
+
+    <section id="tables">
+      <div class="tables">
+        <div>
+          <h3>Why You're Here</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="roll">d20</th><th>Reason</th></tr></thead>
+              <tbody>
+                <tr><td class="roll">1</td><td>A prophecy named the city, then declined to elaborate further.</td></tr>
+                <tr><td class="roll">2</td><td>You owe money you can't repay anywhere else.</td></tr>
+                <tr><td class="roll">3</td><td>Everyone you loved is here, whether they know it or not.</td></tr>
+                <tr><td class="roll">4</td><td>You lost a bet you don't remember making.</td></tr>
+                <tr><td class="roll">5</td><td>The coach broke down here and nobody ever fixed it.</td></tr>
+                <tr><td class="roll">6</td><td>You're chasing a rumor about a relative who vanished years ago.</td></tr>
+                <tr><td class="roll">7</td><td>A letter arrived with this address on it and no other explanation.</td></tr>
+                <tr><td class="roll">8</td><td>You were born here and have simply never left.</td></tr>
+                <tr><td class="roll">9</td><td>Somewhere else decided it didn't want you anymore.</td></tr>
+                <tr><td class="roll">10</td><td>You followed someone you were sure you loved. They aren't here now.</td></tr>
+                <tr><td class="roll">11</td><td>A god you'd never heard of told you, quite clearly, to go.</td></tr>
+                <tr><td class="roll">12</td><td>You're one dropped coin from a life of crime, and this city has the best rates.</td></tr>
+                <tr><td class="roll">13</td><td>Someone told you the streets were paved with something valuable. Technically, cobblestones.</td></tr>
+                <tr><td class="roll">14</td><td>You're hiding from something. It hasn't caught up yet.</td></tr>
+                <tr><td class="roll">15</td><td>It's the only place your particular skillset is, technically, legal.</td></tr>
+                <tr><td class="roll">16</td><td>You inherited a building here you've never actually seen.</td></tr>
+                <tr><td class="roll">17</td><td>The Guild you wanted only has a branch here.</td></tr>
+                <tr><td class="roll">18</td><td>You were sent to deliver a message and never delivered it, or yourself, elsewhere.</td></tr>
+                <tr><td class="roll">19</td><td>It's the biggest city on the Disc. You wanted to disappear into a crowd.</td></tr>
+                <tr><td class="roll">20</td><td>Frankly, no idea. You woke up here and decided that was reason enough.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3>How You Got Here</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="roll">d20</th><th>Method</th></tr></thead>
+              <tbody>
+                <tr><td class="roll">1</td><td>Walked. The whole way. You have opinions about boots now.</td></tr>
+                <tr><td class="roll">2</td><td>Smuggled in the back of a cart, under something you'd rather not describe.</td></tr>
+                <tr><td class="roll">3</td><td>Worked passage with a merchant caravan, for tasks you're still not sure were legal.</td></tr>
+                <tr><td class="roll">4</td><td>Rode a barge up the Ankh. You can still smell it.</td></tr>
+                <tr><td class="roll">5</td><td>Arrived by coach, on time, uneventfully. Suspicious, in retrospect.</td></tr>
+                <tr><td class="roll">6</td><td>Washed up, literally, after a shipwreck on the coast.</td></tr>
+                <tr><td class="roll">7</td><td>Stowed away on a ship and were "discovered" around week two.</td></tr>
+                <tr><td class="roll">8</td><td>Followed a travelling troupe and never left when they did.</td></tr>
+                <tr><td class="roll">9</td><td>Woke up here with no memory of the journey at all.</td></tr>
+                <tr><td class="roll">10</td><td>Fled on foot in the middle of the night with whatever you could carry.</td></tr>
+                <tr><td class="roll">11</td><td>Escorted in by City Watch officers, under circumstances best left undiscussed.</td></tr>
+                <tr><td class="roll">12</td><td>Won passage in a card game you're fairly sure was rigged, in your favor for once.</td></tr>
+                <tr><td class="roll">13</td><td>Carried in, unconscious, by someone no longer around to explain why.</td></tr>
+                <tr><td class="roll">14</td><td>Arrived via a magical mishap, absolutely not your fault. Probably.</td></tr>
+                <tr><td class="roll">15</td><td>Walked through the gates as a child, holding a hand that let go in the crowd.</td></tr>
+                <tr><td class="roll">16</td><td>Rode in on a delivery wagon belonging to a Guild you'd never heard of.</td></tr>
+                <tr><td class="roll">17</td><td>Talked your way onto a diplomatic escort meant for someone far more important.</td></tr>
+                <tr><td class="roll">18</td><td>Arrived by broom, dragon, or similarly unconventional transport. You'd rather not elaborate.</td></tr>
+                <tr><td class="roll">19</td><td>Always been here — family roots go back generations, if the records are honest.</td></tr>
+                <tr><td class="roll">20</td><td>Nobody's entirely sure. Three different accounts exist and you've stopped correcting people.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="worked">
+      <h2>A Roll of the Dice</h2>
+      <p>Two examples of what the tables sound like read together — proof the same twenty numbers rarely land the same way twice.</p>
+      <div class="worked">
+        <div class="roll-pair">Why: 12 · How: 5</div>
+        <p>"You're one dropped coin from a life of crime, and this city has the best rates — you arrived by coach, on time, uneventfully. Suspicious, in retrospect."</p>
+      </div>
+      <div class="worked">
+        <div class="roll-pair">Why: 3 · How: 15</div>
+        <p>"Everyone you loved is here, whether they know it or not — you walked through the gates as a child, holding a hand that let go in the crowd."</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
