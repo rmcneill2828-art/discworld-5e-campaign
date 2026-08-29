@@ -1,0 +1,216 @@
+<title>Playing It Straight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+    --good: #3f6b4a; --good-tint: #dbe8dd;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+      --good: #7cb389; --good-tint: #24352a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    --good: #7cb389; --good-tint: #24352a;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2.1rem, 5vw, 3rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.1rem; margin: 0 auto 1.1rem; max-width: 34rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 42rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+  section{ padding: 2.3rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  .num{ display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border: 1px solid var(--rule-strong); border-radius: 50%; font-family: "Courier Prime", monospace; font-size: 0.85rem; color: var(--brass); margin-bottom: 0.9rem; }
+  h2{ font-size: 1.55rem; margin: 0 0 0.9rem; }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.14rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .swap{ display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+  @media (max-width: 620px){ .swap{ grid-template-columns: 1fr; } }
+  .swap > div{ border-radius: 2px; padding: 0.9rem 1rem; font-size: 0.93rem; }
+  .swap .before{ background: var(--wax-tint); border-left: 3px solid var(--wax); }
+  .swap .after{ background: var(--good-tint); border-left: 3px solid var(--good); }
+  .swap .label{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 0.4rem; }
+  .swap .before .label{ color: var(--wax); }
+  .swap .after .label{ color: var(--good); }
+  .swap p{ margin: 0; font-style: italic; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; margin: 1.1rem 0; border-radius: 2px; font-size: 0.95rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .signlist{ list-style: none; margin: 0.6rem 0 0; padding: 0; }
+  .signlist li{ font-family: "Courier Prime", monospace; font-size: 0.88rem; padding: 0.5rem 0; border-bottom: 1px dashed var(--rule-strong); }
+  .signlist li:last-child{ border-bottom: none; }
+
+  .checklist{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1.1rem 1.3rem; margin: 0.6rem 0; }
+  .checklist ul{ margin: 0; padding-left: 1.2rem; }
+  .checklist li{ margin-bottom: 0.5rem; }
+  .checklist li:last-child{ margin-bottom: 0; }
+
+  .dont{ margin: 0.6rem 0 0; padding-left: 1.2rem; }
+  .dont li{ margin-bottom: 0.7rem; }
+  .dont li:last-child{ margin-bottom: 0; }
+
+  .closing-mark{ text-align: center; font-family: "Courier Prime", monospace; font-size: 0.8rem; color: var(--ink-faint); margin-top: 1.6rem; }
+
+  footer.colophon{ max-width: 42rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">GM Craft Guide</div>
+    <h1>Playing It Straight</h1>
+    <p class="subtitle">Nine techniques for running comedy and satire the way the books do — and a checklist for the table.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="intro">
+      <p class="lede">Nobody in Ankh-Morpork thinks they're funny. That's the whole trick.</p>
+      <p>Discworld's comedy almost never comes from characters cracking jokes — it comes from the gap between how seriously everyone in the world takes their absurd situation and how clearly the reader can see the absurdity. The moment a GM starts winking at the table, or an NPC starts lampshading how ridiculous everything is, that gap closes and the joke dies with it. Everything below is about keeping that gap open: play every character, every institution, and every catastrophe with complete sincerity, and let the humor live entirely in the premise.</p>
+      <p>Each technique below comes with a quick before/after — a generic fantasy line on the left, the same beat run through the technique on the right. Steal the rights-hand column directly if you need something at the table tonight.</p>
+    </section>
+
+    <section id="literalism">
+      <span class="num">1</span>
+      <h2>Make the Abstract Literal</h2>
+      <p>Take a concept a normal fantasy setting would leave metaphorical — belief, time, magic, inspiration, story logic itself — and give it a physical, measurable, occasionally bureaucratic reality. Death isn't a metaphor here; he has a house, a horse, and a filing system.</p>
+      <div class="swap">
+        <div class="before"><span class="label">Generic</span><p>"An overwhelming sense of destiny settled over her."</p></div>
+        <div class="after"><span class="label">Discworld</span><p>"Narrativium settled over her, the way it does over anyone about to do something a story needs. She could feel it between her shoulder blades, like a hand deciding where to push."</p></div>
+      </div>
+    </section>
+
+    <section id="bureaucracy">
+      <span class="num">2</span>
+      <h2>Bureaucracy Meets the Fantastic</h2>
+      <p>Apply mundane institutional process — forms, licenses, unions, insurance, filing — to epic-fantasy events. The dragon is terrifying; the dragon is also, according to a small brass plaque, Grade II listed. This is the single most reliable engine in the whole toolkit, and it works in almost any scene.</p>
+      <div class="swap">
+        <div class="before"><span class="label">Generic</span><p>"The ancient dragon reared up, ready to raze the village."</p></div>
+        <div class="after"><span class="label">Discworld</span><p>"The dragon was ancient, terrible, and — according to the plaque on its cave — a Scheduled Monument, which meant slaying it required a permit from the Ankh-Morpork Historical Preservation Society, obtainable Tuesdays, in person, with a fee."</p></div>
+      </div>
+    </section>
+
+    <section id="subvert">
+      <span class="num">3</span>
+      <h2>Subvert the Trope, Don't Mock the Genre</h2>
+      <p>Discworld pokes at fantasy clichés without ever sneering at the reader for enjoying them. The prophecy is real and it does matter — it's just been misprinted, or it fits three people at once, or the chosen one would really rather not. Keep the stakes genuine even while the trope gets undercut.</p>
+      <div class="swap">
+        <div class="before"><span class="label">Generic</span><p>"You are the chosen one, prophesied to save the realm."</p></div>
+        <div class="after"><span class="label">Discworld</span><p>"The prophecy says a chosen one will save the realm, and that they'll bear a birthmark shaped like a teapot. Awkwardly, three people in this village have that birthmark, and one of them's currently wanted for tax fraud."</p></div>
+      </div>
+    </section>
+
+    <section id="narrator">
+      <span class="num">4</span>
+      <h2>The Narrator's Voice</h2>
+      <p>When you narrate as GM, keep your own voice dry and matter-of-fact even at the most absurd moments — let the situation be funny while your delivery stays level. Never editorialize with "and that was pretty silly" energy. State the ridiculous thing the same way you'd state the weather.</p>
+      <div class="swap">
+        <div class="before"><span class="label">Generic</span><p>"Weirdly, the wizard's hat starts floating — kind of a funny moment, honestly."</p></div>
+        <div class="after"><span class="label">Discworld</span><p>"The wizard's hat rises eleven inches off his head and stays there. He doesn't react. This has, apparently, happened before."</p></div>
+      </div>
+    </section>
+
+    <section id="specificity">
+      <span class="num">5</span>
+      <h2>Escalating Specificity</h2>
+      <p>Lists and enumerations that start reasonable and end absurd are one of the setting's most reliable rhythms. Three items, the first two grounding, the third one breaking the pattern — in dialogue, signage, item descriptions, anywhere you'd otherwise write one flat sentence.</p>
+      <div class="swap">
+        <div class="before"><span class="label">Generic</span><p>"The market sold food, cloth, and other goods."</p></div>
+        <div class="after"><span class="label">Discworld</span><p>"The market sold fish, secondhand boots, and a man who would, for a small fee, personally guarantee your fortune for the day."</p></div>
+      </div>
+    </section>
+
+    <section id="anticlimax">
+      <span class="num">6</span>
+      <h2>Undercut the Epic — Sparingly</h2>
+      <p>A dramatic confrontation resolved by something petty or mundane is a real technique, not just a gag — but it only lands when you've earned the drama first, and it shouldn't happen every session. Save it for the moment the table is braced for something huge.</p>
+      <div class="swap">
+        <div class="before"><span class="label">Generic</span><p>"The Dark Lord fell, and the age of shadow ended forever."</p></div>
+        <div class="after"><span class="label">Discworld</span><p>"The Dark Lord fell. It took eleven minutes to establish this was, legally, an accident, and another two hours to work out who was now on the hook for his outstanding tab at the Mended Drum."</p></div>
+      </div>
+      <div class="callout">
+        <span class="eyebrow">Use sparingly</span>
+        If every big moment gets deflated, the table stops investing in big moments at all. Let some prophecies land straight, some battles matter exactly as much as they're supposed to — the anticlimax works because it's the exception.
+      </div>
+    </section>
+
+    <section id="names">
+      <span class="num">7</span>
+      <h2>Names, Signs, and Institutions</h2>
+      <p>Names carry the joke by themselves — the text never needs to point at them. A shop sign, a Guild motto, a street name can do a scene's worth of world-building in one line. Write them completely straight; the humor is in the reader noticing, not in anyone in-world remarking on it.</p>
+      <ul class="signlist">
+        <li>Alterations While-U-Wait (Wait May Exceed Lifetime)</li>
+        <li>The Worshipful Company of Rope-Makers — Est. Sometime Before Anyone Complained</li>
+        <li>Genuine Antique Grimoires. Curses Not Included. Ask About Curses.</li>
+        <li>We Bury Our Mistakes, and Yours, Same Rate</li>
+        <li>Fresh Fish. Ish.</li>
+        <li>Nothing Locked, Nothing Guaranteed</li>
+      </ul>
+    </section>
+
+    <section id="heart">
+      <span class="num">8</span>
+      <h2>Satire With a Heart</h2>
+      <p>Pratchett's satire has a target, and it's consistent: institutions, pretension, cruelty dressed up as tradition, power that's stopped noticing the people underneath it. It is not aimed at the poor, the frightened, the ordinary person just trying to get through the week — those characters are usually the ones the narrative actually respects. The cynic in the room (Vimes, Granny Weatherwax) is almost always covering for real moral seriousness underneath.</p>
+      <p>Before a joke lands on a character, ask who it's actually laughing at. Aim it at the guild that's forgotten what it's for, the noble who's never worked a day, the system that's stopped making sense — not at the constable walking a beat, or the beggar working a patch, or anyone in the room who's just trying to get by.</p>
+    </section>
+
+    <section id="antipatterns">
+      <span class="num">9</span>
+      <h2>What Breaks the Voice</h2>
+      <ul class="dont">
+        <li><strong>Fourth-wall winks.</strong> An NPC saying "well, that's convenient, isn't it" kills the gap the whole style depends on. Let the absurdity sit there, uncommented on, in-world.</li>
+        <li><strong>Slapstick as the whole joke.</strong> Pratfalls happen, but they're rarely the punchline by themselves — they usually arrive already wrapped in a bureaucratic, institutional, or linguistic joke doing the real work.</li>
+        <li><strong>Cynicism without warmth.</strong> The setting can be bleak and often is — but nihilism for its own sake reads as a different, colder book. There's almost always a person underneath the joke worth rooting for.</li>
+        <li><strong>Punching down.</strong> Save the satire for power, pretension, and institutions. A joke that lands on someone powerless just isn't a Discworld joke, however it's dressed up.</li>
+        <li><strong>Joke density with no stakes.</strong> A scene that's wall-to-wall gags with nothing genuinely at risk stops feeling like the books fast. The comedy works because the danger is real.</li>
+      </ul>
+    </section>
+
+    <section id="quickref">
+      <h2>Table Quick Reference</h2>
+      <div class="checklist">
+        <ul>
+          <li>Deliver the absurd thing exactly as flatly as you'd deliver the weather.</li>
+          <li>When in doubt, give it a form, a fee, a licensing body, or a union.</li>
+          <li>Let the joke live in the premise and the name — never point at it out loud.</li>
+          <li>Keep the danger real. The comedy needs the stakes to work.</li>
+          <li>Aim satire at power and pretension, never at anyone just getting by.</li>
+          <li>Save the anticlimax for the one moment the table's genuinely braced.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="closing">
+      <p>None of this replaces good instincts at the table — it's scaffolding for the nights your instincts want a nudge. Read a chapter before a session if you need to recalibrate the voice; it comes back fast.</p>
+      <p class="closing-mark">. . . GNU Terry Pratchett . . .</p>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
