@@ -108,58 +108,92 @@
 
     <main class="content">
 
+      <section id="districts" style="padding-top:0; border-bottom:1px solid var(--rule); padding-bottom:1.8rem; margin-bottom:2rem;">
+        <h2 style="font-size:1.3rem;">The Twelve Districts</h2>
+        <p style="font-size:0.96rem;">Ankh-Morpork divides into twelve named districts fanning out from the river. The thirteen locations below each sit inside one of them — the map after this table shows where.</p>
+        <div class="table-wrap">
+          <table style="font-size:0.88rem;">
+            <thead><tr><th>District</th><th>Character</th></tr></thead>
+            <tbody>
+              <tr><td>Nap Hill</td><td>Leafy, comparatively respectable, and quietly convinced of its own good taste.</td></tr>
+              <tr><td>Dolly Sisters</td><td>Once market gardens; still smells faintly of cabbage under everything built since.</td></tr>
+              <tr><td>Unreal Estate</td><td>Unseen University's own patch of the city — the streets bend slightly wrong near the walls.</td></tr>
+              <tr><td>Seven Sleepers</td><td>Old and settled, and takes its name more literally than newcomers expect.</td></tr>
+              <tr><td>New Brickfields</td><td>Newer, poorer, built fast enough that not all of it has finished settling.</td></tr>
+              <tr><td>Gods Quarter</td><td>Overflow from the Isle of Gods — temples that couldn't get river frontage.</td></tr>
+              <tr><td>Isle of Gods</td><td>The old temple island itself, where belief is the district's primary export.</td></tr>
+              <tr><td>Longwall</td><td>Built along the city's old defensive wall, from back when the wall still did something.</td></tr>
+              <tr><td>The Scours</td><td>Rough and low-lying, named — depending who you ask — for the trade or the smell.</td></tr>
+              <tr><td>The Shades</td><td>The oldest, least apologetic part of the city. See the entry below.</td></tr>
+              <tr><td>The Hippo</td><td>Named for a landmark nobody currently alive has seen, and several insist never existed.</td></tr>
+              <tr><td>Dimwell</td><td>Poor, crowded, and permanently a few degrees darker than the weather suggests.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <figure class="map-figure">
-        <svg viewBox="0 0 600 420" role="img" aria-label="Schematic map of Ankh-Morpork showing the River Ankh running Hub to Rim, with thirteen numbered locations positioned on its west and east banks">
-          <text x="300" y="22" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" letter-spacing="2" fill="currentColor" opacity="0.7">HUB</text>
-          <line x1="285" y1="30" x2="300" y2="14" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
-          <line x1="315" y1="30" x2="300" y2="14" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
-          <text x="300" y="410" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" letter-spacing="2" fill="currentColor" opacity="0.7">RIM</text>
-          <line x1="285" y1="398" x2="300" y2="414" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
-          <line x1="315" y1="398" x2="300" y2="414" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
+        <svg viewBox="0 0 460 620" role="img" aria-label="Schematic map of Ankh-Morpork's twelve districts with the River Ankh running Hub to Rim, and thirteen numbered locations placed within their districts">
+          <text x="230" y="22" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" letter-spacing="2" fill="currentColor" opacity="0.7">HUB</text>
+          <line x1="215" y1="30" x2="230" y2="14" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
+          <line x1="245" y1="30" x2="230" y2="14" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
+          <text x="230" y="610" text-anchor="middle" font-family="Courier Prime, monospace" font-size="12" letter-spacing="2" fill="currentColor" opacity="0.7">RIM</text>
+          <line x1="215" y1="598" x2="230" y2="614" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
+          <line x1="245" y1="598" x2="230" y2="614" stroke="currentColor" stroke-width="1.5" opacity="0.7"></line>
 
-          <path d="M 320 40 C 300 90, 340 130, 300 170 C 270 200, 325 245, 290 285 C 268 315, 312 345, 296 395"
-                fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" opacity="0.14"></path>
-          <text x="335" y="245" font-family="Courier Prime, monospace" font-size="11" fill="currentColor" opacity="0.6" transform="rotate(90 335 245)">River Ankh</text>
+          <path d="M 230 45 C 195 110, 255 155, 220 215 C 185 270, 250 315, 222 375 C 198 425, 245 465, 230 565"
+                fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" opacity="0.14"></path>
 
-          <!-- West bank -->
-          <g font-family="Courier Prime, monospace" font-size="11">
-            <circle cx="150" cy="95" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="150" y="99" text-anchor="middle" fill="currentColor">6</text>
-            <circle cx="205" cy="195" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="205" y="199" text-anchor="middle" fill="currentColor">3</text>
-            <circle cx="95" cy="235" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="95" y="239" text-anchor="middle" fill="currentColor">4</text>
-            <circle cx="150" cy="278" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="150" y="282" text-anchor="middle" fill="currentColor">10</text>
-            <circle cx="175" cy="325" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="175" y="329" text-anchor="middle" fill="currentColor">11</text>
-            <circle cx="105" cy="345" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="105" y="349" text-anchor="middle" fill="currentColor">12</text>
+          <!-- District labels -->
+          <g font-family="Courier Prime, monospace" font-size="10.5" fill="currentColor" opacity="0.55" text-anchor="middle">
+            <text x="165" y="138">NAP HILL</text>
+            <text x="325" y="128">DOLLY SISTERS</text>
+            <text x="233" y="195">UNREAL ESTATE</text>
+            <text x="80" y="210">SEVEN SLEEPERS</text>
+            <text x="375" y="222">NEW BRICKFIELDS</text>
+            <text x="345" y="298">GODS QUARTER</text>
+            <text x="95" y="335">LONGWALL</text>
+            <text x="272" y="358">THE SCOURS</text>
+            <text x="345" y="432">THE HIPPO</text>
+            <text x="225" y="500">THE SHADES</text>
+            <text x="120" y="465">DIMWELL</text>
+            <text x="225" y="300">ISLE OF GODS</text>
           </g>
 
-          <!-- River-set -->
+          <!-- Numbered points of interest -->
           <g font-family="Courier Prime, monospace" font-size="11">
-            <circle cx="303" cy="160" r="13" fill="var(--accent-tint, #ded1ec)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="303" y="164" text-anchor="middle" fill="currentColor">5</text>
-            <circle cx="298" cy="378" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="298" y="382" text-anchor="middle" fill="currentColor">13</text>
-          </g>
+            <circle cx="220" cy="185" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="220" y="189" text-anchor="middle" fill="currentColor">6</text>
+            <circle cx="300" cy="160" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="300" y="164" text-anchor="middle" fill="currentColor">9</text>
+            <circle cx="315" cy="215" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="315" y="219" text-anchor="middle" fill="currentColor">7</text>
+            <circle cx="345" cy="295" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="345" y="299" text-anchor="middle" fill="currentColor">8</text>
 
-          <!-- East bank -->
-          <g font-family="Courier Prime, monospace" font-size="11">
-            <circle cx="435" cy="115" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="435" y="119" text-anchor="middle" fill="currentColor">2</text>
-            <circle cx="380" cy="195" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="380" y="199" text-anchor="middle" fill="currentColor">1</text>
-            <circle cx="495" cy="155" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="495" y="159" text-anchor="middle" fill="currentColor">7</text>
-            <circle cx="465" cy="255" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="465" y="259" text-anchor="middle" fill="currentColor">8</text>
-            <circle cx="500" cy="305" r="13" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
-            <text x="500" y="309" text-anchor="middle" fill="currentColor">9</text>
+            <circle cx="205" cy="305" r="12" fill="var(--accent-tint, #ded1ec)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="205" y="309" text-anchor="middle" fill="currentColor">5</text>
+            <circle cx="250" cy="275" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="250" y="279" text-anchor="middle" fill="currentColor">1</text>
+            <circle cx="280" cy="250" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="280" y="254" text-anchor="middle" fill="currentColor">2</text>
+            <circle cx="255" cy="325" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="255" y="329" text-anchor="middle" fill="currentColor">3</text>
+
+            <circle cx="195" cy="415" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="195" y="419" text-anchor="middle" fill="currentColor">11</text>
+            <circle cx="140" cy="415" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="140" y="419" text-anchor="middle" fill="currentColor">12</text>
+            <circle cx="155" cy="460" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="155" y="464" text-anchor="middle" fill="currentColor">10</text>
+            <circle cx="210" cy="485" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="210" y="489" text-anchor="middle" fill="currentColor">4</text>
+
+            <circle cx="235" cy="565" r="12" fill="var(--bg-raised, #f1ecdd)" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="235" y="569" text-anchor="middle" fill="currentColor">13</text>
           </g>
         </svg>
-        <figcaption>Schematic only, not to scale — Ankh-Morpork's geography famously refuses to hold still. Numbers match the entries below.</figcaption>
+        <figcaption>Schematic only, not to scale — grounded in the Disc's well-known district names, redrawn freehand. Numbers match the entries below.</figcaption>
       </figure>
 
       <ul class="legend">
