@@ -1,0 +1,194 @@
+<title>First Day in the City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2.1rem, 5vw, 3rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.1rem; margin: 0 auto 1.1rem; max-width: 34rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); line-height: 1.7; max-width: 34rem; margin: 0 auto; }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 42rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+  section{ padding: 2.2rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  .step-num{ display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border: 1px solid var(--rule-strong); border-radius: 50%; font-family: "Courier Prime", monospace; font-size: 0.85rem; color: var(--brass); margin-bottom: 0.9rem; }
+  h2{ font-size: 1.5rem; margin: 0 0 0.9rem; }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.12rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.85rem 1.05rem; margin: 1rem 0; border-radius: 2px; font-size: 0.94rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+
+  .worksheet{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1.2rem 1.3rem; }
+  .worksheet dl{ display: grid; grid-template-columns: 9rem 1fr; gap: 0.7rem 1rem; margin: 0; }
+  .worksheet dt{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); align-self: end; }
+  .worksheet dd{ margin: 0; border-bottom: 1px dashed var(--rule-strong); min-height: 1.4rem; }
+
+  .pregens{ display: grid; gap: 1.1rem; }
+  .pregen{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1.1rem 1.2rem; }
+  .pregen h3{ font-size: 1.1rem; margin: 0 0 0.2rem; }
+  .pregen .tagline{ font-family: "Courier Prime", monospace; font-size: 0.72rem; color: var(--brass); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+  .pregen dl{ display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.35rem 0.7rem; margin: 0 0 0.7rem; font-size: 0.9rem; }
+  .pregen dt{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); }
+  .pregen dd{ margin: 0; }
+  .pregen p{ font-family: "Fraunces", serif; font-style: italic; color: var(--ink-soft); margin: 0; font-size: 0.94rem; }
+
+  .checklist{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1.1rem 1.3rem; }
+  .checklist ul{ margin: 0; padding-left: 1.2rem; }
+  .checklist li{ margin-bottom: 0.5rem; }
+  .checklist li:last-child{ margin-bottom: 0; }
+
+  footer.colophon{ max-width: 42rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Session Zero</div>
+    <h1>First Day in the City</h1>
+    <p class="subtitle">Character creation, start to finish — six steps, one worksheet, no wrong answers.</p>
+    <p class="companion-link">Draws on <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a>, the <a href="https://claude.ai/code/artifact/b26f0bca-c632-4084-8d7a-f9e5981c7654">Guild Registration Dossiers</a>, <a href="https://claude.ai/code/artifact/aff25d7d-c09f-4a70-98aa-8a4a748ac48d">The Long Climb</a>, and <a href="https://claude.ai/code/artifact/7d3959e3-6da1-4e7c-990c-d94cf5b28715">The Skull Dice</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="intro">
+      <p class="lede">You don't need six tabs open to build a character. You need this page, a d20, and about fifteen minutes.</p>
+      <p>Everything below is a fast path through character creation for this campaign specifically — full detail lives in the companion documents linked as you go, but you shouldn't need them to finish a first character. Follow the steps in order, fill in the worksheet at the end, and you're done.</p>
+    </section>
+
+    <section id="step1">
+      <span class="step-num">1</span>
+      <h2>Pick a Class</h2>
+      <p>Any 5e class, unmodified. Nothing about the setting restricts what you can play, and nothing you pick here locks you out of any Origin in Step 3 — that's deliberate. Witch players should look at <a href="https://claude.ai/code/artifact/25b598ef-1f13-4631-8181-c7a55ce05e2b">Circle of Headology</a>, a Druid subclass built for headology and Borrowing instead of Wild Shape.</p>
+    </section>
+
+    <section id="step2">
+      <span class="step-num">2</span>
+      <h2>Pick a Species</h2>
+      <p>Human, Dwarf, Troll, Gnome, Golem, a Reformed zombie/vampire/werewolf, an Igor — the Charter's <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d#species">Playable Peoples</a> section has the full list with notes on 5e stat-block starting points for each.</p>
+    </section>
+
+    <section id="step3">
+      <span class="step-num">3</span>
+      <h2>Pick an Origin</h2>
+      <p>Who backs you up: a Guild, the City Watch, Unseen University, or nobody — a Civilian. Mechanically this is your 5e Background, so pick one from the <a href="https://claude.ai/code/artifact/b26f0bca-c632-4084-8d7a-f9e5981c7654">Guild Registration Dossiers</a> for the skills, tools, equipment, and feature that come with it.</p>
+      <div class="callout">
+        <span class="eyebrow">No wrong pairing</span>
+        A Fighter at Unseen University keeps every Fighter feature. A Wizard on Watch patrol keeps every Wizard feature. The mismatch only ever changes how NPCs treat you — never your character sheet.
+      </div>
+    </section>
+
+    <section id="step4">
+      <span class="step-num">4</span>
+      <h2>Set Your Starting Rank</h2>
+      <p>If your table is using <a href="https://claude.ai/code/artifact/aff25d7d-c09f-4a70-98aa-8a4a748ac48d">The Long Climb</a>, find your Origin's ladder and start at its <strong>bottom rank</strong> — Recruit, Prospect, Student, Apprentice, Prentice, Factor, First-Year, or Nobody in Particular, whichever applies. This holds true no matter what level you start the campaign at: everyone in this city is new here (see Step 5), so nobody's had time to earn a promotion yet. A level 5 character can absolutely still be a First-Year Student — that gap is a feature, not an error, and the Long Climb explains what to do about it.</p>
+      <p>Not using the Long Climb at your table? Skip this step — your character's title is just their class and level, same as any other 5e game.</p>
+    </section>
+
+    <section id="step5">
+      <span class="step-num">5</span>
+      <h2>Roll Your Reason and Your Route</h2>
+      <p>Every character starts in Ankh-Morpork. Roll a d20 twice on <a href="https://claude.ai/code/artifact/7d3959e3-6da1-4e7c-990c-d94cf5b28715">The Skull Dice</a> — once for why you're here, once for how you got here — or pick two results freely if the dice don't fit the character taking shape. Read them together as one line; that's your opening backstory, done.</p>
+    </section>
+
+    <section id="step6">
+      <span class="step-num">6</span>
+      <h2>Read the Room</h2>
+      <p>Before your first session, skim the quick-reference checklist at the end of <a href="https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318">Playing It Straight</a> — it's six lines, and it's the fastest way to get everyone's sense of the setting's comedy pointed the same direction before play starts.</p>
+    </section>
+
+    <section id="worksheet">
+      <h2>Character Worksheet</h2>
+      <div class="worksheet">
+        <dl>
+          <dt>Name</dt><dd>&nbsp;</dd>
+          <dt>Species</dt><dd>&nbsp;</dd>
+          <dt>Class</dt><dd>&nbsp;</dd>
+          <dt>Level</dt><dd>&nbsp;</dd>
+          <dt>Origin</dt><dd>&nbsp;</dd>
+          <dt>Starting Rank</dt><dd>&nbsp;</dd>
+          <dt>Why You're Here</dt><dd>&nbsp;</dd>
+          <dt>How You Got Here</dt><dd>&nbsp;</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="pregens">
+      <h2>Three to Borrow</h2>
+      <p>Pre-built starting points, if you'd rather adapt than build from scratch. Each shows the system doing something slightly different.</p>
+      <div class="pregens">
+        <div class="pregen">
+          <h3>Constable Björn Ironfoot</h3>
+          <p class="tagline">Dwarf Fighter · City Watch · Level 3 · Rank: Recruit</p>
+          <dl>
+            <dt>Why</dt><dd>It's the only place your particular skillset is, technically, legal.</dd>
+            <dt>How</dt><dd>Escorted in by City Watch officers, under circumstances best left undiscussed.</dd>
+          </dl>
+          <p>Level 3 is enough to make Constable on paper. Björn hasn't put in for it yet — he's still deciding whether he wants the Watch to know his real name.</p>
+        </div>
+        <div class="pregen">
+          <h3>Agatha Nettlebed</h3>
+          <p class="tagline">Human Wizard · Unseen University · Level 5 · Rank: First-Year Student</p>
+          <dl>
+            <dt>Why</dt><dd>A god you'd never heard of told you, quite clearly, to go.</dd>
+            <dt>How</dt><dd>Talked your way onto a diplomatic escort meant for someone far more important.</dd>
+          </dl>
+          <p>Forty-one years old, unmistakably more capable than her classmates, and still assigned a seat in remedial thaumaturgy between two seventeen-year-olds. The proctors have opinions. She has not asked to hear them.</p>
+        </div>
+        <div class="pregen">
+          <h3>"Six-Fingers" Pell</h3>
+          <p class="tagline">Gnome Rogue · Civilian · Level 2 · Rank: Nobody in Particular</p>
+          <dl>
+            <dt>Why</dt><dd>You're one dropped coin from a life of crime, and this city has the best rates.</dd>
+            <dt>How</dt><dd>Won passage in a card game you're fairly sure was rigged, in your favor for once.</dd>
+          </dl>
+          <p>No Guild card, no patch, no patron — which means no quota either. Pell intends to keep it that way for as long as possible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="before-you-play">
+      <h2>Before You Play</h2>
+      <div class="checklist">
+        <ul>
+          <li>Agree what level the campaign starts at — every ladder in the Long Climb still applies at level 1 as easily as level 10.</li>
+          <li>Decide as a table whether you're using the Long Climb at all — it's fully optional, and the campaign runs fine without it.</li>
+          <li>Confirm at least one shared reference point for tone — read the Playing It Straight checklist together if nobody in the group has read the books recently.</li>
+          <li>Let Origins overlap. A party that's one Watch recruit, one Guild thief, one civilian, and one wildly overqualified wizard student is the default shape of this setting, not an edge case.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
