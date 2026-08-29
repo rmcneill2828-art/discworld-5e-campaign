@@ -1,0 +1,545 @@
+<title>The Discworld Charter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0;
+    --bg-raised: #f1ecdd;
+    --ink: #2b2620;
+    --ink-soft: #5a5340;
+    --ink-faint: #857c62;
+    --rule: #c9bfa0;
+    --rule-strong: #a89b76;
+    --accent: #5d3f80;
+    --accent-soft: #8a6fae;
+    --accent-tint: #ded1ec;
+    --brass: #7a5c26;
+    --brass-tint: #e6d7ab;
+    --wax: #8c2f2f;
+    --wax-tint: #edd6d0;
+    --code-bg: #ded5b8;
+    --shadow: rgba(43,38,32,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c;
+      --bg-raised: #202128;
+      --ink: #e9e4d4;
+      --ink-soft: #b7ae94;
+      --ink-faint: #837c68;
+      --rule: #3c3d45;
+      --rule-strong: #55565f;
+      --accent: #bb95e6;
+      --accent-soft: #9678bd;
+      --accent-tint: #372a49;
+      --brass: #d0a758;
+      --brass-tint: #3c3220;
+      --wax: #dd7a6f;
+      --wax-tint: #402522;
+      --code-bg: #26272f;
+      --shadow: rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c;
+    --bg-raised: #202128;
+    --ink: #e9e4d4;
+    --ink-soft: #b7ae94;
+    --ink-faint: #837c68;
+    --rule: #3c3d45;
+    --rule-strong: #55565f;
+    --accent: #bb95e6;
+    --accent-soft: #9678bd;
+    --accent-tint: #372a49;
+    --brass: #d0a758;
+    --brass-tint: #3c3220;
+    --wax: #dd7a6f;
+    --wax-tint: #402522;
+    --code-bg: #26272f;
+    --shadow: rgba(0,0,0,0.35);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: "Fraunces", Georgia, serif;
+    text-wrap: balance;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .eyebrow{
+    font-family: "Courier Prime", "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+  }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    padding: 3.2rem 1.5rem 2.4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg-raised);
+  }
+  .ornament{ width: 172px; height: auto; margin: 0 auto 1.1rem; color: var(--accent); opacity: 0.9; }
+  .masthead h1{
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.005em;
+  }
+  .masthead .subtitle{
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+    margin: 0 0 1.4rem;
+  }
+  .facts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0;
+    font-family: "Courier Prime", monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+  .facts span{ padding: 0 0.85rem; border-right: 1px solid var(--rule-strong); }
+  .facts span:last-child{ border-right: none; }
+
+  /* ---------- layout ---------- */
+  .layout{
+    display: grid;
+    grid-template-columns: 220px minmax(0,1fr);
+    gap: 3rem;
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 2.6rem 1.5rem 5rem;
+  }
+  nav.toc{ position: sticky; top: 1.5rem; align-self: start; }
+  nav.toc .eyebrow{ display: block; margin-bottom: 0.8rem; }
+  nav.toc ol{ list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); }
+  nav.toc li{ margin: 0; }
+  nav.toc a{
+    display: block;
+    padding: 0.4rem 0 0.4rem 0.9rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+  nav.toc a:hover{ color: var(--ink); }
+  nav.toc a.active{ color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .toc-toggle{ display: none; }
+
+  main.content{ min-width: 0; max-width: 42rem; }
+
+  section{ padding: 2.4rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+
+  .section-num{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem; height: 2.1rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 50%;
+    font-family: "Courier Prime", monospace;
+    font-size: 0.8rem;
+    color: var(--brass);
+    margin-bottom: 0.9rem;
+  }
+  section h2{ font-size: 1.7rem; margin: 0 0 1rem; }
+  section h3{ font-size: 1.15rem; margin: 1.6rem 0 0.6rem; color: var(--accent); }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  strong{ color: var(--ink); }
+
+  ul, ol.plain{ margin: 0 0 1rem; padding-left: 1.3rem; }
+  li{ margin-bottom: 0.4rem; }
+  li:last-child{ margin-bottom: 0; }
+
+  .lede{ font-size: 1.15rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-weight: 500; font-style: italic; }
+
+  table{ width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.2rem; font-size: 0.94rem; }
+  caption{ text-align: left; font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  th, td{ text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); font-weight: 400; }
+  .table-wrap{ overflow-x: auto; }
+
+  .callout{
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+    padding: 0.9rem 1.1rem;
+    margin: 1.1rem 0;
+    border-radius: 2px;
+    font-size: 0.96rem;
+  }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .footnote{
+    font-family: "Courier Prime", monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    background: var(--bg-raised);
+    border: 1px dashed var(--rule-strong);
+    padding: 0.7rem 0.9rem;
+    margin: 1rem 0;
+    line-height: 1.5;
+  }
+  .footnote .mark{ color: var(--brass); margin-right: 0.4rem; }
+
+  .hooks-list{ list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .hooks-list li{
+    padding: 0.9rem 1rem;
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    margin: 0;
+  }
+  .hooks-list .loc{ display: block; font-family: "Courier Prime", monospace; font-size: 0.7rem; color: var(--brass); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+
+  .seal{
+    display: inline-block;
+    font-family: "Courier Prime", monospace;
+    font-size: 0.72rem;
+    color: var(--wax);
+    border: 1px solid var(--wax);
+    border-radius: 50%;
+    padding: 0.4rem 0.6rem;
+  }
+
+  footer.colophon{
+    max-width: 42rem;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+    font-family: "Courier Prime", monospace;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    text-align: center;
+  }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; padding-top: 1.6rem; }
+    nav.toc{ position: static; border: 1px solid var(--rule); background: var(--bg-raised); padding: 0.9rem 1rem; }
+    nav.toc ol{ border-left: none; display: none; margin-top: 0.7rem; }
+    nav.toc ol.open{ display: block; }
+    .toc-toggle{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: none;
+      border: 1px solid var(--rule-strong);
+      color: var(--ink);
+      font-family: "Courier Prime", monospace;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    main.content{ max-width: none; }
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    section{ scroll-margin-top: 1rem; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <svg class="ornament" viewBox="0 0 200 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <!-- disc -->
+      <ellipse cx="100" cy="30" rx="72" ry="10"></ellipse>
+      <!-- four elephants, simplified -->
+      <g stroke-width="2">
+        <path d="M50 40 v14 M50 54 h-5 M50 54 h5"></path>
+        <path d="M83 40 v14 M83 54 h-5 M83 54 h5"></path>
+        <path d="M117 40 v14 M117 54 h-5 M117 54 h5"></path>
+        <path d="M150 40 v14 M150 54 h-5 M150 54 h5"></path>
+        <circle cx="50" cy="35" r="6"></circle>
+        <circle cx="83" cy="35" r="6"></circle>
+        <circle cx="117" cy="35" r="6"></circle>
+        <circle cx="150" cy="35" r="6"></circle>
+      </g>
+      <!-- turtle shell -->
+      <path d="M35 72 Q100 46 165 72 Q165 96 100 100 Q35 96 35 72 Z"></path>
+      <path d="M60 74 Q100 62 140 74"></path>
+      <path d="M75 78 Q100 92 125 78"></path>
+      <!-- legs & head -->
+      <path d="M40 82 Q22 88 18 100"></path>
+      <path d="M160 82 Q178 88 182 100"></path>
+      <path d="M55 94 Q45 100 40 108"></path>
+      <path d="M145 94 Q155 100 160 108"></path>
+      <path d="M33 70 Q18 66 10 56"></path>
+      <circle cx="9" cy="53" r="2.4" fill="currentColor" stroke="none"></circle>
+    </svg>
+    <h1>The Discworld Charter</h1>
+    <p class="subtitle">A campaign primer for running Ankh-Morpork and beyond, under 5th‑edition rules as written</p>
+    <div class="facts">
+      <span>Ruleset — D&amp;D 5e, RAW</span>
+      <span>Setting — The Discworld</span>
+      <span>Tone — Satirical high fantasy</span>
+      <span>Status — Living document</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Charter index">
+      <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocList">☰ Index</button>
+      <span class="eyebrow">Charter Index</span>
+      <ol id="tocList">
+        <li><a href="#premise">I. Premise &amp; Tone</a></li>
+        <li><a href="#cosmology">II. Cosmology</a></li>
+        <li><a href="#geography">III. Geography</a></li>
+        <li><a href="#factions">IV. Guilds &amp; Factions</a></li>
+        <li><a href="#magic">V. Magic Systems</a></li>
+        <li><a href="#species">VI. Playable Peoples</a></li>
+        <li><a href="#origins">VII. Origins: Guild, Watch, or Civilian</a></li>
+        <li><a href="#classes">VIII. Classes &amp; Orders</a></li>
+        <li><a href="#houserules">IX. Running It RAW</a></li>
+        <li><a href="#hooks">X. Adventure Hooks</a></li>
+        <li><a href="#closing">XI. Closing Note</a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+
+      <section id="premise">
+        <span class="section-num">I</span>
+        <h2>Premise &amp; Tone</h2>
+        <p class="lede">The Disc is a fully-formed fantasy world that has already read every fantasy novel and finds most of it faintly ridiculous — and that's the game you're running.</p>
+        <p>Nothing about the rules needs to change to run this. 5e's classes, races, and math already model "a person with a sword," "a person with spells," and "a person who talks their way out of trouble" perfectly well. What changes is the <em>lens</em>: the prophecy turns out to be a misprint, the ancient evil has a union rep, and the hero's real problem after the dragon is the paperwork.</p>
+        <p>Run it as sincere fantasy that happens to notice its own tropes, not as parody that undercuts every scene. Pratchett's satire works because the characters take their world completely seriously — Vimes really does hate crime, Granny Weatherwax really is that powerful, Death really does care. Let your table play it straight and let the setting supply the irony.</p>
+        <div class="footnote"><span class="mark">*</span>Great A'Tuin's sex has never been established. Sages have theorized for centuries. Do not let this hold up your session zero.</div>
+      </section>
+
+      <section id="cosmology">
+        <span class="section-num">II</span>
+        <h2>Cosmology</h2>
+        <p>The Disc is flat, roughly circular, and rides through space on the backs of four elephants standing on the shell of Great A'Tuin, a star turtle swimming an unknown course. The <strong>Hub</strong> (center, where magic pools thickest, crowned by the ten-mile spire of Cori Celesti) and the <strong>Rim</strong> (edge, where the ocean genuinely does fall off into space) are your compass points instead of north and south.</p>
+        <h3>Magic is a physical force</h3>
+        <p>Magic on the Disc is real, measurable, and visible as <strong>octarine</strong> — an eighth primary color, a fluorescing greenish-purple only wizards, witches, and cats can see. It behaves a little like a fluid: it can be stored, drained, and overloaded. A handful of people (an eighth son of an eighth son of an eighth son) are born <strong>sourcerers</strong>, wired directly into the Source of magic itself — treat that as a campaign-ending event, not a character option.</p>
+        <h3>Gods run on belief</h3>
+        <p>Discworld deities are powered by worship, in a fairly literal economy: a god with a million believers strides the Hub in armor, and a god with none is a lizard the size of your thumb, shouting at passing beetles in the desert. This makes belief itself a resource NPCs will fight over — useful for any plot involving temples, cults, or a Small God looking for a sponsor.</p>
+        <h3>Death, and the Auditors</h3>
+        <p>Death is a person: seven feet of black robe and bone, speaks in a voice you feel more than hear<span class="footnote-ref">†</span>, rides a white horse named Binky, keeps bees, and is — despite the job — one of the more decent people on the Disc. His opposite numbers are the <strong>Auditors of Reality</strong>, a grey hive-mind bureaucracy that finds individual life tasteless and would much prefer the universe ran on schedule with no one in it. They make excellent slow-burn antagonists precisely because they never raise their voice.</p>
+        <div class="footnote"><span class="mark">†</span>Render Death's dialogue in the text as small capitals if your table is reading room-voice out loud — it's an easy, table-tested way to make one NPC instantly recognizable without a costume.</div>
+      </section>
+
+      <section id="geography">
+        <span class="section-num">III</span>
+        <h2>Geography</h2>
+        <div class="table-wrap">
+        <table>
+          <caption>Core regions and their real-world flavor</caption>
+          <thead><tr><th>Region</th><th>Character</th><th>Campaign use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ankh-Morpork</strong></td><td>Sprawling trade city on the river Ankh, thick enough to walk across; ruled by Patrician Havelock Vetinari through licensed crime rather than suppressed crime.</td><td>Urban home base — Watch, Guilds, University, politics.</td></tr>
+            <tr><td><strong>The Ramtops / Lancre</strong></td><td>High mountain kingdom, standing stones, old borrowed magic, thin walls between worlds.</td><td>Witch country; folk-horror and fey-adjacent plots.</td></tr>
+            <tr><td><strong>Uberwald</strong></td><td>Vast, forested, politically fractured; vampire and werewolf dynasties, dwarf mining kingdoms, industrial change arriving late and violently.</td><td>Gothic intrigue, old-vs-new-power plots.</td></tr>
+            <tr><td><strong>Klatch</strong></td><td>Great desert empire across the Circle Sea from Ankh-Morpork; historic rival and trading partner.</td><td>War, diplomacy, culture-clash plots.</td></tr>
+            <tr><td><strong>The Hub / Cori Celesti</strong></td><td>Center of the Disc; home of the gods, thickest magic.</td><td>High-level, cosmology-facing endgame content.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>You do not need a finished map to start. Pratchett himself treated Discworld geography loosely for years before an official atlas existed — place things where the story needs them, and let the world firm up in play.</p>
+      </section>
+
+      <section id="factions">
+        <span class="section-num">IV</span>
+        <h2>Guilds &amp; Factions</h2>
+        <p>Ankh-Morpork's defining civic idea: legalize and regulate the crime instead of pretending you can end it. Every Guild below can double as a 5e background, a patron, or a rival.</p>
+        <div class="table-wrap">
+        <table>
+          <caption>Major factions</caption>
+          <thead><tr><th>Faction</th><th>What they do</th></tr></thead>
+          <tbody>
+            <tr><td><strong>City Watch</strong></td><td>Once a joke, now the closest thing the city has to real law, under Commander Sam Vimes. Multi-species by policy — dwarfs, trolls, a werewolf, a golem have all worn the badge.</td></tr>
+            <tr><td><strong>Thieves' Guild</strong></td><td>Licensed theft with an enforced annual quota per citizen. Stealing without a license is the actual crime.</td></tr>
+            <tr><td><strong>Assassins' Guild</strong></td><td>An elite, expensive finishing school that also kills people for money — client pays for an "inhumation," never a "murder." Old money, old manners, real menace.</td></tr>
+            <tr><td><strong>Unseen University</strong></td><td>The wizarding college. Enormous, self-important, riddled with faculty politics, home to the Archchancellor, an orangutan Librarian who is extremely clear he is <em>not</em> a monkey, and a thinking-engine called Hex.</td></tr>
+            <tr><td><strong>Witches of the Ramtops</strong></td><td>Not a guild at all — deliberately no hierarchy, no hall, no dues. Cover their territory through reputation, favors, and "headology": solving problems by understanding people rather than transforming them.</td></tr>
+            <tr><td><strong>Fools' Guild</strong></td><td>Jesters must be licensed and their jokes pre-approved. Notoriously humorless in person. Excellent comic-relief patron or rival.</td></tr>
+            <tr><td><strong>Alchemists' Guild</strong></td><td>Experiments reliably end in structural damage. A reliable source of volatile magic items and insurance-claim plot hooks.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="magic">
+        <span class="section-num">V</span>
+        <h2>Magic Systems</h2>
+        <p>Keep every spell's mechanics exactly as written in the Player's Handbook. What you're changing is the description a player reads aloud and the color a GM narrates when it resolves.</p>
+        <h3>Wizards — Unseen University</h3>
+        <p>Reflavor the Wizard class as an Unseen University education: a spellbook is a grimoire chained to a lectern, components are increasingly baroque apparatus, and the eight orders of wizardry (Conjurors, Diviners, Enchanters, Invokers, Magickers, Sorcerers, Thaumaturgists, Illusionists) make good flavor for a player's chosen specialty. Rule One, posted in every UU classroom, is simply: <em>do not meddle with things you don't understand.</em> Mechanically nothing changes — this is entirely narration.</p>
+        <h3>Witches — headology, not spells</h3>
+        <p>Witches work best as a reflavored Druid, or a Wisdom-forward Cleric, rather than a literal Wizard. Their most iconic ability, <strong>Borrowing</strong> (a witch's mind riding along inside an animal, leaving her body behind), maps cleanly onto Wild Shape's narrative shell or a ritual-cast <em>animal messenger</em>/<em>speak with animals</em>. Encourage witch players to solve problems with Insight, Persuasion, and a good bluff before reaching for a spell slot — that's the class working as intended.</p>
+        <h3>Priests — belief as fuel</h3>
+        <p>Run Cleric RAW, but let a character's god visibly strengthen or weaken with the size and fervor of its following — a good lever for the GM, optional for players. Channel Divinity becomes "the god notices you," which reads differently for a priest of a major Hub deity versus a priest of a Small God still building a congregation.</p>
+        <div class="callout">
+          <span class="eyebrow">Optional table — casting mishap</span>
+          When a spellcaster rolls a natural 1 on an attack roll tied to a spell, let the player draw a d6 flavor result instead of a mechanical penalty: 1) smell of ozone and burnt wool, 2) every octarine light in the room flickers, 3) nearby cats hiss and scatter, 4) the spell works but a full minute late, 5) a passing wizard three streets over gets a headache, 6) nothing visible happens, which is somehow worse. Pure narration — the spell's actual effect is unchanged.
+        </div>
+      </section>
+
+      <section id="species">
+        <span class="section-num">VI</span>
+        <h2>Playable Peoples</h2>
+        <p>5e's existing race options cover most of the Disc's citizens without modification. Notes on fit and flavor:</p>
+        <div class="table-wrap">
+        <table>
+          <caption>Species mapping</caption>
+          <thead><tr><th>Discworld people</th><th>5e starting point</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Human</td><td>Human</td><td>The Disc's majority, and its most quietly strange species by everyone else's standards.</td></tr>
+            <tr><td>Dwarf</td><td>Mountain or Hill Dwarf</td><td>Ankh-Morpork dwarfs run industrial and urban as often as they run traditional mining-clan.</td></tr>
+            <tr><td>Troll</td><td>Goliath or Firbolg, reflavored</td><td>Silicon-based; slow and dim in heat, dangerously sharp in deep cold. A troll genius is a troll standing on ice.</td></tr>
+            <tr><td>Gnome / Feegle</td><td>Gnome, or a homebrew Tiny "Feegle" race</td><td>The Nac Mac Feegle (Wee Free Men) are six inches tall, blue, and fight everything including each other — great for a joke-forward party.</td></tr>
+            <tr><td>Golem</td><td>Warforged, or a homebrew Construct race</td><td>Clay bodies, a written word inside the skull as animating purpose. Reg Shoe-style "golem rights" plots write themselves.</td></tr>
+            <tr><td>Reformed undead (zombie, Black-Ribboner vampire, werewolf)</td><td>Homebrew race/background, or Reborn / Dhampir / Shifter if available at your table</td><td>Pratchett's own spin: undead who've sworn off the traditional excesses and hold day jobs. Angua (werewolf Watch officer) and Otto (teetotal vampire photographer) are the model.</td></tr>
+            <tr><td>Igor</td><td>Human variant / homebrew background</td><td>Loyal, unshockable, reconstructive surgeons to the gothic aristocracy of Uberwald. Speaks with a deliberate lisp — "yeth, marthter."</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="origins">
+        <span class="section-num">VII</span>
+        <h2>Origins: Guild, Watch, or Civilian</h2>
+        <p class="lede">At character creation, every player answers one question before anything else: who backs you up when it goes wrong?</p>
+        <p>The choice is a <strong>Guild</strong> (Thieves', Assassins', Alchemists', Merchants', Fools', Musicians', or another of your own), the <strong>City Watch</strong>, <strong>Unseen University</strong>, or nobody — you're a <strong>civilian</strong>, poor or otherwise unaffiliated, and the story is what happens to ordinary people when extraordinary things keep landing on them.</p>
+        <p>Mechanically, this is just the 5e <strong>Background</strong> slot, reflavored. It was always independent of class — you're simply choosing which of the Disc's institutions issued yours, rather than treating Background as an afterthought.</p>
+        <div class="table-wrap">
+        <table>
+          <caption>Origin, built on the existing Background system</caption>
+          <thead><tr><th>Origin</th><th>Background base</th><th>What it grants</th></tr></thead>
+          <tbody>
+            <tr><td><strong>City Watch</strong></td><td>Soldier or Guard, reflavored "Watchman"</td><td>A badge, standing to investigate, and Vimes' personal scrutiny the moment you embarrass the uniform.</td></tr>
+            <tr><td><strong>A Guild</strong></td><td>Criminal (Thieves'/Assassins'), Guild Artisan, or a custom Guild background</td><td>A license, a hall to fall back on, and dues or a quota you're now on the hook for.</td></tr>
+            <tr><td><strong>Unseen University</strong></td><td>Sage or Acolyte, reflavored student / porter / hanger-on</td><td>Library and workshop access, and a front-row seat to faculty politics.</td></tr>
+            <tr><td><strong>Civilian</strong></td><td>Folk Hero, Urchin, Hermit, or similar</td><td>Total freedom — no dues, no license, no institutional cover when the Watch asks questions.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <h3>Class and origin never gate each other</h3>
+        <p>This is the whole point, and it's straight out of the books: nothing on the Disc stops a Fighter from enrolling at Unseen University, a Cleric from joining the Thieves' Guild, or a Wizard from walking a Watch beat. A troll made captain, a golem earned citizenship, a teetotal vampire took up crime photography, a zombie ran for a seat on the council — the setting's whole argument is that competence and persistence beat "type" every time.</p>
+        <p>So keep it simple at your table: <strong>no class ever loses features, spells, or proficiencies for a mismatched origin.</strong> A Fighter at Unseen University keeps full Fighter chassis, full stop.</p>
+        <div class="callout">
+          <span class="eyebrow">What actually changes on a mismatch</span>
+          Not the character sheet — the room. A Fighter enrolled at Unseen University gets treated as muscle-for-hire by faculty who won't remember their name, has to fight for a straight answer in a library that assumes everyone reads Old High Nomic, and probably ends up everyone's bodyguard whether they wanted the job or not. A Wizard on Watch patrol gets side-eyed for showing up to a stakeout in a pointy hat, and has to earn the same trust a beat cop earns by walking the same beat twice. Play the friction as raised eyebrows, extra paperwork, and an uphill climb for institutional trust — never as a mechanical tax. It's a roleplay hook, and often the best one at the table.
+        </div>
+      </section>
+
+      <section id="classes">
+        <span class="section-num">VIII</span>
+        <h2>Classes &amp; Orders</h2>
+        <p>The table below is flavor for a class on its own — pair it freely with any origin above. A Rogue doesn't have to run Thieves' Guild, and a Cleric doesn't have to be pious about it.</p>
+        <div class="table-wrap">
+        <table>
+          <caption>Class-to-setting mapping</caption>
+          <thead><tr><th>5e class</th><th>Discworld flavor</th></tr></thead>
+          <tbody>
+            <tr><td>Fighter</td><td>City Watch officer, mercenary, or Klatchian foreign legion veteran.</td></tr>
+            <tr><td>Rogue</td><td>Thieves' Guild journeyman (or the Assassin subclass for a Guild-trained killer — it needs almost no reflavoring).</td></tr>
+            <tr><td>Wizard</td><td>Unseen University student or faculty member; see Magic Systems above.</td></tr>
+            <tr><td>Cleric</td><td>Priest of a Hub deity or a Small God still building a following.</td></tr>
+            <tr><td>Druid</td><td>Witch of the Ramtops, or a genuine wilderness-and-old-magic practitioner outside Lancre.</td></tr>
+            <tr><td>Bard</td><td>Traveling minstrel — note that in Ankh-Morpork, the Guild of Musicians makes unlicensed performance a real legal risk.</td></tr>
+            <tr><td>Monk</td><td>History Monk — a member of the order that quite literally manages the passage of time.</td></tr>
+            <tr><td>Barbarian</td><td>A Cohen-the-Barbarian type: not young, not slowing down, and increasingly annoyed that the world keeps getting more complicated.</td></tr>
+            <tr><td>Artificer</td><td>Alchemists' Guild member, or a golem-tinkerer working outside the Guild structure entirely.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="houserules">
+        <span class="section-num">IX</span>
+        <h2>Running It RAW</h2>
+        <p>The whole point of this charter is that you shouldn't need to touch the rulebook math. A short checklist for staying RAW while still feeling like the Disc:</p>
+        <ul>
+          <li><strong>Reflavor, don't rebuild.</strong> Rename spells, items, and class features to match the setting; leave every number untouched.</li>
+          <li><strong>Origin and class stay uncoupled.</strong> As above — a mismatched pairing changes the roleplay, never the character sheet.</li>
+          <li><strong>Push consequences into narration.</strong> The casting-mishap table earlier is the pattern — flavor color on a bad roll, never a hidden mechanical tax.</li>
+          <li><strong>Pace by book, not by dungeon.</strong> Structure arcs the way the novels do: one contained civic or personal crisis per "book," milestone leveling at the end of each, rather than a strict XP-per-encounter grind.</li>
+          <li><strong>Track faction standing informally.</strong> A line in your notes for "Watch," "Guild," and "Patrician" opinion of the party goes a long way before you need a formal reputation subsystem.</li>
+          <li><strong>Let Vetinari be the DM's best tool.</strong> A patient, terrifyingly well-informed authority figure who never needs to raise his voice is the cheapest way to keep a sandbox campaign pointed somewhere.</li>
+        </ul>
+      </section>
+
+      <section id="hooks">
+        <span class="section-num">X</span>
+        <h2>Adventure Hooks</h2>
+        <p>Original, book-agnostic seeds — nothing here retells a specific novel's plot, so they're safe to drop into a home campaign without spoiling anything.</p>
+        <ul class="hooks-list">
+          <li><span class="loc">Ankh-Morpork</span>A newly-arrived noble family's pet swamp dragon has gone missing in the Shades, and it's still growing.</li>
+          <li><span class="loc">Assassins' Guild</span>A student's final exam contract has gone wrong, and the intended target has hired the party to find out who's still coming.</li>
+          <li><span class="loc">Lancre</span>Something is realigning the old standing stones outside a Ramtops village, and the local witch wants outside eyes on it before she commits to a response.</li>
+          <li><span class="loc">Thieves' Guild</span>An unlicensed operator is undercutting the Guild's theft quota, and the Guild would rather hire quiet investigators than start a turf war.</li>
+          <li><span class="loc">Unseen University</span>A faculty experiment has gone missing from a locked storeroom and is, worryingly, still on the payroll.</li>
+          <li><span class="loc">The Palace</span>Lord Vetinari has a "small errand" that is transparently a test, and everyone involved knows it, and no one can afford to say no.</li>
+        </ul>
+      </section>
+
+      <section id="closing">
+        <span class="section-num">XI</span>
+        <h2>Closing Note</h2>
+        <p>This charter draws on general knowledge of the Discworld series rather than any single book's text — if you want a deep dive grounded in a specific title (Lancre's geography as it appears across <em>Wyrd Sisters</em>, <em>Witches Abroad</em>, and <em>Carpe Jugulum</em>, say, or the exact structure of the Watch across the City Watch arc), point me at the book and I can work from the source directly.</p>
+        <p>Treat everything above as a starting charter, not a finished law. Discworld's own running joke is that its geography and rules firmed up under pressure, in play, one book at a time — your table gets to do the same.</p>
+        <p style="text-align:center; margin-top:1.6rem;"><span class="seal">A·M</span></p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="colophon">Compiled without official sanction of any Guild. Terry Pratchett's estate holds all rights to the Discworld — this is an unofficial fan reference for home play, not for sale or distribution.</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var list = document.getElementById('tocList');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = new Map();
+    sections.forEach(function(sec, i){ map.set(sec, links[i]); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  }
+})();
+</script>
