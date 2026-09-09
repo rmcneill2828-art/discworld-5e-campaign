@@ -23,7 +23,7 @@ If Campaign Vitals is still unset, no session has happened yet — point the use
 | A combat encounter — pick a statblock, don't build one | [`threats-worth-naming.html`](threats-worth-naming.html) |
 | A price, the date, or civic pressure/color | [`ankh-morpork-almanack.html`](ankh-morpork-almanack.html) |
 | An incidental NPC or a rumor, on the spot | [`word-on-the-street.html`](word-on-the-street.html) |
-| A god, the Auditors, elves, or other supernatural lore | [`powers-worth-knowing.html`](powers-worth-knowing.html) |
+| A god, the Auditors, the Dungeon Dimensions, elves, or other supernatural lore | [`powers-worth-knowing.html`](powers-worth-knowing.html) |
 
 ## Running principles (full detail in the Charter, §IX)
 
