@@ -1,0 +1,188 @@
+<title>Clan, Cave, and City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  .layout{ display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 3rem; max-width: 78rem; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
+  nav.toc{ position: sticky; top: 1.5rem; align-self: start; }
+  nav.toc .eyebrow{ display: block; margin-bottom: 0.7rem; }
+  nav.toc ol{ list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); }
+  nav.toc a{ display: block; padding: 0.33rem 0 0.33rem 0.9rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; font-size: 0.84rem; }
+  nav.toc a:hover{ color: var(--ink); }
+  nav.toc a.active{ color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .toc-toggle{ display: none; }
+
+  main.content{ min-width: 0; max-width: 46rem; }
+  .intro{ padding-bottom: 1.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
+  .intro p{ margin: 0 0 1rem; }
+
+  section{ padding: 1.9rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 1rem; }
+  section:last-child{ border-bottom: none; }
+  section h2{ font-size: 1.45rem; margin: 0 0 0.9rem; }
+  section h3{ font-size: 1.05rem; margin: 1.4rem 0 0.6rem; color: var(--accent); }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.1rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.85rem 1.05rem; margin: 1rem 0; border-radius: 2px; font-size: 0.94rem; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.2rem; font-size: 0.92rem; }
+  caption{ text-align: left; font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+
+  footer.colophon{ max-width: 46rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; padding-top: 1.4rem; }
+    nav.toc{ position: static; border: 1px solid var(--rule); background: var(--bg-raised); padding: 0.85rem 1rem; }
+    nav.toc ol{ border-left: none; display: none; margin-top: 0.6rem; }
+    nav.toc ol.open{ display: block; }
+    .toc-toggle{ display: inline-flex; align-items: center; gap: 0.4rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink); font-family: "Courier Prime", monospace; font-size: 0.76rem; padding: 0.32rem 0.65rem; cursor: pointer; border-radius: 2px; }
+    main.content{ max-width: none; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Peoples of the Disc</div>
+    <h1>Clan, Cave, and City</h1>
+    <p class="subtitle">Dwarf and troll belief, custom, and the old enmity both species are still renegotiating in Ankh-Morpork.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a> and <a href="https://claude.ai/code/artifact/1f10d0b0-b97a-4f9b-90e2-9d4bda55ea84">Powers Worth Knowing</a></p>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Section index">
+      <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocList">☰ Index</button>
+      <span class="eyebrow">Section Index</span>
+      <ol id="tocList">
+        <li><a href="#dwarfs">Dwarfs</a></li>
+        <li><a href="#trolls">Trolls</a></li>
+        <li><a href="#meeting">Where They Meet</a></li>
+        <li><a href="#notes">Table Notes</a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+      <div class="intro">
+        <p>The Charter's Playable Peoples table (§VI) gives you a 5e starting statblock for a dwarf or troll character in about one line each. This is the rest of it — belief, custom, and social structure — for playing one convincingly, or for populating a scene with dwarfs and trolls who aren't PCs.</p>
+        <p>Both species are older on the Disc than the city that now holds so many of them, and both are, right now, mid-argument with their own traditions about what that means. That tension is more useful at your table than any single fact below — use it.</p>
+      </div>
+
+      <section id="dwarfs">
+        <h2>Dwarfs</h2>
+        <h3>Tak, and what dwarfs actually believe</h3>
+        <p>Dwarfs aren't devout in the way a Cleric's god demands — they hold <em>tradition</em> the way other cultures hold religion. The cosmological figure behind it is <strong>Tak</strong>, the creator: dwarf belief holds that Tak shaped Dwarf, Human, and Troll alike out of a single geode, wrote the Laws, and then wrote the world itself — in that order — before leaving. Tak doesn't demand worship and isn't powered by belief the way a Dunmanifestin god is (see Powers Worth Knowing); the relationship is closer to a shared philosophical text than an active deity NPCs can petition.</p>
+        <p>That text is the <em>Gd Tak 'Gar</em> — dwarf scripture, reinterpreted more than once over the centuries. One such reinterpretation, the Koom Valley Translation, is credited with helping broker an actual truce between dwarfs and trolls — real, usable history, not a plot to restage; see <a href="#meeting">Where They Meet</a> below.</p>
+        <h3>The grags, and the deep-down divide</h3>
+        <p><strong>Grags</strong> are dwarf loremaster-priests — keepers and interpreters of the <em>Gd Tak 'Gar</em>, not a unified clergy so much as a spectrum of scholars and traditionalists. The most ultra-orthodox among them are <strong>Deep-Downers</strong>, marked by black sashes, who hold that a dwarf's proper place is underground, in the clan-mine, following the old ways — and who regard dwarfs who spend too long in daylight, work alongside humans or trolls, or settle permanently in a city as barely dwarfish at all.</p>
+        <p>Ankh-Morpork's dwarf community is the other end of that spectrum: urban, industrial, and increasingly comfortable working trades and streets a Deep-Downer wouldn't recognize as dwarf work at all. Neither side is written as simply right — this is a live, ongoing cultural argument, and dwarf PCs and NPCs alike can sit anywhere on it.</p>
+        <h3>Custom worth knowing</h3>
+        <p>All dwarfs grow beards, and by long-standing custom a dwarf's specific gender is private — not hidden exactly, but not a matter for public display or comment, and default address doesn't distinguish it. Choosing to present in a way that reads as more overtly gendered (to a human eye) is a real, live social friction point for some dwarfs and a complete non-issue for others — good, specific material for a dwarf PC's identity rather than a joke to make at their expense.</p>
+        <p>Marriage is traditionally arranged as a purchase from the intended's parents, paid in gold or gems — a custom Ankh-Morpork dwarfs treat with everything from full sincerity to polite fiction, depending how "deep-down" the family still is.</p>
+        <h3>The Low King</h3>
+        <p>Dwarf disputes too large for a single clan escalate to the <strong>Low King</strong>, elected by senior mine-holders and seated at Bonk, in Uberwald. The title translates badly into human terms — <em>dezka-knick</em> means something closer to "senior engineer of the mine" than "monarch," which tells you a lot about what dwarfs actually value in a leader.</p>
+        <div class="callout">
+          <span class="eyebrow">A lighter note — dwarf bread</span>
+          Ankh-Morpork's Dwarf Bread Museum, on Whirligig Alley, holds the city's finest specimens of a food that is, by long-running reputation, nearly indestructible and barely edible — dense enough to double as a weapon or a doorstop in a pinch. Perfectly safe comic relief for a dwarf PC's rations.
+        </div>
+      </section>
+
+      <section id="trolls">
+        <h2>Trolls</h2>
+        <h3>Rock that thinks</h3>
+        <p>Trolls are, functionally, sentient rock with a silicon-based mind — the Charter already covers the headline mechanic (§VI): cold sharpens a troll's thinking, heat dulls it, and a troll genius really is just a troll standing somewhere cold enough. Direct, sustained sunlight is worse than dulling — it risks a troll's mind overheating into genuine dormancy, indistinguishable at a glance from an ordinary boulder. That single biological fact is the root of the entire dwarf-troll enmity; see <a href="#meeting">Where They Meet</a>.</p>
+        <h3>Time, death, and what a troll believes</h3>
+        <p>Trolls describe themselves as moving backwards through time — the past sits ahead of them, where they can see it clearly, and the future is what's creeping up from behind, unseen. It's a genuinely alien piece of worldview, and a good one to let a troll NPC or PC state completely matter-of-factly, with no explanation offered, the way a human wouldn't explain that tomorrow comes after today.</p>
+        <p>Trolls don't sicken or die of old age the way most player species do. An old troll's thinking simply slows, gradually, until it stops — and elderly trolls choose to spend that time somewhere quiet in the mountains, becoming, eventually and peacefully, permanently stone. Play this as dignified and unafraid, not tragic; a troll doesn't dread this the way a human dreads dying.</p>
+        <h3>Clans and the rare Diamond Troll</h3>
+        <p>Troll society runs on clans rather than a single throne, but tradition holds that an exceptionally rare <strong>Diamond Troll</strong> — one whose body is, genuinely, diamond, stable enough to regulate its own temperature regardless of climate — can unite the clans as a paramount leader in a way no ordinary troll chief can. Treat this the way the Charter treats a sourcerer or Powers Worth Knowing treats a noble dragon: a once-in-a-generation event, not a background fact you should expect to come up often.</p>
+        <h3>Cave trolls and city trolls</h3>
+        <p>Outside Ankh-Morpork, trolls fare badly — dismissed as a nuisance in the Ramtops, and in parts of Uberwald treated as little better than property. Ankh-Morpork is the exception: trolls there form a large, organized community with real political and social weight, from crime syndicates to advocacy groups (the wonderfully on-the-nose <strong>Silicon Anti-Defamation League</strong> among them). Sergeant Detritus, already in <a href="https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928">Names Worth Knowing</a>, is exactly this trajectory in one officer — cave-troll origins, full civic standing now.</p>
+      </section>
+
+      <section id="meeting">
+        <h2>Where They Meet</h2>
+        <p>The old animosity between dwarfs and trolls has a real, specific origin, not a vague ancient grudge: dwarf miners historically dug up sun-dormant trolls believing them to be ordinary stone deposits — a mistake that reads very differently once you know a "dormant" troll is a sleeping person, not a rock. That single, grim historical fact is where the enmity actually comes from. Everything since has kept the hostility alive as inherited cultural tradition, long after most dwarfs and trolls alive today could tell you why it started.</p>
+        <p><strong>Koom Valley</strong> is where that history came to a head, and its anniversary is still observed, carefully, by both sides — already covered as a fixed date in <a href="https://claude.ai/code/artifact/91e74c1b-7b71-4cdc-8901-b7e3cdf6a74d">The Ankh-Morpork Almanack</a> and in Powers Worth Knowing. The <em>Gd Tak 'Gar</em>'s Koom Valley Translation, mentioned above, is the textual side of the same reconciliation effort — real dwarfs, on the record, working to reinterpret their own scripture toward peace rather than grievance.</p>
+        <p>Ankh-Morpork is where all of this gets renegotiated day to day, not in a courtroom or a temple but in the ordinary business of two species working the same city — the Watch's own multi-species policy (Charter §IV) is the clearest example already in this repo.</p>
+        <div class="callout wax">
+          <span class="eyebrow">GM Tip</span>
+          Resist the urge to build a plot around this. A dwarf and a troll on the same Watch shift, sharing a table at the Drum, or standing on either side of a party that includes both, is already dramatically interesting without an "issue of the week" — let the history hum in the background and surface it through small, specific character beats instead.
+        </div>
+      </section>
+
+      <section id="notes">
+        <h2>Table Notes</h2>
+        <p>Nothing here changes a 5e mechanic — same discipline as the rest of this repo. For stat-block starting points, see the Charter's Playable Peoples table (§VI); for a troll as an actual combat encounter, see Threats Worth Naming's Troll Muscle entry. If a dwarf or troll NPC becomes a real fixture of your campaign, note their allegiance (Deep-Downer, Ankh-Morpork dwarf, cave troll, city troll, and so on) in your <strong>campaign log</strong>'s Established Canon so it stays consistent.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var list = document.getElementById('tocList');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = new Map();
+    sections.forEach(function(sec, i){ map.set(sec, links[i]); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  }
+})();
+</script>

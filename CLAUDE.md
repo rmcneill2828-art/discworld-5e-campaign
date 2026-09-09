@@ -24,6 +24,7 @@ If Campaign Vitals is still unset, no session has happened yet — point the use
 | A price, the date, or civic pressure/color | [`ankh-morpork-almanack.html`](ankh-morpork-almanack.html) |
 | An incidental NPC or a rumor, on the spot | [`word-on-the-street.html`](word-on-the-street.html) |
 | A god, the Auditors, the Dungeon Dimensions, dragons, elves, or other supernatural lore | [`powers-worth-knowing.html`](powers-worth-knowing.html) |
+| Dwarf or troll belief, custom, or the history between them | [`clan-cave-and-city.html`](clan-cave-and-city.html) |
 
 ## Running principles (full detail in the Charter, §IX)
 
