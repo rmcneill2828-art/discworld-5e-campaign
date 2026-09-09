@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discworld 5e Campaign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ margin: 0; background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, "Times New Roman", serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 3.2rem 1.5rem 2.2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .ornament{ width: 150px; height: auto; margin: 0 auto 1rem; color: var(--accent); opacity: 0.9; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.1rem; margin: 0 auto; max-width: 34rem; }
+
+  main{ max-width: 52rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+  .lede{ font-size: 1.1rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; margin: 0 0 2.4rem; max-width: 40rem; }
+
+  .group{ margin-bottom: 2.6rem; }
+  .group h2{ font-size: 1.05rem; font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brass); font-weight: 400; margin: 0 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--rule); }
+
+  .cards{ display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.9rem; }
+  .card{ display: block; padding: 1rem 1.2rem; background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; color: var(--ink); transition: border-color 0.15s ease; }
+  .card:hover{ border-color: var(--accent-soft); }
+  .card .name{ display: block; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .card .desc{ display: block; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; }
+
+  footer{ max-width: 52rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <svg class="ornament" viewBox="0 0 200 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <ellipse cx="100" cy="30" rx="72" ry="10"></ellipse>
+      <g stroke-width="2">
+        <path d="M50 40 v14 M50 54 h-5 M50 54 h5"></path>
+        <path d="M83 40 v14 M83 54 h-5 M83 54 h5"></path>
+        <path d="M117 40 v14 M117 54 h-5 M117 54 h5"></path>
+        <path d="M150 40 v14 M150 54 h-5 M150 54 h5"></path>
+        <circle cx="50" cy="35" r="6"></circle>
+        <circle cx="83" cy="35" r="6"></circle>
+        <circle cx="117" cy="35" r="6"></circle>
+        <circle cx="150" cy="35" r="6"></circle>
+      </g>
+      <path d="M35 72 Q100 46 165 72 Q165 96 100 100 Q35 96 35 72 Z"></path>
+      <path d="M60 74 Q100 62 140 74"></path>
+      <path d="M75 78 Q100 92 125 78"></path>
+      <path d="M40 82 Q22 88 18 100"></path>
+      <path d="M160 82 Q178 88 182 100"></path>
+      <path d="M55 94 Q45 100 40 108"></path>
+      <path d="M145 94 Q155 100 160 108"></path>
+      <path d="M33 70 Q18 66 10 56"></path>
+      <circle cx="9" cy="53" r="2.4" fill="currentColor" stroke="none"></circle>
+    </svg>
+    <h1>Discworld 5e Campaign</h1>
+    <p class="subtitle">Homebrew reference material for running D&amp;D 5th edition, rules-as-written, on Terry Pratchett's Discworld.</p>
+  </header>
+
+  <main>
+    <p class="lede">Ten reference documents, one campaign primer to start from. Everything below is cross-linked — the Charter is the natural first stop.</p>
+
+    <div class="group">
+      <h2>Start Here</h2>
+      <div class="cards">
+        <a class="card" href="discworld-charter.html"><span class="name">The Discworld Charter</span><span class="desc">Cosmology, geography, guilds, magic, playable peoples, and house rules for staying RAW.</span></a>
+        <a class="card" href="first-day-in-the-city.html"><span class="name">First Day in the City</span><span class="desc">Session Zero quick-start — six steps, a worksheet, three pregens.</span></a>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Character Options</h2>
+      <div class="cards">
+        <a class="card" href="discworld-guild-backgrounds.html"><span class="name">Guild Registration Dossiers</span><span class="desc">Eight 5e Backgrounds for the Origins system.</span></a>
+        <a class="card" href="circle-of-headology.html"><span class="name">Circle of Headology</span><span class="desc">A Druid subclass for witches — Borrowing instead of Wild Shape.</span></a>
+        <a class="card" href="the-long-climb.html"><span class="name">The Long Climb</span><span class="desc">Optional rank ladders that can lag behind character level.</span></a>
+        <a class="card" href="the-skull-dice.html"><span class="name">The Skull Dice</span><span class="desc">Two d20 tables for an instant backstory.</span></a>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>The City</h2>
+      <div class="cards">
+        <a class="card" href="ankh-morpork-gazetteer.html"><span class="name">Ankh-Morpork Gazetteer</span><span class="desc">Thirteen locations, a schematic map, an adventure seed each.</span></a>
+        <a class="card" href="names-worth-knowing.html"><span class="name">Names Worth Knowing</span><span class="desc">Fifteen recurring NPCs, with tone notes for playing each.</span></a>
+        <a class="card" href="powers-worth-knowing.html"><span class="name">Powers Worth Knowing</span><span class="desc">The pantheon, the Auditors, the Horsemen, and Fairyland's elves.</span></a>
+        <a class="card" href="ankh-morpork-almanack.html"><span class="name">The Ankh-Morpork Almanack</span><span class="desc">Coinage and the real Discworld calendar, with civic dates for pressure.</span></a>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Running the Table</h2>
+      <div class="cards">
+        <a class="card" href="playing-it-straight.html"><span class="name">Playing It Straight</span><span class="desc">Nine techniques for Discworld's comedy and satire, with before/after rewrites.</span></a>
+        <a class="card" href="threats-worth-naming.html"><span class="name">Threats Worth Naming</span><span class="desc">Fourteen encounters, each pointed at an unmodified 5e statblock.</span></a>
+        <a class="card" href="word-on-the-street.html"><span class="name">Word on the Street</span><span class="desc">Two d20 tables for instant incidental NPCs and rumors.</span></a>
+      </div>
+    </div>
+  </main>
+
+  <footer>Compiled without official sanction of any Guild. Terry Pratchett's estate holds all rights to the Discworld — this is an unofficial fan reference for home play, not for sale or distribution.</footer>
+</body>
+</html>

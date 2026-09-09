@@ -1,5 +1,7 @@
 # Discworld 5e Campaign
 
+**[Browse the site →](https://rmcneill2828-art.github.io/discworld-5e-campaign/)**
+
 Homebrew reference material for running a Dungeons & Dragons 5th Edition (rules-as-written) campaign set on Terry Pratchett's Discworld.
 
 This repo freely uses Discworld's setting facts — names, places, history, calendar, the shape of its institutions — the way any fan reference does. What it avoids is reusing the books' actual prose or restaging their specific plots: every adventure hook, NPC scene, and encounter here is original, built *from* that lore rather than lifted from a novel's storyline.
