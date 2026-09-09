@@ -16,11 +16,11 @@ The working memory for this campaign. Every other file in this repo is prep mate
 |---|---|
 | Campaign name | *(unset)* |
 | Session zero date | 2026-09-09 |
-| Current session # | 2 |
+| Current session # | 3 |
 | Party level | 1 |
 | Using The Long Climb? | Yes |
-| In-game date | 5th of Ick — two days after Founding Night |
-| Current "book" / arc | Book One — "The New God" (a shrine found, an operator arrested, a quota and an unidentified seal still unexplained — the "who" behind it is still open) |
+| In-game date | 5th of Ick, night — same night as the arrest |
+| Current "book" / arc | Book One — "The New God" (operator questioned, real lead in hand: a counting-house near the Guild Quarter, blue-black ledger ink, fresh uncirculated coin — the "organ grinder" still unnamed) |
 
 ## Party Roster
 
@@ -34,7 +34,7 @@ Track how the city's institutions feel about the party as a whole, not per-chara
 
 | Faction | Standing | Notes |
 |---|---|---|
-| City Watch (Vimes / Pseudopolis Yard) | Approving, building | Bob's first proper arrest, clean evidence, a real case handed to Vimes instead of a rumor. Detritus told him outright that rank's going to stop being a formality if he keeps this up. |
+| City Watch (Vimes / Pseudopolis Yard) | Approving, but watching closer | Bob's first proper arrest was clean. His first interview nearly wasn't — Vimes caught him asking the prisoner how to profit from the scam, gave him exactly one chance to explain, and accepted "follow the money to find the organ grinder" as genuine, but said so directly: don't spend that chip twice. Trust is real but no longer unconditional. |
 | Isle of Gods (temples generally) | Slightly favorable | Sister Marl gave real help unprompted and seemed to approve of the Watch taking the fake-shrine racket seriously — it was undercutting the honest temples' collection plates. |
 | Thieves' Guild | Unknown to them | |
 | Assassins' Guild | Unknown to them | |
@@ -56,7 +56,7 @@ Only track NPCs once the party has actually met or been affected by them. Don't 
 | Sergeant Detritus | Session 1 | Sator Square, Founding Night patrol | Professional respect | Partnered with Bob on his first beat. Taught him the difference between reporting what you saw and what you guessed. Approved of Bob's by-the-book call not to investigate solo. |
 | Ratty Grouse | Session 1 | Street near Pseudopolis Yard | Neutral, matter-of-fact | Licensed rat-catcher. Source of the "new god paying finder's fees" rumor and the tip about slow drains near Sator Square. Knows the streets well — worth returning to. |
 | Sister Marl | Session 2 | A small temple, Isle of Gods | Friendly, pragmatic | Small Gods temple caretaker, chronically short on candle money. Gave Bob the shrine's real location unprompted once he (eventually) asked properly. Warned that "wanting numbers fast" wasn't about devotion. Worth returning to for temple gossip. |
-| The Shrine Operator | Session 2 | The fake shrine, Isle of Gods | In custody, unknown | Name not yet given. Ran a "pay per convert" fake-shrine operation, four days old, working toward a written quota. Carried a chit with an unidentified wax seal — not a Guild mark either of them recognized. Arrested by Bob, now at Pseudopolis Yard awaiting questioning. |
+| Nathaniel "Faithful" Sallow | Session 2 | The fake shrine, Isle of Gods | In custody, wary but cooperating | Hired help, not the mastermind — paid 2 dollars/head, ~200 converts signed, never met his actual backer. Revealed the money arrives as fresh uncirculated coin via rotating anonymous couriers, last traced to a counting-house near the Guild Quarter that uses blue-black ledger ink. Sharp, resigned, not without dry humor even in custody — worth a follow-up conversation later. |
 
 ## Established Canon
 
@@ -68,12 +68,13 @@ Facts this table has decided are true that aren't nailed down in the published c
 - Trolls (Detritus's clan, at least) dug much of the old stonework under Sator Square generations back — he knows how that ground is "supposed to sound."
 - Bob's salute landed clean exactly once, making a formal arrest — notable specifically because every other attempt (four and counting) has failed. Not established whether that's a pattern (works under real pressure) or a fluke.
 - Small Gods temple caretakers on the Isle resent Guild-funded or well-financed operations undercutting their honest collection plates — a real, ongoing point of friction worth remembering.
+- Bob's Ideal ("the easy way, not the stupid way") isn't just flavor text — it nearly cost him Vimes's trust in his first real interview. The line between "good detective instinct" and "personal angle" is genuinely blurry for this character, on purpose, and Vimes now knows it.
 
 ## Open Threads
 
 Hooks that are live, promises made to NPCs, mysteries not yet resolved, debts owed either direction. Move an item to the session log with a resolution note when it closes — don't just delete it.
 
-- **The New God.** A shrine near the Gods Quarter overflow, four days old, was found running a "pay per convert" operation — a tally-board showing a written quota (number unconfirmed) and a chit bearing an unidentified wax seal, not matching any known Guild mark. The operator is in custody at Pseudopolis Yard, not yet questioned. Open questions: who's actually funding this, why they want a fast head-count of "believers," what the seal belongs to, and whether this connects to a real god at all or is pure fraud. University consultant already confirmed the original idol matches no god on record.
+- **The New God.** A shrine near the Gods Quarter overflow was running a "pay per convert" operation on someone else's money — fresh, uncirculated coin, delivered by rotating anonymous couriers, last traced to a counting-house near the Guild Quarter that uses blue-black ledger ink. Vimes has narrowed it to Merchants' Guild territory or a name operating on its edge, and called it tomorrow's work. Open questions: who's actually funding this and why they want a fast, specific head-count of "believers," what the unidentified wax seal belongs to, and whether any of this connects to a real god at all. University consultant already confirmed the original idol matches no god on record.
 
 ## Session Log
 
@@ -93,3 +94,8 @@ Bob's first shift, four hours into the job, walked straight into Vimes at Pseudo
 2026-09-09
 
 Two days later, a University expert confirmed the idol matched no god on record. Vimes assigned Bob and Detritus to the Isle of Gods properly to find the shrine. They split up; Bob (badge already drawn, subtlety not attempted) knocked on a temple door and got Sister Marl, a pragmatic caretaker, who — despite his badly garbled questions — gave him the shrine's real location and a warning that "wanting numbers fast" wasn't about devotion. At the shrine, Bob tried to arrest the operator on a bribery charge that didn't hold up (Detritus corrected him on the spot), then was sent to search the shrine itself while Detritus questioned the man properly. Bob found a tally-board with a written quota and a chit bearing an unidentified wax seal. Shouting "Evidence" spooked the operator into running; Detritus caught him instantly. Bob was given the arrest himself — first clean salute of his career, badge and manacles both used correctly. Operator now in custody at Pseudopolis Yard, unquestioned. Detritus told him plainly that rank won't stay a formality if this keeps up.
+
+### Session 3 — The Interview
+2026-09-09
+
+Same night. Vimes let Bob take the lead questioning the prisoner, now named Nathaniel "Faithful" Sallow — hired help, not the mastermind, paid two dollars a head for roughly two hundred signed converts. Bob asked directly how one could profit from the scheme; Vimes cut the interview off immediately and confronted him about it in front of Sallow and Detritus, treating it as a real, serious lapse rather than a joke. Bob recovered by reframing it as "following the money to find the organ grinder, not the monkey" — Vimes accepted it as genuine, once, and said so plainly: trust spent, not to be spent twice. Redirected properly, Sallow gave a real lead: the money arrives as fresh uncirculated coin via rotating anonymous couriers, last traced to a counting-house near the Guild Quarter using blue-black ledger ink. Vimes narrowed that to Merchants' Guild territory or its edge, called it tomorrow's work, and closed the interview.
