@@ -55,9 +55,15 @@
   .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
   .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
 
+  h3{ font-size: 1.1rem; margin: 1.6rem 0 0.7rem; color: var(--accent); }
+  h3:first-child{ margin-top: 0; }
+
   .dates{ list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
   .dates li{ padding: 0.9rem 1rem; background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; }
-  .dates .when{ display: block; font-family: "Courier Prime", monospace; font-size: 0.7rem; color: var(--brass); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .dates .when-row{ display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.35rem; }
+  .dates .when{ font-family: "Courier Prime", monospace; font-size: 0.7rem; color: var(--brass); text-transform: uppercase; letter-spacing: 0.06em; }
+  .dates .src{ font-family: "Courier Prime", monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); border: 1px solid var(--rule-strong); border-radius: 2px; padding: 0.08rem 0.4rem; white-space: nowrap; }
+  .dates .src.canon{ color: var(--brass); border-color: var(--brass); }
   .dates .name{ font-family: "Fraunces", serif; font-weight: 600; font-style: italic; color: var(--ink); }
   .dates p{ margin: 0.35rem 0 0; font-size: 0.95rem; }
 
@@ -105,24 +111,64 @@
 
     <section id="calendar">
       <span class="section-kicker">Calendar</span>
-      <h2>The Civic Calendar</h2>
-      <p class="lede">A year of ready-made pressure. Drop the nearest date into a session when you want the city itself to be doing something.</p>
-      <p>This calendar is built for this table specifically, not transcribed from any book — treat every date below as a slot to fill or override, not a fact to defend. Dates are given loosely, Hub-season to Rim-season, since the campaign doesn't need an exact day-count to use them; assign real dates once your table starts tracking one.</p>
+      <h2>The Calendar</h2>
+      <p class="lede">The months and the week below are the Disc's own — documented setting fact, not book plot. The specific dates worth marking on them are this table's.</p>
+
+      <h3>How the Year Works</h3>
+      <p>The working Discworld year runs 400 days across thirteen months, opening with the short month of Ick and running through to December. (The full celestial year is longer still — 800 days, with two of everything, summers included — but no table needs to track that in play; the 400-day version below is what everyone actually uses.)</p>
+      <div class="table-wrap">
+        <table>
+          <caption>The thirteen months</caption>
+          <thead><tr><th>Month</th><th class="num">Days</th></tr></thead>
+          <tbody>
+            <tr><td>Ick</td><td class="num">16</td></tr>
+            <tr><td>Offle</td><td class="num">32</td></tr>
+            <tr><td>February</td><td class="num">32</td></tr>
+            <tr><td>March</td><td class="num">32</td></tr>
+            <tr><td>April</td><td class="num">32</td></tr>
+            <tr><td>May</td><td class="num">32</td></tr>
+            <tr><td>June</td><td class="num">32</td></tr>
+            <tr><td>Grune</td><td class="num">32</td></tr>
+            <tr><td>August</td><td class="num">32</td></tr>
+            <tr><td>Spune</td><td class="num">32</td></tr>
+            <tr><td>Sektober</td><td class="num">32</td></tr>
+            <tr><td>Ember</td><td class="num">32</td></tr>
+            <tr><td>December</td><td class="num">32</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The week runs eight days: Sunday through Saturday, then an extra day, <strong>Octeday</strong>, before the cycle starts again.</p>
+
+      <div class="callout">
+        <span class="eyebrow">A note on ordering</span>
+        Even the source material isn't fully settled here — the books never state the month order outright, and some editions of the Discworld Companion and the Discworld Roleplaying Game open the year on Offle and close it on Ick instead of the other way around. This page uses the Ick-first, Hogswatch-anchored convention below because it's the more common one and it's easy to reason about at a table. Pick whichever convention you like; just stay consistent once you have.
+      </div>
+
+      <h3>Fixed Points in the Year</h3>
+      <p>A handful of dates are pinned down by the setting itself. Use them as-is — they're good scaffolding precisely because they're already established, not because anything specific has to happen on them.</p>
       <ul class="dates">
-        <li><span class="when">Deep winter</span><span class="name">Founding Night</span><p>The City Watch's own anniversary — old officers tell old stories at the Yard, and Vimes pretends not to enjoy it. A good night for a party member to be formally sworn in.</p></li>
-        <li><span class="when">Deep winter, later</span><span class="name">The Guilds' Reckoning</span><p>Every Guild's annual audit is due to the Patrician's clerks in the same week. Quota shortfalls, missing paperwork, and Guild rivalries all come to a head at once.</p></li>
-        <li><span class="when">Early spring</span><span class="name">Small Gods' Eve</span><p>A night the Isle of Gods keeps for deities too minor to get a proper festival — new shrines tend to appear overnight. Pairs neatly with any Small God plot thread.</p></li>
-        <li><span class="when">Mid spring</span><span class="name">Barge Day</span><p>The first big trade barge of the season comes up the Ankh from the coast. The Docks are chaos, the Merchants' Guild is smug, and customs paperwork gets "lost" at a higher rate than usual.</p></li>
-        <li><span class="when">Hub-summer</span><span class="name">The Long Assizes</span><p>A stretch of weeks when the Patrician's courts clear a year's backlog of disputes. Old grudges resurface as formal complaints — a good excuse to bring back an NPC the party wronged.</p></li>
-        <li><span class="when">High summer</span><span class="name">Sator Square Fair</span><p>Market stalls, unlicensed performers hoping the Fools' Guild is looking elsewhere, and a scaffold that, for once, isn't being used for its usual purpose.</p></li>
-        <li><span class="when">Late summer</span><span class="name">The Alchemists' Open Trial</span><p>One day a year the Guild demonstrates its "safest" experiments publicly. It has never once gone entirely to plan, and everyone attends anyway, for exactly that reason.</p></li>
-        <li><span class="when">Early autumn</span><span class="name">Lantern Night</span><p>Every household hangs a light for kin who left the city and haven't written. Quietly one of the more sincere nights on the calendar — good ground for a backstory beat from The Skull Dice to resurface.</p></li>
-        <li><span class="when">Rim-autumn</span><span class="name">The Beggars' Muster</span><p>Patch disputes across the whole Guild get formally re-arbitrated in one long, contentious sitting. Territory changes hands more in this one week than the rest of the year combined.</p></li>
-        <li><span class="when">Deep autumn</span><span class="name">Founders' Fast</span><p>A day of civic quiet the University observes more strictly than the city does — libraries close, faculty go still, and something about Unseen University always feels very slightly wrong until sundown.</p></li>
+        <li><div class="when-row"><span class="when">1st of Ick</span><span class="src canon">Discworld canon</span></div><span class="name">Hogswatch Day</span><p>The turn of the year. The night before is Hogswatch Eve; the city's version of a fresh start, kept by everyone from the Palace to the Shades.</p></li>
+        <li><div class="when-row"><span class="when">28th of April</span><span class="src canon">Discworld canon</span></div><span class="name">Creator's Birthday</span><p>A quieter, more contemplative date than Hogswatch — the kind of day Unseen University marks properly and everyone else mostly ignores.</p></li>
+        <li><div class="when-row"><span class="when">Midyear, around June</span><span class="src canon">Discworld canon</span></div><span class="name">Crueltide</span><p>The exact midpoint of the working year. Superstition holds that luck runs backward on Crueltide — useful color, harmless to ignore mechanically.</p></li>
+        <li><div class="when-row"><span class="when">High summer, exact date unfixed</span><span class="src canon">Discworld canon</span></div><span class="name">Eve of Small Gods</span><p>The first day of midsummer, and the traditional night for a new shrine to appear on the Isle of Gods — no one's ever quite sure who builds them.</p></li>
+        <li><div class="when-row"><span class="when">5th of Grune</span><span class="src canon">Discworld canon</span></div><span class="name">Koom Valley Day</span><p>A solemn historical anniversary, observed carefully by both dwarfs and trolls, for reasons that run deep and don't fully agree with each other. Handle it as real history with real weight — not as an invitation to restage anything specific.</p></li>
       </ul>
+
+      <h3>This Table's Civic Dates</h3>
+      <p>Everything below is original to this campaign — invented pressure and color slotted into the gaps between the fixed points above, not drawn from any book.</p>
+      <ul class="dates">
+        <li><div class="when-row"><span class="when">3rd of Ick</span><span class="src">This table</span></div><span class="name">Founding Night</span><p>The City Watch's own anniversary — old officers tell old stories at the Yard, and Vimes pretends not to enjoy it. A good night for a party member to be formally sworn in.</p></li>
+        <li><div class="when-row"><span class="when">First week of Offle</span><span class="src">This table</span></div><span class="name">The Guilds' Reckoning</span><p>Every Guild's annual audit is due to the Patrician's clerks in the same week. Quota shortfalls, missing paperwork, and Guild rivalries all come to a head at once.</p></li>
+        <li><div class="when-row"><span class="when">Mid June</span><span class="src">This table</span></div><span class="name">Sator Square Fair</span><p>Market stalls, unlicensed performers hoping the Fools' Guild is looking elsewhere, and a scaffold that, for once, isn't being used for its usual purpose.</p></li>
+        <li><div class="when-row"><span class="when">Late August</span><span class="src">This table</span></div><span class="name">The Alchemists' Open Trial</span><p>One day a year the Guild demonstrates its "safest" experiments publicly. It has never once gone entirely to plan, and everyone attends anyway, for exactly that reason.</p></li>
+        <li><div class="when-row"><span class="when">Early Spune</span><span class="src">This table</span></div><span class="name">Barge Day</span><p>The first big trade barge of the season comes up the Ankh from the coast. The Docks are chaos, the Merchants' Guild is smug, and customs paperwork gets "lost" at a higher rate than usual.</p></li>
+        <li><div class="when-row"><span class="when">Sektober</span><span class="src">This table</span></div><span class="name">The Beggars' Muster</span><p>Patch disputes across the whole Guild get formally re-arbitrated in one long, contentious sitting. Territory changes hands more in this one week than the rest of the year combined.</p></li>
+        <li><div class="when-row"><span class="when">December</span><span class="src">This table</span></div><span class="name">Founders' Fast</span><p>A day of civic quiet the University observes more strictly than the city does — libraries close, faculty go still, and something about Unseen University always feels very slightly wrong until sundown.</p></li>
+      </ul>
+
       <div class="callout wax">
         <span class="eyebrow">Table notes</span>
-        You don't need to place these on a fixed calendar before play — introduce one the first time "how long until [event]" matters at the table, and lock its date in your table's campaign log once you do. Add, rename, or drop dates freely; the point is a rotating supply of low-effort pressure, not a completed liturgical calendar.
+        You don't need every date pinned before play — the fixed points above are safe to use immediately, and you can slot in or drop the invented ones as the campaign needs pressure. Once your table starts tracking an actual date, lock it in your <strong>campaign log</strong> so later sessions stay consistent.
       </div>
     </section>
 

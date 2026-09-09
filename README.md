@@ -2,7 +2,7 @@
 
 Homebrew reference material for running a Dungeons & Dragons 5th Edition (rules-as-written) campaign set on Terry Pratchett's Discworld.
 
-This repo contains original game-prep material only (setting primers, character options, adventure notes) — no book text, no copyrighted Pratchett content.
+This repo freely uses Discworld's setting facts — names, places, history, calendar, the shape of its institutions — the way any fan reference does. What it avoids is reusing the books' actual prose or restaging their specific plots: every adventure hook, NPC scene, and encounter here is original, built *from* that lore rather than lifted from a novel's storyline.
 
 ## Contents
 
@@ -16,7 +16,7 @@ This repo contains original game-prep material only (setting primers, character 
 - [`ankh-morpork-gazetteer.html`](ankh-morpork-gazetteer.html) — thirteen key city locations with a schematic map, a description, and an adventure seed each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/20a2281d-d886-489c-8f8f-c739078ad99e).
 - [`names-worth-knowing.html`](names-worth-knowing.html) — fifteen recurring NPCs (Vetinari, Vimes, Ridcully, Death, the witches of Lancre, Captain Carrot, Moist von Lipwig, and more) with personality, demeanor, tone, and a GM play tip each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928).
 - [`threats-worth-naming.html`](threats-worth-naming.html) — encounter reference: fourteen Discworld threats (a Shades tough, a Guild enforcer, a rogue golem, an Auditor of Reality, and more), each pointed at an unmodified 5e statblock, plus pacing and tone guidance for combat. Also published as a [Claude Artifact](https://claude.ai/code/artifact/7a980b84-0f69-4691-9d8c-cd12efaed52a).
-- [`ankh-morpork-almanack.html`](ankh-morpork-almanack.html) — currency reference (Ankh-Morpork dollars mapped straight onto 5e's gp/sp/cp) and an original ten-date civic calendar for on-the-fly pressure and color. Also published as a [Claude Artifact](https://claude.ai/code/artifact/91e74c1b-7b71-4cdc-8901-b7e3cdf6a74d).
+- [`ankh-morpork-almanack.html`](ankh-morpork-almanack.html) — currency reference (Ankh-Morpork dollars mapped straight onto 5e's gp/sp/cp), the actual Discworld calendar (thirteen months, the eight-day week, Hogswatch and other fixed dates), and original civic dates slotted into it for on-the-fly pressure and color. Also published as a [Claude Artifact](https://claude.ai/code/artifact/91e74c1b-7b71-4cdc-8901-b7e3cdf6a74d).
 
 ## Running the campaign
 
