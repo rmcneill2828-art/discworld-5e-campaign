@@ -1,0 +1,172 @@
+<title>Word on the Street</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2.1rem, 5vw, 3rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.1rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 58rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+
+  section{ padding: 2.2rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  h2{ font-size: 1.5rem; margin: 0 0 0.9rem; }
+  p{ margin: 0 0 1rem; max-width: 42rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.14rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; max-width: 42rem; }
+
+  .tables{ display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 780px){ .tables{ grid-template-columns: 1fr; } }
+  .tables h3{ font-family: "Courier Prime", monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brass); margin: 0 0 0.8rem; }
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+  td.roll{ font-family: "Courier Prime", monospace; font-variant-numeric: tabular-nums; color: var(--brass); width: 2.2rem; }
+  td.who{ font-family: "Fraunces", serif; font-weight: 600; white-space: nowrap; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; margin: 1.1rem 0; border-radius: 2px; font-size: 0.95rem; max-width: 42rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .worked{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem; max-width: 42rem; }
+  .worked .roll-pair{ font-family: "Courier Prime", monospace; font-size: 0.78rem; color: var(--brass); margin-bottom: 0.5rem; }
+  .worked p{ margin: 0; font-family: "Fraunces", serif; font-style: italic; color: var(--ink-soft); max-width: none; }
+
+  footer.colophon{ max-width: 58rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Improv Tables</div>
+    <h1>Word on the Street</h1>
+    <p class="subtitle">Two d20 tables for the ninety percent of NPCs who don't have a name yet, and the rumors they carry.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a> and <a href="https://claude.ai/code/artifact/7d3959e3-6da1-4e7c-990c-d94cf5b28715">The Skull Dice</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="intro">
+      <p class="lede">Names Worth Knowing covers the fifteen faces who matter. This covers everyone else — the ferryman, the clerk, the woman who's run that chestnut stall for thirty years and misses nothing.</p>
+      <p>Roll on <strong>Who's Talking</strong> when a player asks a stranger's name and you don't have one ready. Roll on <strong>Word on the Street</strong> when the party's fishing for a rumor, killing time in a tavern, or you just need the city to feel like it's doing something in the background. Use them together, use either alone, or ignore the dice and pick — same rule as every other table in this repo.</p>
+      <div class="callout">
+        <span class="eyebrow">How to use this</span>
+        Roll a d20 on <strong>Who's Talking</strong> for a name and a reason they'd know something, then a d20 on <strong>Word on the Street</strong> for what they've actually heard. Not every rumor needs to be true — treat about a third of them as color or an outright red herring, and let the party's own Insight checks (or just good judgement) sort out which is which.
+      </div>
+    </section>
+
+    <section id="tables">
+      <div class="tables">
+        <div>
+          <h3>Who's Talking</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="roll">d20</th><th>Name &amp; Trade</th></tr></thead>
+              <tbody>
+                <tr><td class="roll">1</td><td><span class="who">"Two-Shoes" Maggs</span> — a cobbler with opinions about everyone's feet, and about where they've been walking.</td></tr>
+                <tr><td class="roll">2</td><td><span class="who">Widow Treacle</span> — runs a boarding house, misses nothing, forgets nothing, tells almost none of it for free.</td></tr>
+                <tr><td class="roll">3</td><td><span class="who">"Ledger" Tomkin</span> — a Merchants' Guild clerk who can find any invoice ever filed, paid in gossip sooner than coin.</td></tr>
+                <tr><td class="roll">4</td><td><span class="who">Sister Marl</span> — a Small Gods temple caretaker, more pragmatic than pious, permanently short on candle money.</td></tr>
+                <tr><td class="roll">5</td><td><span class="who">"Ratty" Grouse</span> — a licensed rat-catcher who hears things in cellars nobody else goes into.</td></tr>
+                <tr><td class="roll">6</td><td><span class="who">Old Ferrous</span> — a retired golem working the Docks now, doesn't talk much, remembers every crate he's carried.</td></tr>
+                <tr><td class="roll">7</td><td><span class="who">"Loud" Belinda Crake</span> — a fishwife whose stall is a listening post for half the Docks.</td></tr>
+                <tr><td class="roll">8</td><td><span class="who">Brother Cess</span> — a Fools' Guild washout who still tells the jokes, badly, to anyone who'll stand still.</td></tr>
+                <tr><td class="roll">9</td><td><span class="who">"Quick" Fenwick</span> — an unlicensed messenger boy, faster and cheaper than the Guild's own, terrified of both Guilds finding out.</td></tr>
+                <tr><td class="roll">10</td><td><span class="who">Madam Ondine</span> — runs a discreet lodging house near Biers, keeps odd hours and odder company.</td></tr>
+                <tr><td class="roll">11</td><td><span class="who">"Tar" Hobbs</span> — a Docks foreman, trades favors more than coin, owed by half the Watch's night shift.</td></tr>
+                <tr><td class="roll">12</td><td><span class="who">Sergeant's Widow Pruitt</span> — a Watch pensioner's widow, still invited to Yard functions, still remembers everything said in front of her.</td></tr>
+                <tr><td class="roll">13</td><td><span class="who">"Six Bells" Ostrey</span> — an Isle of Gods bell-ringer who knows which temple's in trouble by which bells go quiet.</td></tr>
+                <tr><td class="roll">14</td><td><span class="who">Young Prass</span> — an Alchemists' Guild apprentice, talks too much about "promising" experiments to impress people at the Drum.</td></tr>
+                <tr><td class="roll">15</td><td><span class="who">"Cinders" Wick</span> — runs a chestnut stall by Sator Square, sees everyone, remembers faces rather than names.</td></tr>
+                <tr><td class="roll">16</td><td><span class="who">Dame Kettleworth</span> — a respectable Nap Hill widow who is absolutely not respectable, and would like that kept quiet.</td></tr>
+                <tr><td class="roll">17</td><td><span class="who">"Long" Sallow</span> — a Thieves' Guild journeyman between jobs, willing to talk if the coin or the favor's right.</td></tr>
+                <tr><td class="roll">18</td><td><span class="who">Brother Pallid</span> — a Biers regular, a Black-Ribboner, keeps a mental ledger of who's fallen off the wagon before anyone official notices.</td></tr>
+                <tr><td class="roll">19</td><td><span class="who">"Numbers" Quill</span> — a Beggars' Guild bookkeeper, tracks patch disputes, an unexpectedly good source on who owes whom.</td></tr>
+                <tr><td class="roll">20</td><td><span class="who">Old Mossop</span> — a University porter, has seen every faculty scandal for forty years and outlasted all of them.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3>Word on the Street</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th class="roll">d20</th><th>They've Heard</th></tr></thead>
+              <tbody>
+                <tr><td class="roll">1</td><td>Someone's been asking about the party by name, and not paying for the information kindly.</td></tr>
+                <tr><td class="roll">2</td><td>A Guild's short a member and isn't saying which one, or why.</td></tr>
+                <tr><td class="roll">3</td><td>The Watch quietly reassigned a beat overnight, and nobody's saying which one or why.</td></tr>
+                <tr><td class="roll">4</td><td>A shipment's gone missing from the Docks that officially never existed in the first place.</td></tr>
+                <tr><td class="roll">5</td><td>There's a new face at the Mended Drum buying rounds and asking careful questions.</td></tr>
+                <tr><td class="roll">6</td><td>A shrine on the Isle of Gods got more crowded overnight, seemingly on its own.</td></tr>
+                <tr><td class="roll">7</td><td>Somebody's paying well above market rate for information nobody's supposed to have.</td></tr>
+                <tr><td class="roll">8</td><td>An Alchemists' Guild "routine test" went louder than usual last night, and the Guild's being cagey about the cause.</td></tr>
+                <tr><td class="roll">9</td><td>A noble family's swamp dragon is missing again, and this time nobody's laughing about it.</td></tr>
+                <tr><td class="roll">10</td><td>Two Guild enforcers were seen arguing somewhere neither of them should have been seen at all.</td></tr>
+                <tr><td class="roll">11</td><td>Someone posted a reward notice and then quietly took it back down before anyone could read the fine print.</td></tr>
+                <tr><td class="roll">12</td><td>A University faculty member hasn't been seen at meals in three days, and the porters are being vague about why.</td></tr>
+                <tr><td class="roll">13</td><td>A patch of Beggars' Territory changed hands overnight, and not through the usual channels.</td></tr>
+                <tr><td class="roll">14</td><td>Somebody's forging Guild licenses — badly enough to be spotted, well enough that it's still working.</td></tr>
+                <tr><td class="roll">15</td><td>A body turned up that the Watch logged as "natural causes" faster than anyone expected.</td></tr>
+                <tr><td class="roll">16</td><td>A god nobody's heard of is supposedly looking for followers, and paying finder's fees.</td></tr>
+                <tr><td class="roll">17</td><td>Someone important is asking after the party through a third party who won't give a name.</td></tr>
+                <tr><td class="roll">18</td><td>A merchant's ledgers don't balance, and they're offering good coin to whoever can make them balance quietly.</td></tr>
+                <tr><td class="roll">19</td><td>The Assassins' Guild has a contract out, and for once, everyone's guessing wrong about the target.</td></tr>
+                <tr><td class="roll">20</td><td>Nothing. Absolutely nothing's happening, which several people find more suspicious than usual.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="worked">
+      <h2>How It Plays Out</h2>
+      <p>Two examples of the tables run together — a name, a trade, and a line of dialogue built on the spot.</p>
+      <div class="worked">
+        <div class="roll-pair">Who: 5 · Word: 9</div>
+        <p>"Ratty" Grouse, between cellars, mentions offhand that a noble family's swamp dragon is missing again — and this time nobody's laughing about it.</p>
+      </div>
+      <div class="worked">
+        <div class="roll-pair">Who: 20 · Word: 12</div>
+        <p>Old Mossop mutters that a University faculty member hasn't been seen at meals in three days, and the porters are being vague about why — which, coming from him, means something.</p>
+      </div>
+      <div class="callout">
+        <span class="eyebrow">Reusing a name</span>
+        Any of the twenty on Who's Talking can recur — if "Ratty" Grouse turns out useful, there's no rule against him becoming a standing contact. If he's used once and never again, that's fine too; that's what he's for. Once someone from this table earns a real place in the story, move them into your <strong>campaign log</strong> under Names Worth Knowing — Status so they don't get overwritten by the next roll.
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>

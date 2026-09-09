@@ -17,9 +17,11 @@ This repo freely uses Discworld's setting facts — names, places, history, cale
 - [`names-worth-knowing.html`](names-worth-knowing.html) — fifteen recurring NPCs (Vetinari, Vimes, Ridcully, Death, the witches of Lancre, Captain Carrot, Moist von Lipwig, and more) with personality, demeanor, tone, and a GM play tip each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928).
 - [`threats-worth-naming.html`](threats-worth-naming.html) — encounter reference: fourteen Discworld threats (a Shades tough, a Guild enforcer, a rogue golem, an Auditor of Reality, and more), each pointed at an unmodified 5e statblock, plus pacing and tone guidance for combat. Also published as a [Claude Artifact](https://claude.ai/code/artifact/7a980b84-0f69-4691-9d8c-cd12efaed52a).
 - [`ankh-morpork-almanack.html`](ankh-morpork-almanack.html) — currency reference (Ankh-Morpork dollars mapped straight onto 5e's gp/sp/cp), the actual Discworld calendar (thirteen months, the eight-day week, Hogswatch and other fixed dates), and original civic dates slotted into it for on-the-fly pressure and color. Also published as a [Claude Artifact](https://claude.ai/code/artifact/91e74c1b-7b71-4cdc-8901-b7e3cdf6a74d).
+- [`word-on-the-street.html`](word-on-the-street.html) — two d20 tables for improvising on the spot: twenty incidental NPCs with a name and a reason they'd know something, and twenty rumors ranging from real leads to pure color. Also published as a [Claude Artifact](https://claude.ai/code/artifact/90bfd6d9-bbc5-43c2-97a9-cb7c51ae3411).
 
 ## Running the campaign
 
+- [`CLAUDE.md`](CLAUDE.md) — operating instructions for whoever (or whatever) is DMing from this repo: what to read before a session, a reference map of which doc covers what, and what to update afterward. Auto-loaded by Claude Code at the start of any session opened in this directory.
 - [`campaign-log.md`](campaign-log.md) — the one file in this repo that isn't prep material. It's the living record of an actual campaign in progress: party roster, faction standing, NPC dispositions, established canon, open threads, and a session-by-session log. Update it after every session — it's what keeps continuity between conversations, and it overrides any published doc here if the two ever disagree.
 
 ## Status
