@@ -16,11 +16,11 @@ The working memory for this campaign. Every other file in this repo is prep mate
 |---|---|
 | Campaign name | *(unset)* |
 | Session zero date | 2026-09-09 |
-| Current session # | 1 |
+| Current session # | 2 |
 | Party level | 1 |
 | Using The Long Climb? | Yes |
-| In-game date | 3rd of Ick — Founding Night, the Watch's own anniversary (Bob's first day happens to land on it) |
-| Current "book" / arc | Book One — "The New God" (just begun: an idol, a rumor, a shrine nobody's found yet) |
+| In-game date | 5th of Ick — two days after Founding Night |
+| Current "book" / arc | Book One — "The New God" (a shrine found, an operator arrested, a quota and an unidentified seal still unexplained — the "who" behind it is still open) |
 
 ## Party Roster
 
@@ -34,7 +34,8 @@ Track how the city's institutions feel about the party as a whole, not per-chara
 
 | Faction | Standing | Notes |
 |---|---|---|
-| City Watch (Vimes / Pseudopolis Yard) | Cautiously approving | Bob's first night went well by Watch standards: found something real, didn't freelance on it, reported it straight. Vimes has noticed him — twice now, quietly. That's the good kind of noticed. |
+| City Watch (Vimes / Pseudopolis Yard) | Approving, building | Bob's first proper arrest, clean evidence, a real case handed to Vimes instead of a rumor. Detritus told him outright that rank's going to stop being a formality if he keeps this up. |
+| Isle of Gods (temples generally) | Slightly favorable | Sister Marl gave real help unprompted and seemed to approve of the Watch taking the fake-shrine racket seriously — it was undercutting the honest temples' collection plates. |
 | Thieves' Guild | Unknown to them | |
 | Assassins' Guild | Unknown to them | |
 | Alchemists' Guild | Unknown to them | |
@@ -54,6 +55,8 @@ Only track NPCs once the party has actually met or been affected by them. Don't 
 | Commander Vimes | Session 1 | Pseudopolis Yard, Founding Night | Quietly approving | Assigned Bob his first patrol (with Detritus). Took the idol into his own custody, called it "Isle of Gods business." Noted Bob's unprompted over-explaining habit without comment — filed it. |
 | Sergeant Detritus | Session 1 | Sator Square, Founding Night patrol | Professional respect | Partnered with Bob on his first beat. Taught him the difference between reporting what you saw and what you guessed. Approved of Bob's by-the-book call not to investigate solo. |
 | Ratty Grouse | Session 1 | Street near Pseudopolis Yard | Neutral, matter-of-fact | Licensed rat-catcher. Source of the "new god paying finder's fees" rumor and the tip about slow drains near Sator Square. Knows the streets well — worth returning to. |
+| Sister Marl | Session 2 | A small temple, Isle of Gods | Friendly, pragmatic | Small Gods temple caretaker, chronically short on candle money. Gave Bob the shrine's real location unprompted once he (eventually) asked properly. Warned that "wanting numbers fast" wasn't about devotion. Worth returning to for temple gossip. |
+| The Shrine Operator | Session 2 | The fake shrine, Isle of Gods | In custody, unknown | Name not yet given. Ran a "pay per convert" fake-shrine operation, four days old, working toward a written quota. Carried a chit with an unidentified wax seal — not a Guild mark either of them recognized. Arrested by Bob, now at Pseudopolis Yard awaiting questioning. |
 
 ## Established Canon
 
@@ -63,12 +66,14 @@ Facts this table has decided are true that aren't nailed down in the published c
 - Bob's salute is broken — every attempt so far has come out as something else (a karate chop, a wave). Running physical gag; hasn't landed a clean one yet.
 - Sergeant Colon exists, handled Bob's induction paperwork, and is exactly as thorough as "four hours of forms, no actual orders" suggests. Referenced, not yet appeared on-screen.
 - Trolls (Detritus's clan, at least) dug much of the old stonework under Sator Square generations back — he knows how that ground is "supposed to sound."
+- Bob's salute landed clean exactly once, making a formal arrest — notable specifically because every other attempt (four and counting) has failed. Not established whether that's a pattern (works under real pressure) or a fluke.
+- Small Gods temple caretakers on the Isle resent Guild-funded or well-financed operations undercutting their honest collection plates — a real, ongoing point of friction worth remembering.
 
 ## Open Threads
 
 Hooks that are live, promises made to NPCs, mysteries not yet resolved, debts owed either direction. Move an item to the session log with a resolution note when it closes — don't just delete it.
 
-- **The New God.** A crudely carved, freshly made idol was found wedged in a drain near Sator Square on Founding Night — connects to a street rumor (via Ratty Grouse) of an unnamed god paying finder's fees for followers, and a shrine that appeared overnight somewhere near the Isle of Gods. Vimes has taken the idol into his own custody and called it "Isle of Gods business, most likely" — not yet assigned to Bob, but clearly on the Commander's radar. Likely the seed of Book One.
+- **The New God.** A shrine near the Gods Quarter overflow, four days old, was found running a "pay per convert" operation — a tally-board showing a written quota (number unconfirmed) and a chit bearing an unidentified wax seal, not matching any known Guild mark. The operator is in custody at Pseudopolis Yard, not yet questioned. Open questions: who's actually funding this, why they want a fast head-count of "believers," what the seal belongs to, and whether this connects to a real god at all or is pure fraud. University consultant already confirmed the original idol matches no god on record.
 
 ## Session Log
 
@@ -83,3 +88,8 @@ Solo table, one player. Built Bob NoLastname: Human Fighter, City Watch Recruit,
 2026-09-09
 
 Bob's first shift, four hours into the job, walked straight into Vimes at Pseudopolis Yard's Founding Night gathering — didn't recognize him, asked him outright what he was meant to be doing. Vimes assigned him to walk a beat with Sergeant Detritus. En route, asked a rat-catcher (Ratty Grouse) for directions and got a rumor along with them: an unheard-of god supposedly paying finder's fees for followers. At Sator Square, Detritus flagged a slow drain as wrong for the weather; Bob actually looked instead of guessing (rolled well) and spotted something deliberately wedged in the grate. Detritus pulled out a small, freshly carved idol. Offered the choice to investigate the Isle of Gods immediately or report back by the book — Bob chose to report. Vimes took the idol into his own custody, called it likely Isle of Gods business, and approved of the restraint shown. Good first night on the record, twice over.
+
+### Session 2 — The Shrine
+2026-09-09
+
+Two days later, a University expert confirmed the idol matched no god on record. Vimes assigned Bob and Detritus to the Isle of Gods properly to find the shrine. They split up; Bob (badge already drawn, subtlety not attempted) knocked on a temple door and got Sister Marl, a pragmatic caretaker, who — despite his badly garbled questions — gave him the shrine's real location and a warning that "wanting numbers fast" wasn't about devotion. At the shrine, Bob tried to arrest the operator on a bribery charge that didn't hold up (Detritus corrected him on the spot), then was sent to search the shrine itself while Detritus questioned the man properly. Bob found a tally-board with a written quota and a chit bearing an unidentified wax seal. Shouting "Evidence" spooked the operator into running; Detritus caught him instantly. Bob was given the arrest himself — first clean salute of his career, badge and manacles both used correctly. Operator now in custody at Pseudopolis Yard, unquestioned. Detritus told him plainly that rank won't stay a formality if this keeps up.
