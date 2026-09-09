@@ -29,6 +29,7 @@ If Campaign Vitals is still unset, no session has happened yet — point the use
 | Golem origin, chem, or the property-to-person arc | [`words-in-the-head.html`](words-in-the-head.html) |
 | Zombie, Black-Ribboner vampire, or werewolf belief/culture | [`by-choice-not-nature.html`](by-choice-not-nature.html) |
 | Igor code of conduct or culture | [`a-steady-hand.html`](a-steady-hand.html) |
+| The Library, L-Space, or a University-arc dungeon environment | [`l-space.html`](l-space.html) |
 
 ## Running principles (full detail in the Charter, §IX)
 

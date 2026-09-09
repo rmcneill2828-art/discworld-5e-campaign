@@ -1,0 +1,143 @@
+<title>L-Space</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 42rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+  section{ padding: 2.1rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  h2{ font-size: 1.5rem; margin: 0 0 0.9rem; }
+  h3{ font-size: 1.05rem; margin: 1.4rem 0 0.6rem; color: var(--accent); }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.12rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.85rem 1.05rem; margin: 1rem 0; border-radius: 2px; font-size: 0.94rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+
+  .rules{ display: grid; gap: 0.7rem; margin: 0.6rem 0 1.2rem; }
+  .rule{ display: flex; gap: 0.8rem; align-items: baseline; padding: 0.7rem 0.9rem; background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; }
+  .rule .rnum{ font-family: "Courier Prime", monospace; font-size: 0.78rem; color: var(--brass); flex-shrink: 0; }
+
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.2rem; font-size: 0.92rem; }
+  caption{ text-align: left; font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+  td.roll{ font-family: "Courier Prime", monospace; font-variant-numeric: tabular-nums; color: var(--brass); width: 2.2rem; }
+
+  footer.colophon{ max-width: 42rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">The Library, Properly Understood</div>
+    <h1>L-Space</h1>
+    <p class="subtitle">Every library that ever was, is, or will be, connected by one simple, terrifying fact about books.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/1f10d0b0-b97a-4f9b-90e2-9d4bda55ea84">Powers Worth Knowing</a> and <a href="https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928">Names Worth Knowing</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="intro">
+      <p class="lede">Books = Knowledge. Knowledge = Power. Power = Energy. Energy = Matter. Matter = Mass. A big enough library has enough mass to bend space around itself — and once it's bent far enough, it touches every other library that's ever bent space the same way.</p>
+      <p>That bent space is <strong>L-Space</strong>, and Unseen University's library — already mentioned in passing in the Charter and the Gazetteer — sits on top of one of the largest, oldest deposits of it on the Disc. This is what that actually means, and how to run a session inside it.</p>
+    </section>
+
+    <section id="principle">
+      <h2>What L-Space Actually Is</h2>
+      <p>Any sufficiently large collection of books generates it, whether the librarian in charge knows that or not — which means every real bookshop and every real library is, in principle, a doorway. L-Space connects all of them: every library that currently exists, every library that ever existed (fire doesn't erase information, it just changes which shelf it's on), and — this is the part that actually matters at the table — every library that <em>could</em> exist, in any world, in any timeline. Walk far enough into L-Space with the right shelf-marks and you are, in principle, one long walk from any book ever written, ever planned, or ever merely possible.</p>
+    </section>
+
+    <section id="rules">
+      <h2>The Three Rules</h2>
+      <p>Posted, understood, and genuinely enforced by every Librarian of Time and Space, starting with Unseen University's own:</p>
+      <div class="rules">
+        <div class="rule"><span class="rnum">I.</span><span><strong>Silence.</strong> Not a courtesy — the written word is dangerous enough with the volume turned down. Loud noise in L-Space doesn't just get you shushed.</span></div>
+        <div class="rule"><span class="rnum">II.</span><span><strong>Books must be returned no later than the last date shown.</strong> Failing to return something borrowed from L-Space doesn't just cost a fine — it leaves a gap that something else can use.</span></div>
+        <div class="rule"><span class="rnum">III.</span><span><strong>The nature of causality must not be interfered with.</strong> You can reach a lot of books in L-Space that shouldn't exist yet, or shouldn't exist at all. Reading them is one thing. Acting on them is how paradoxes start.</span></div>
+      </div>
+      <div class="callout wax">
+        <span class="eyebrow">GM Tip</span>
+        Play these as load-bearing, not flavor. A party that breaks Rule I draws something. A party that breaks Rule II owes something. A party that breaks Rule III is the actual plot now, whether they wanted to be or not.
+      </div>
+    </section>
+
+    <section id="hazards">
+      <h2>What Lives in the Stacks</h2>
+      <p>L-Space is inhabited, and only some of it is friendly. Kickstool crabs are a minor, mostly harmless nuisance — small, skittering, easily startled. Wandering thesauri are large, heavy, and dangerous mostly by virtue of being large and heavy and not looking where they're going. The <strong>.303 Bookworm</strong> is a genuine predator, drawn to careless noise and unattended pages. And then there are <strong>the dreaded clichés</strong> — literal story-clichés, given form by however many times they've been written down, which is exactly the kind of literalized-metaphor threat this repo's own <a href="https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318">Playing It Straight</a> technique loves.</p>
+      <div class="callout">
+        <span class="eyebrow">GM Tip</span>
+        A cliché is best played as genuinely dangerous specifically because everyone recognizes it — a party that's read enough books half-expects the "mysterious stranger in the corner" or the "conveniently unlocked door," and that familiarity is exactly what lets the cliché get close before anyone reacts.
+      </div>
+    </section>
+
+    <section id="navigation">
+      <h2>Getting Around, and Getting Lost</h2>
+      <p>L-Space mirrors the architecture of whichever library you entered through, at first — which means a party can wander into it without immediately realizing they've left the ordinary building at all, right up until the shelves stop matching anything they remember shelving. Previous travelers leave shelf-marks for the routes they've found; trusting an unfamiliar mark is a real risk, and following none at all is worse.</p>
+      <p>Unseen University's own Librarian — see his entry in <a href="https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928">Names Worth Knowing</a> — is the foremost living authority on actually navigating it, and treats the whole of L-Space as an extension of his own domain. A party that's earned his trust has, functionally, a guide. A party that hasn't is on their own with the shelf-marks.</p>
+    </section>
+
+    <section id="lost-shelf">
+      <h2>On the Wrong Shelf</h2>
+      <p>A small table for when a search in L-Space takes a wrong turn — roll once, or pick whichever fits the scene:</p>
+      <div class="table-wrap">
+        <table>
+          <caption>What you find instead (d8)</caption>
+          <thead><tr><th class="roll">d8</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td class="roll">1</td><td>A perfect, complete copy of the book you wanted — except it's the sequel to one that hasn't been written yet.</td></tr>
+            <tr><td class="roll">2</td><td>A library that isn't in any language your party can read, staffed by nobody, dusted regardless.</td></tr>
+            <tr><td class="roll">3</td><td>A single shelf of biographies, every one of them yours, ending at different points.</td></tr>
+            <tr><td class="roll">4</td><td>The exact book you wanted, on loan, due back to someone who hasn't been born yet.</td></tr>
+            <tr><td class="roll">5</td><td>A reading room, mid-fire, silently burning at the same slow rate it's burned for centuries.</td></tr>
+            <tr><td class="roll">6</td><td>A returns cart, unattended, holding three books your party specifically needs and one that specifically shouldn't exist.</td></tr>
+            <tr><td class="roll">7</td><td>A corridor of index cards, each one cross-referencing the last, leading somewhere none of them mention by name.</td></tr>
+            <tr><td class="roll">8</td><td>Nothing wrong at all — just the correct book, on the correct shelf, which after the last seven results feels like the actual twist.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>Table Notes</h2>
+      <p>Nothing here requires new 5e mechanics — treat a stretch of L-Space like any other hazardous, disorienting environment (skill challenges for navigation, standard statblocks reflavored for anything encountered), and reserve real paradox consequences for genuine Rule III violations rather than routine exploration. It's a strong setting for a self-contained University-arc session: something needs retrieving, someone's gone missing in the stacks, or a text that shouldn't exist has turned up in the ordinary Library and someone has to find out where it actually came from. If a specific book, route, or L-Space location becomes a recurring fixture, note it in your <strong>campaign log</strong>'s Established Canon.</p>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
