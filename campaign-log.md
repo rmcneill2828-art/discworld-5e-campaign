@@ -15,18 +15,18 @@ The working memory for this campaign. Every other file in this repo is prep mate
 | | |
 |---|---|
 | Campaign name | *(unset)* |
-| Session zero date | *(unset)* |
+| Session zero date | 2026-09-09 |
 | Current session # | 0 |
-| Party level | *(unset)* |
-| Using The Long Climb? | *(unset — yes/no)* |
-| In-game date | *(unset — see [The Ankh-Morpork Almanack](ankh-morpork-almanack.html) for calendar)* |
-| Current "book" / arc | *(unset — see Charter §IX, "pace by book, not by dungeon")* |
+| Party level | 1 |
+| Using The Long Climb? | Yes |
+| In-game date | 3rd of Ick — Founding Night, the Watch's own anniversary (Bob's first day happens to land on it) |
+| Current "book" / arc | Not yet started |
 
 ## Party Roster
 
 | Character | Player | Species / Class | Origin | Rank (if Long Climb) | Notes |
 |---|---|---|---|---|---|
-| *(empty — fill in after session zero)* | | | | | |
+| Bob NoLastname | (you) | Human Fighter 1 | City Watch | Recruit | STR 17 DEX 12 CON 14 INT 10 WIS 12 CHA 13. HP 12, AC 14. Dueling style, longsword + chain shirt. Skills: Athletics, Insight, Intimidation, Perception. Ideal: "the easy way, not the stupid way." Flaw: protests too much about bribes. Backstory: one dropped coin from a life of crime; talked his way onto a diplomatic escort to get here. |
 
 ## Faction & Relationship Standing
 
@@ -70,6 +70,6 @@ Hooks that are live, promises made to NPCs, mysteries not yet resolved, debts ow
 One entry per session. Keep each to a short paragraph: what happened, what changed, where things stood when the table broke.
 
 ### Session 0 — Session Zero
-*(date)*
+2026-09-09
 
-*(Character creation, table expectations, tone-setting. Log who made whom, and anything that came out of it worth remembering — a backstory beat from The Skull Dice, a starting rivalry, a promise between PCs.)*
+Solo table, one player. Built Bob NoLastname: Human Fighter, City Watch Recruit, Duelist fighting style. Skull Dice rolled Why 12 / How 17 — "one dropped coin from a life of crime, this city has the best rates" crossed with "talked his way onto a diplomatic escort meant for someone far more important." Using The Long Climb. No lines/veils raised; standard Pratchett register. Set Bob's arrival on the 3rd of Ick — Founding Night — as a light, unforced coincidence, not a planned hook.
