@@ -26,6 +26,9 @@ If Campaign Vitals is still unset, no session has happened yet — point the use
 | A god, the Auditors, the Dungeon Dimensions, dragons, elves, or other supernatural lore | [`powers-worth-knowing.html`](powers-worth-knowing.html) |
 | Dwarf or troll belief, custom, or the history between them | [`clan-cave-and-city.html`](clan-cave-and-city.html) |
 | Nac Mac Feegle clan structure, belief, or succession | [`answerable-to-no-one.html`](answerable-to-no-one.html) |
+| Golem origin, chem, or the property-to-person arc | [`words-in-the-head.html`](words-in-the-head.html) |
+| Zombie, Black-Ribboner vampire, or werewolf belief/culture | [`by-choice-not-nature.html`](by-choice-not-nature.html) |
+| Igor code of conduct or culture | [`a-steady-hand.html`](a-steady-hand.html) |
 
 ## Running principles (full detail in the Charter, §IX)
 

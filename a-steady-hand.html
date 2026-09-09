@@ -1,0 +1,111 @@
+<title>A Steady Hand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 42rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+  section{ padding: 2.1rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  h2{ font-size: 1.5rem; margin: 0 0 0.9rem; }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.12rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.85rem 1.05rem; margin: 1rem 0; border-radius: 2px; font-size: 0.94rem; }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+
+  .code-list{ margin: 0; padding-left: 1.2rem; }
+  .code-list li{ margin-bottom: 0.5rem; }
+  .code-list li:last-child{ margin-bottom: 0; }
+
+  footer.colophon{ max-width: 42rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Peoples of the Disc</div>
+    <h1>A Steady Hand</h1>
+    <p class="subtitle">Igors — Uberwald's transplant surgeons, unshockable, discreet, and loyal to the craft rather than the employer.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="intro">
+      <p class="lede">Every Igor is named Igor. That's not a joke that runs out — it's the whole point.</p>
+      <p>The Charter's species table files Igors under "human variant / homebrew background" with one line about the lisp. This is the rest of the profession.</p>
+    </section>
+
+    <section id="identity">
+      <h2>Name and Identity</h2>
+      <p>Igors are an extended Uberwald family, and every male member is named Igor — pronunciation varies slightly person to person, which everyone involved has simply learned to live with. Female relatives are <strong>Igorinas</strong>, conventionally noted as unusually good-looking and, tellingly, lisping rather less than their brothers. Since the name never helps tell two Igors apart, Igors identify each other by the pattern and style of the stitching on their face and hands — a signature as individual as a fingerprint, once you know how to read it.</p>
+    </section>
+
+    <section id="code">
+      <h2>The Code</h2>
+      <p>Unwritten, universally understood, and taken seriously by every Igor regardless of who currently employs them:</p>
+      <ul class="code-list">
+        <li><strong>Lisp and limp where possible.</strong> Performed, not medical — a guild signature, the same way a barrister wears a wig. An Igor who's perfectly capable of a clean "s" will still soften it on the job.</li>
+        <li><strong>Appear mysteriously when summoned.</strong> An Igor is where they're needed roughly when they're needed, without ever quite explaining how.</li>
+        <li><strong>Absolute discretion.</strong> What happens in the laboratory stays in the laboratory.</li>
+        <li><strong>Maintain the network.</strong> Organ and body-part donation runs on trust between Igors, honored long after the original donor's other plans for the evening have concluded.</li>
+        <li><strong>No inherent loyalty to the employer.</strong> An Igor's loyalty is to the craft and the family, not whoever's currently signing for the laboratory. A good Igor recognizes the exact moment an experiment is about to go badly for everyone and is reliably not in the building when the mob arrives.</li>
+      </ul>
+    </section>
+
+    <section id="parts">
+      <h2>The Spare-Parts Ethic</h2>
+      <p>"A spare hand where needed" is the actual professional motto, and it's meant literally. Igors maintain a standing network for organ and body-part donation among their own family and trusted circle — treated as a practical inheritance and a mark of respect, not anything grim. Emergency surgery gets performed without payment up front, on the understanding that the favor comes back around eventually, in kind.</p>
+    </section>
+
+    <section id="employers">
+      <h2>Who Employs Them</h2>
+      <p>Traditionally: mad scientists and Uberwald's noble vampire and werewolf Houses, which is exactly the clientele you'd expect for reconstructive surgery performed with genuine skill and zero visible judgment. Igors take real professional pride in the craft — elite surgeons who happen to work for people other surgeons wouldn't take calls from.</p>
+      <div class="callout">
+        <span class="eyebrow">GM Tip</span>
+        An Igor makes an excellent recurring ally NPC: unshockable, deeply competent, absolutely discreet, and always one step ahead of leaving before things get worse. As a PC background, the interesting tension isn't the lisp — it's the professional code versus whoever they're currently working for.
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>Table Notes</h2>
+      <p>Nothing here changes a 5e mechanic — same reflavor-only discipline as the rest of this repo. If a specific Igor becomes a recurring NPC, note their stitch-pattern and whatever makes them identifiable in your <strong>campaign log</strong>'s Established Canon, since their name won't help you later.</p>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
