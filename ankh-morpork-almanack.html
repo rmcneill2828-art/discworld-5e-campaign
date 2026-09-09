@@ -1,0 +1,132 @@
+<title>The Ankh-Morpork Almanack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 34rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  main.content{ max-width: 42rem; margin: 0 auto; padding: 2.8rem 1.5rem 5rem; }
+  section{ padding: 2.2rem 0; border-bottom: 1px solid var(--rule); }
+  section:first-child{ padding-top: 0; }
+  section:last-child{ border-bottom: none; }
+  .section-kicker{ display: inline-block; font-family: "Courier Prime", monospace; font-size: 0.7rem; color: var(--brass); border: 1px solid var(--brass); border-radius: 2px; padding: 0.15rem 0.5rem; margin-bottom: 0.9rem; }
+  h2{ font-size: 1.55rem; margin: 0 0 0.9rem; }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.12rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.2rem; font-size: 0.92rem; }
+  caption{ text-align: left; font-family: "Courier Prime", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+  td.num, th.num{ font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; margin: 1.1rem 0; border-radius: 2px; font-size: 0.95rem; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .dates{ list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+  .dates li{ padding: 0.9rem 1rem; background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; }
+  .dates .when{ display: block; font-family: "Courier Prime", monospace; font-size: 0.7rem; color: var(--brass); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .dates .name{ font-family: "Fraunces", serif; font-weight: 600; font-style: italic; color: var(--ink); }
+  .dates p{ margin: 0.35rem 0 0; font-size: 0.95rem; }
+
+  footer.colophon{ max-width: 42rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Coin &amp; Calendar</div>
+    <h1>The Ankh-Morpork Almanack</h1>
+    <p class="subtitle">Prices in dollars and a year's worth of civic dates — everything a GM needs to improvise cost and pressure without breaking the voice.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a></p>
+  </header>
+
+  <main class="content">
+
+    <section id="money">
+      <span class="section-kicker">Money</span>
+      <h2>Coin of the Realm</h2>
+      <p class="lede">The Ankh-Morpork dollar (AM$) buys what a gold piece buys. Nothing about 5e's economy changes — only the name on the coin.</p>
+      <p>Keep every RAW price exactly as printed and just rename the denomination: <strong>1 AM$ = 1 gp</strong>, <strong>1 penny = 1 cp</strong> (100 pennies to the dollar), and silver "shillings" slot in at 1 sp = 10 pennies if your table wants a middle denomination. That's the whole system — you're reskinning currency, not rebalancing an economy.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Improvised city prices, for when a player asks before you've looked it up</caption>
+          <thead><tr><th>Good or service</th><th class="num">Typical price</th></tr></thead>
+          <tbody>
+            <tr><td>Pint at the Mended Drum</td><td class="num">3–5 pennies</td></tr>
+            <tr><td>Night at a rough Shades lodging house</td><td class="num">2–4 pennies</td></tr>
+            <tr><td>Night at a respectable Isle of Gods inn</td><td class="num">1–2 AM$</td></tr>
+            <tr><td>Hired coach across the city</td><td class="num">1 AM$</td></tr>
+            <tr><td>A "reasonable" bribe to a Watch constable</td><td class="num">5–10 AM$</td></tr>
+            <tr><td>Thieves' Guild annual license fee</td><td class="num">30–80 AM$, quota-dependent</td></tr>
+            <tr><td>Beggars' Guild patch registration</td><td class="num">10 AM$ plus weekly dues</td></tr>
+            <tr><td>Alchemists' Guild insurance excess (per incident)</td><td class="num">20–200 AM$, "within reason"</td></tr>
+            <tr><td>Unseen University library day-pass, supervised</td><td class="num">2 AM$, or a favor</td></tr>
+            <tr><td>A Fools' Guild-licensed joke, pre-approved</td><td class="num">Free to hear, costly to tell without one</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="eyebrow">Playing rich and poor</span>
+        The gap between a penny and a dollar is the gap between the Shades and the Isle of Gods, and it's worth narrating, not just totaling. A civilian PC feeling ten AM$ as real money, while a Guild factor barely notices it, is character work — let prices carry that weight in the fiction even when nobody's tracking encumbrance.
+      </div>
+    </section>
+
+    <section id="calendar">
+      <span class="section-kicker">Calendar</span>
+      <h2>The Civic Calendar</h2>
+      <p class="lede">A year of ready-made pressure. Drop the nearest date into a session when you want the city itself to be doing something.</p>
+      <p>This calendar is built for this table specifically, not transcribed from any book — treat every date below as a slot to fill or override, not a fact to defend. Dates are given loosely, Hub-season to Rim-season, since the campaign doesn't need an exact day-count to use them; assign real dates once your table starts tracking one.</p>
+      <ul class="dates">
+        <li><span class="when">Deep winter</span><span class="name">Founding Night</span><p>The City Watch's own anniversary — old officers tell old stories at the Yard, and Vimes pretends not to enjoy it. A good night for a party member to be formally sworn in.</p></li>
+        <li><span class="when">Deep winter, later</span><span class="name">The Guilds' Reckoning</span><p>Every Guild's annual audit is due to the Patrician's clerks in the same week. Quota shortfalls, missing paperwork, and Guild rivalries all come to a head at once.</p></li>
+        <li><span class="when">Early spring</span><span class="name">Small Gods' Eve</span><p>A night the Isle of Gods keeps for deities too minor to get a proper festival — new shrines tend to appear overnight. Pairs neatly with any Small God plot thread.</p></li>
+        <li><span class="when">Mid spring</span><span class="name">Barge Day</span><p>The first big trade barge of the season comes up the Ankh from the coast. The Docks are chaos, the Merchants' Guild is smug, and customs paperwork gets "lost" at a higher rate than usual.</p></li>
+        <li><span class="when">Hub-summer</span><span class="name">The Long Assizes</span><p>A stretch of weeks when the Patrician's courts clear a year's backlog of disputes. Old grudges resurface as formal complaints — a good excuse to bring back an NPC the party wronged.</p></li>
+        <li><span class="when">High summer</span><span class="name">Sator Square Fair</span><p>Market stalls, unlicensed performers hoping the Fools' Guild is looking elsewhere, and a scaffold that, for once, isn't being used for its usual purpose.</p></li>
+        <li><span class="when">Late summer</span><span class="name">The Alchemists' Open Trial</span><p>One day a year the Guild demonstrates its "safest" experiments publicly. It has never once gone entirely to plan, and everyone attends anyway, for exactly that reason.</p></li>
+        <li><span class="when">Early autumn</span><span class="name">Lantern Night</span><p>Every household hangs a light for kin who left the city and haven't written. Quietly one of the more sincere nights on the calendar — good ground for a backstory beat from The Skull Dice to resurface.</p></li>
+        <li><span class="when">Rim-autumn</span><span class="name">The Beggars' Muster</span><p>Patch disputes across the whole Guild get formally re-arbitrated in one long, contentious sitting. Territory changes hands more in this one week than the rest of the year combined.</p></li>
+        <li><span class="when">Deep autumn</span><span class="name">Founders' Fast</span><p>A day of civic quiet the University observes more strictly than the city does — libraries close, faculty go still, and something about Unseen University always feels very slightly wrong until sundown.</p></li>
+      </ul>
+      <div class="callout wax">
+        <span class="eyebrow">Table notes</span>
+        You don't need to place these on a fixed calendar before play — introduce one the first time "how long until [event]" matters at the table, and lock its date in your table's campaign log once you do. Add, rename, or drop dates freely; the point is a rotating supply of low-effort pressure, not a completed liturgical calendar.
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>

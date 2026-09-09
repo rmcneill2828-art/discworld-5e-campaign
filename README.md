@@ -14,7 +14,13 @@ This repo contains original game-prep material only (setting primers, character 
 - [`the-skull-dice.html`](the-skull-dice.html) — two d20 character-creation tables (why you're in Ankh-Morpork, how you got there), blending funny and serious results into an instant backstory. Also published as a [Claude Artifact](https://claude.ai/code/artifact/7d3959e3-6da1-4e7c-990c-d94cf5b28715).
 - [`first-day-in-the-city.html`](first-day-in-the-city.html) — one-page Session Zero quick-start: six steps through character creation, a fill-in worksheet, and three pregens, tying together every other document. Also published as a [Claude Artifact](https://claude.ai/code/artifact/85f41ec2-c60a-44e7-8714-ab3a5db383aa).
 - [`ankh-morpork-gazetteer.html`](ankh-morpork-gazetteer.html) — thirteen key city locations with a schematic map, a description, and an adventure seed each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/20a2281d-d886-489c-8f8f-c739078ad99e).
-- [`names-worth-knowing.html`](names-worth-knowing.html) — twelve recurring NPCs (Vetinari, Vimes, Ridcully, Death, the witches of Lancre, and more) with personality, demeanor, tone, and a GM play tip each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928).
+- [`names-worth-knowing.html`](names-worth-knowing.html) — fifteen recurring NPCs (Vetinari, Vimes, Ridcully, Death, the witches of Lancre, Captain Carrot, Moist von Lipwig, and more) with personality, demeanor, tone, and a GM play tip each. Also published as a [Claude Artifact](https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928).
+- [`threats-worth-naming.html`](threats-worth-naming.html) — encounter reference: fourteen Discworld threats (a Shades tough, a Guild enforcer, a rogue golem, an Auditor of Reality, and more), each pointed at an unmodified 5e statblock, plus pacing and tone guidance for combat. Also published as a [Claude Artifact](https://claude.ai/code/artifact/7a980b84-0f69-4691-9d8c-cd12efaed52a).
+- [`ankh-morpork-almanack.html`](ankh-morpork-almanack.html) — currency reference (Ankh-Morpork dollars mapped straight onto 5e's gp/sp/cp) and an original ten-date civic calendar for on-the-fly pressure and color. Also published as a [Claude Artifact](https://claude.ai/code/artifact/91e74c1b-7b71-4cdc-8901-b7e3cdf6a74d).
+
+## Running the campaign
+
+- [`campaign-log.md`](campaign-log.md) — the one file in this repo that isn't prep material. It's the living record of an actual campaign in progress: party roster, faction standing, NPC dispositions, established canon, open threads, and a session-by-session log. Update it after every session — it's what keeps continuity between conversations, and it overrides any published doc here if the two ever disagree.
 
 ## Status
 

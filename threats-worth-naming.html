@@ -1,0 +1,336 @@
+<title>Threats Worth Naming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  .layout{ display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 3rem; max-width: 78rem; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
+  nav.toc{ position: sticky; top: 1.5rem; align-self: start; }
+  nav.toc .eyebrow{ display: block; margin-bottom: 0.7rem; }
+  nav.toc ol{ list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); }
+  nav.toc a{ display: block; padding: 0.33rem 0 0.33rem 0.9rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; font-size: 0.84rem; }
+  nav.toc a:hover{ color: var(--ink); }
+  nav.toc a.active{ color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .toc-toggle{ display: none; }
+
+  main.content{ min-width: 0; max-width: 46rem; }
+  .intro{ padding-bottom: 1.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
+  .intro p{ margin: 0 0 1rem; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; margin: 1.1rem 0; border-radius: 2px; font-size: 0.95rem; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.2rem; font-size: 0.92rem; }
+  caption{ text-align: left; font-family: "Courier Prime", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+  td.num, th.num{ font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .dossier{ padding: 1.9rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 1rem; }
+  .dossier:last-child{ border-bottom: none; }
+  .dossier-head{ display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+  .dossier-head h2{ font-size: 1.4rem; margin: 0; }
+  .dossier-tag{ font-family: "Courier Prime", monospace; font-size: 0.68rem; color: var(--brass); border: 1px solid var(--brass); border-radius: 2px; padding: 0.14rem 0.5rem; white-space: nowrap; }
+  .flavor{ font-family: "Fraunces", serif; font-style: italic; color: var(--ink-soft); margin: 0 0 1rem; }
+
+  .statblock{ background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; padding: 0.9rem 1.1rem; margin: 0 0 1rem; font-size: 0.9rem; }
+  .statblock dl{ display: grid; grid-template-columns: 8rem 1fr; gap: 0.4rem 0.8rem; margin: 0; }
+  .statblock dt{ font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); align-self: baseline; }
+  .statblock dd{ margin: 0; }
+
+  .tip{ background: var(--wax-tint); border-left: 3px solid var(--wax); padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 0.92rem; }
+  .tip .eyebrow{ margin-bottom: 0.25rem; color: inherit; opacity: 0.75; }
+
+  footer.colophon{ max-width: 46rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; padding-top: 1.4rem; }
+    nav.toc{ position: static; border: 1px solid var(--rule); background: var(--bg-raised); padding: 0.85rem 1rem; }
+    nav.toc ol{ border-left: none; display: none; margin-top: 0.6rem; }
+    nav.toc ol.open{ display: block; }
+    .toc-toggle{ display: inline-flex; align-items: center; gap: 0.4rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink); font-family: "Courier Prime", monospace; font-size: 0.76rem; padding: 0.32rem 0.65rem; cursor: pointer; border-radius: 2px; }
+    main.content{ max-width: none; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Encounter Reference</div>
+    <h1>Threats Worth Naming</h1>
+    <p class="subtitle">Fourteen Discworld dangers, each pointed at an unmodified 5e statblock — reflavor the fluff, never the math.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a> and <a href="https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318">Playing It Straight</a></p>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Threat index">
+      <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocList">☰ Index</button>
+      <span class="eyebrow">Threat Index</span>
+      <ol id="tocList">
+        <li><a href="#tough">Shades Tough</a></li>
+        <li><a href="#watchman">Hostile Watchman</a></li>
+        <li><a href="#enforcer">Guild Enforcer</a></li>
+        <li><a href="#assassin">Guild Assassin</a></li>
+        <li><a href="#mishap">Alchemists' Mishap</a></li>
+        <li><a href="#troll">Troll Muscle</a></li>
+        <li><a href="#golem">Rogue Golem</a></li>
+        <li><a href="#vampire">Off-the-Wagon Vampire</a></li>
+        <li><a href="#werewolf">Unreformed Werewolf</a></li>
+        <li><a href="#feegle">Nac Mac Feegle Mob</a></li>
+        <li><a href="#dragon">Feral Swamp Dragon</a></li>
+        <li><a href="#monk">History Monk</a></li>
+        <li><a href="#auditor">Auditor of Reality</a></li>
+        <li><a href="#smallgod">A Small God</a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+      <div class="intro">
+        <p>The Charter's whole approach is reflavor, don't rebuild — nowhere does that matter more than combat. Every entry below names a stock 5e statblock (Monster Manual unless noted) that already does the mechanical job; what you're changing is the description you read aloud when it hits, misses, or dies. Don't build new stat blocks for a home game unless you're genuinely enjoying the design work — the existing math is already balanced, tested, and one lookup away.</p>
+        <p>Party of four, standard difficulty math from the Dungeon Master's Guide, applies exactly as written — nothing here changes CR budgeting. What this page changes is which statblock you reach for and what you say about it.</p>
+      </div>
+
+      <div class="callout">
+        <span class="eyebrow">Pacing a threat to the story</span>
+        The Charter's house rule is to pace by book, not by dungeon — one contained crisis per arc, not a room-by-room grind. Read CR loosely as a register, not just a difficulty knob: <strong>CR 1/8–1</strong> is alley trouble, resolved in a scene. <strong>CR 2–5</strong> is a named problem a Guild or the Watch would actually assign someone to. <strong>CR 6–10</strong> is a citywide incident — the kind that gets Vetinari's personal attention. <strong>CR 11+</strong> is cosmological, and should feel rare enough that the table sits up when it shows up.
+      </div>
+
+      <div class="callout wax">
+        <span class="eyebrow">On violence</span>
+        Pratchett's books contain real violence and take it seriously when it lands — but they almost never linger on gore for its own sake. Narrate a hit by its consequence (a dropped weapon, a shattered stall, a Watchman's whistle finally getting blown) more often than by wound detail. If a fight can end in a stand-off, a bribe, or someone getting genuinely talked down instead, that's usually the funnier and more Disc-flavored outcome — see <a href="https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318">Playing It Straight</a> for the technique.
+      </div>
+
+      <article class="dossier" id="tough">
+        <div class="dossier-head"><h2>Shades Tough</h2><span class="dossier-tag">CR 1/8–1/2</span></div>
+        <p class="flavor">Not a professional. Just someone who's decided tonight's your bad night.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Bandit</em> (unlicensed) or <em>Thug</em> (means it)</dd>
+            <dt>Where</dt><dd>The Shades, the docks after dark, anywhere the Watch patrols in pairs or not at all</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Have them ask for a "toll" before drawing anything — most Shades trouble would rather talk its way to your coin purse than actually fight for it.</div>
+      </article>
+
+      <article class="dossier" id="watchman">
+        <div class="dossier-head"><h2>Hostile Watchman</h2><span class="dossier-tag">CR 1/8–3</span></div>
+        <p class="flavor">Not a villain. A man with a whistle, a quota, and orders he half agrees with.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Guard</em> (rank and file) or <em>Veteran</em> (a sergeant who's seen worse than you)</dd>
+            <dt>Where</dt><dd>Pseudopolis Yard, any street the party has just made a scene on</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>A Watch encounter that ends in swords is usually a failure state for both sides — let Insight, a badge, or a name-drop of a Watch NPC the party knows end it before initiative is needed.</div>
+      </article>
+
+      <article class="dossier" id="enforcer">
+        <div class="dossier-head"><h2>Guild Enforcer</h2><span class="dossier-tag">CR 1–3</span></div>
+        <p class="flavor">Here about your quota. Or your dues. Or a debt with someone else's name on it.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Spy</em> (Thieves'/Beggars', persuasive first) or <em>Bandit Captain</em> (Merchants'-adjacent muscle)</dd>
+            <dt>Where</dt><dd>Wherever the relevant Guild has a stake — see the <a href="https://claude.ai/code/artifact/20a2281d-d886-489c-8f8f-c739078ad99e">Gazetteer</a></dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>They're collecting, not killing — give them a stated, negotiable demand before the first attack roll.</div>
+      </article>
+
+      <article class="dossier" id="assassin">
+        <div class="dossier-head"><h2>Guild Assassin</h2><span class="dossier-tag">CR 8</span></div>
+        <p class="flavor">An inhumation, invoiced. This one barely needs reflavoring — it's the same job either way.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Assassin</em>, unmodified</dd>
+            <dt>Where</dt><dd>Filigree Street's Guild House, or wherever the contract sends them</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Play them as immaculately polite before the ambush and utterly professional during it — the Guild's whole brand is that this was never personal.</div>
+      </article>
+
+      <article class="dossier" id="mishap">
+        <div class="dossier-head"><h2>Alchemists' Mishap</h2><span class="dossier-tag">CR 1/2–2</span></div>
+        <p class="flavor">Whatever it was supposed to be, it isn't that anymore.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Gas Spore</em> (drifting, volatile) or <em>Magma Mephit</em> (actively unstable and annoyed about it)</dd>
+            <dt>Where</dt><dd>The Guild Quarter, or anywhere a party's carrying something they shouldn't have taken from there</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Guild Insurance (see the <a href="https://claude.ai/code/artifact/b26f0bca-c632-4084-8d7a-f9e5981c7654">Guild Registration Dossiers</a>) covers the property damage — make sure an NPC mentions the paperwork mid-fight.</div>
+      </article>
+
+      <article class="dossier" id="troll">
+        <div class="dossier-head"><h2>Troll Muscle</h2><span class="dossier-tag">CR 2–7</span></div>
+        <p class="flavor">Slow and affable in the heat. A different creature entirely on a cold night.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Ogre</em> (a bouncer, a debt collector) or <em>Stone Giant</em> (genuinely dangerous, cornered)</dd>
+            <dt>Where</dt><dd>Doorways, building sites, anywhere hired muscle is standard fixtures</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Purely narrated, never mechanical: let this one visibly slow down and slur mid-fight on a hot day, and snap sharper the colder the room gets.</div>
+      </article>
+
+      <article class="dossier" id="golem">
+        <div class="dossier-head"><h2>Rogue Golem</h2><span class="dossier-tag">CR 1–10</span></div>
+        <p class="flavor">Doing exactly what the words in its head told it to. That's the whole problem.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Animated Armor</em> (small, workshop-scale) or <em>Stone Golem</em> (industrial, terrifying)</dd>
+            <dt>Where</dt><dd>New Brickfields building sites, a factory floor, a locked University storeroom</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>The fix is almost never combat — it's finding and rewriting the words in its head. A fight with one is usually the party running out of time to do that peacefully.</div>
+      </article>
+
+      <article class="dossier" id="vampire">
+        <div class="dossier-head"><h2>Off-the-Wagon Vampire</h2><span class="dossier-tag">CR 5–13</span></div>
+        <p class="flavor">A Black-Ribboner who's fallen off it. This is the tragedy, not the twist.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Vampire Spawn</em> (young, still fighting it) or <em>Vampire</em> (lost the fight entirely)</dd>
+            <dt>Where</dt><dd>Biers, or wherever they've been hiding the relapse from their own community</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Let the party meet them sober first, in an earlier scene, so the eventual fight costs something.</div>
+      </article>
+
+      <article class="dossier" id="werewolf">
+        <div class="dossier-head"><h2>Unreformed Werewolf</h2><span class="dossier-tag">CR 3</span></div>
+        <p class="flavor">Everything Angua chose not to be.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Werewolf</em>, unmodified</dd>
+            <dt>Where</dt><dd>Uberwald plots, or a case that makes the Watch's own werewolf officer visibly uncomfortable</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>If Angua's in the story, this fight is about her at least as much as it's about the party — let her reaction carry weight.</div>
+      </article>
+
+      <article class="dossier" id="feegle">
+        <div class="dossier-head"><h2>Nac Mac Feegle Mob</h2><span class="dossier-tag">CR 1 (as a group)</span></div>
+        <p class="flavor">Six inches tall, blue, and already fighting before you've finished the sentence "wait, who are—"</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd>Six to ten <em>Pixies</em>, stripped of their charm spells, kept aggressive and reckless</dd>
+            <dt>Where</dt><dd>Anywhere the joke needs a swarm of tiny, furious, weirdly honorable brawlers</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Play this entirely for comedy — huge numbers, minimal individual threat, and a code of honor the party has to actually learn mid-fight to end it cleanly.</div>
+      </article>
+
+      <article class="dossier" id="dragon">
+        <div class="dossier-head"><h2>Feral Swamp Dragon</h2><span class="dossier-tag">CR 1/4–3</span></div>
+        <p class="flavor">Bred as a pet. Nobody bred the "occasionally detonates" part out of it.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Pseudodragon</em> (still small) or a young <em>Kobold</em>-tier dragon reflavored larger, with its breath weapon renamed an involuntary detonation</dd>
+            <dt>Where</dt><dd>A noble household's back garden, the Shades — see the Charter's Adventure Hooks for the missing-pet version of this</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>The explosion should always be more property damage than casualty — swamp dragons are a running civic hazard, not an existential one.</div>
+      </article>
+
+      <article class="dossier" id="monk">
+        <div class="dossier-head"><h2>History Monk</h2><span class="dossier-tag">CR 3</span></div>
+        <p class="flavor">Manages the passage of time. Would rather you didn't notice the management.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Master</em> (Monster Manual), unmodified</dd>
+            <dt>Where</dt><dd>Wherever a scene needs to have technically already happened before the party arrives</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Best used as a warning, not a fight — they intervene just enough to make a point, then leave before initiative would ever be needed.</div>
+      </article>
+
+      <article class="dossier" id="auditor">
+        <div class="dossier-head"><h2>Auditor of Reality</h2><span class="dossier-tag">CR 6</span></div>
+        <p class="flavor">Grey, precise, and would very much prefer this entire encounter didn't have to involve a person.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Specter</em> or <em>Invisible Stalker</em>, reflavored bureaucratic rather than hostile</dd>
+            <dt>Where</dt><dd>Nowhere obvious — that's the point. A slow-burn campaign antagonist, not a street encounter</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Never let one raise its voice or its weapon first. Auditors act through rules, paperwork, and inevitability — direct combat should feel like their last resort, not their opener.</div>
+      </article>
+
+      <article class="dossier" id="smallgod">
+        <div class="dossier-head"><h2>A Small God</h2><span class="dossier-tag">CR 1/4</span></div>
+        <p class="flavor">A lizard the size of your thumb, shouting at beetles, absolutely certain it's still relevant.</p>
+        <div class="statblock">
+          <dl>
+            <dt>Statblock</dt><dd><em>Sprite</em> or similar tiny fey, reflavored as a god with no congregation left</dd>
+            <dt>Where</dt><dd>The Isle of Gods, or the Gods Quarter overflow — see the Gazetteer</dd>
+          </dl>
+        </div>
+        <div class="tip"><span class="eyebrow">GM Tip</span>Not a threat in combat terms — the "danger" here is entirely social: it wants believers, and it's not above manipulating the party into supplying some.</div>
+      </article>
+
+    </main>
+  </div>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var list = document.getElementById('tocList');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = new Map();
+    sections.forEach(function(sec, i){ map.set(sec, links[i]); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  }
+})();
+</script>
