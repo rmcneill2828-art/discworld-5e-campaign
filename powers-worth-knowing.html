@@ -1,0 +1,262 @@
+<title>Powers Worth Knowing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #e8e2d0; --bg-raised: #f1ecdd; --ink: #2b2620; --ink-soft: #5a5340; --ink-faint: #857c62;
+    --rule: #c9bfa0; --rule-strong: #a89b76; --accent: #5d3f80; --accent-soft: #8a6fae; --accent-tint: #ded1ec;
+    --brass: #7a5c26; --brass-tint: #e6d7ab; --wax: #8c2f2f; --wax-tint: #edd6d0; --code-bg: #ded5b8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+      --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+      --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #17181c; --bg-raised: #202128; --ink: #e9e4d4; --ink-soft: #b7ae94; --ink-faint: #837c68;
+    --rule: #3c3d45; --rule-strong: #55565f; --accent: #bb95e6; --accent-soft: #9678bd; --accent-tint: #372a49;
+    --brass: #d0a758; --brass-tint: #3c3220; --wax: #dd7a6f; --wax-tint: #402522; --code-bg: #26272f;
+  }
+  *{ box-sizing: border-box; }
+  body{ background: var(--bg); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3{ font-family: "Fraunces", Georgia, serif; text-wrap: balance; font-weight: 600; color: var(--ink); }
+  .eyebrow{ font-family: "Courier Prime", monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faint); }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead{ padding: 2.8rem 1.5rem 2rem; text-align: center; border-bottom: 1px solid var(--rule); background: var(--bg-raised); }
+  .masthead .kicker{ font-family: "Courier Prime", monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brass); margin-bottom: 0.6rem; }
+  .masthead h1{ font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 0.5rem; }
+  .masthead .subtitle{ font-family: "Fraunces", serif; font-style: italic; font-weight: 500; color: var(--ink-soft); font-size: 1.08rem; margin: 0 auto 1.1rem; max-width: 36rem; }
+  .companion-link{ font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-soft); }
+  .companion-link a{ color: var(--accent); }
+
+  .layout{ display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 3rem; max-width: 78rem; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
+  nav.toc{ position: sticky; top: 1.5rem; align-self: start; }
+  nav.toc .eyebrow{ display: block; margin-bottom: 0.7rem; }
+  nav.toc ol{ list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); }
+  nav.toc a{ display: block; padding: 0.33rem 0 0.33rem 0.9rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; font-size: 0.84rem; }
+  nav.toc a:hover{ color: var(--ink); }
+  nav.toc a.active{ color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .toc-toggle{ display: none; }
+
+  main.content{ min-width: 0; max-width: 46rem; }
+  .intro{ padding-bottom: 1.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
+  .intro p{ margin: 0 0 1rem; }
+
+  section{ padding: 1.9rem 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 1rem; }
+  section:last-child{ border-bottom: none; }
+  section h2{ font-size: 1.45rem; margin: 0 0 0.9rem; }
+  section h3{ font-size: 1.05rem; margin: 1.4rem 0 0.6rem; color: var(--accent); }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  .lede{ font-size: 1.1rem; color: var(--ink-soft); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  .table-wrap{ overflow-x: auto; }
+  table{ width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.2rem; font-size: 0.9rem; }
+  caption{ text-align: left; font-family: "Courier Prime", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  th, td{ text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th{ font-family: "Courier Prime", monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 400; }
+  td.roll{ font-family: "Courier Prime", monospace; font-variant-numeric: tabular-nums; color: var(--brass); width: 2.2rem; }
+  td.name{ font-family: "Fraunces", serif; font-weight: 600; white-space: nowrap; }
+
+  .callout{ background: var(--accent-tint); border-left: 3px solid var(--accent); padding: 0.85rem 1.05rem; margin: 1rem 0; border-radius: 2px; font-size: 0.94rem; }
+  .callout.wax{ background: var(--wax-tint); border-left-color: var(--wax); }
+  .callout .eyebrow{ margin-bottom: 0.3rem; color: inherit; opacity: 0.75; }
+
+  footer.colophon{ max-width: 46rem; margin: 0 auto 4rem; padding: 0 1.5rem; font-family: "Courier Prime", monospace; font-size: 0.76rem; color: var(--ink-faint); text-align: center; }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; padding-top: 1.4rem; }
+    nav.toc{ position: static; border: 1px solid var(--rule); background: var(--bg-raised); padding: 0.85rem 1rem; }
+    nav.toc ol{ border-left: none; display: none; margin-top: 0.6rem; }
+    nav.toc ol.open{ display: block; }
+    .toc-toggle{ display: inline-flex; align-items: center; gap: 0.4rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink); font-family: "Courier Prime", monospace; font-size: 0.76rem; padding: 0.32rem 0.65rem; cursor: pointer; border-radius: 2px; }
+    main.content{ max-width: none; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="kicker">Gods &amp; the Supernatural</div>
+    <h1>Powers Worth Knowing</h1>
+    <p class="subtitle">The pantheon, the Auditors, the Horsemen, and the Fair Folk — descriptions and GM notes, not statblocks.</p>
+    <p class="companion-link">Companion to <a href="https://claude.ai/code/artifact/e274a93a-d0e7-4a77-9f98-173a41dbd61d">The Discworld Charter</a> and <a href="https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928">Names Worth Knowing</a></p>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Section index">
+      <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocList">☰ Index</button>
+      <span class="eyebrow">Section Index</span>
+      <ol id="tocList">
+        <li><a href="#belief">How Belief Works</a></li>
+        <li><a href="#pantheon">The Pantheon of Dunmanifestin</a></li>
+        <li><a href="#smallgods">Small Gods</a></li>
+        <li><a href="#auditors">The Auditors of Reality</a></li>
+        <li><a href="#horsemen">The Horsemen &amp; Other Personifications</a></li>
+        <li><a href="#elves">Elves &amp; Fairyland</a></li>
+        <li><a href="#causality">Narrative Causality</a></li>
+        <li><a href="#notes">Table Notes</a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+      <div class="intro">
+        <p>Every fact on this page is documented Discworld setting lore, not a summary of any book's plot — the same standard the rest of this repo holds to (see the repo's own content policy). Where a real historical event carries real weight — Koom Valley Day, say — it's presented as history to reference, never as a mystery to restage.</p>
+        <p>This is a reference for flavor and roleplay, not a new statblock library. Where something here is worth fighting, <a href="https://claude.ai/code/artifact/7a980b84-0f69-4691-9d8c-cd12efaed52a">Threats Worth Naming</a> is where the mechanics live.</p>
+      </div>
+
+      <section id="belief">
+        <h2>How Belief Works</h2>
+        <p>The Charter covers this in brief (§II) — this expands it. Gods exist "in potentia" in enormous numbers, but a god only starts to manifest once an event, a fear, or a need attaches belief to it. People come first; belief creates the god, not the other way around. From there, power tracks followers directly: more belief, more presence in the world; less belief, less — all the way down to nothing at all.</p>
+        <p>Roughly three thousand gods are catalogued at any given time, and theologians keep finding more. That's not a typo, and it's your license as GM: there is always room for one more god nobody's heard of yet.</p>
+      </section>
+
+      <section id="pantheon">
+        <h2>The Pantheon of Dunmanifestin</h2>
+        <p>The major gods keep court on a mountain called Dunmanifestin, at the top of the world — squabbling, competitive, and largely indifferent to individual mortals unless a matter's grown big enough to notice. A working selection, useful as patrons, background texture, or the source of a Cleric's Channel Divinity:</p>
+        <div class="table-wrap">
+          <table>
+            <caption>A working pantheon (not the whole three thousand)</caption>
+            <thead><tr><th>God</th><th>Domain</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Blind Io</td><td>Chief of the gods</td><td>Broad, unspecialized authority. Mostly leaves individual mortals alone.</td></tr>
+              <tr><td class="name">Offler</td><td>Crocodile god</td><td>Widely and comfortably worshipped — an easygoing patron for a low-drama Cleric.</td></tr>
+              <tr><td class="name">Fate</td><td>Fate itself</td><td>Powerful, patient, plays a long game. Not a safe one to bargain with.</td></tr>
+              <tr><td class="name">Destiny</td><td>Steering the "promising"</td><td>Nudges capable people toward outsized fates whether they asked or not.</td></tr>
+              <tr><td class="name">The Lady</td><td>Luck</td><td>Capricious. Never address her directly or thank her by name — she leaves the instant you do.</td></tr>
+              <tr><td class="name">Fedecks</td><td>Messenger of the gods</td><td>Minor, useful whenever a Cleric needs a sign delivered.</td></tr>
+              <tr><td class="name">Anoia</td><td>Things stuck in drawers</td><td>Promoted from a Small God by sheer accumulated frustration — the clearest proof of how belief actually works day to day.</td></tr>
+              <tr><td class="name">Bilious</td><td>Hangovers</td><td>Small, specific, and extremely busy the morning after any city-wide festival.</td></tr>
+              <tr><td class="name">Narrativia</td><td>Story itself</td><td>Goddess of writers and the shape of narrative — a natural patron for a Bard.</td></tr>
+              <tr><td class="name">Iron Girder</td><td>A beloved locomotive</td><td>A god because a crowd of enthusiasts believed hard enough. The single best illustration to give players of how this economy works.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Ephebe, Djelibeybi, and other foreign regions keep their own pantheons in a recognizably different register (Ephebe's gods read Greek, Djelibeybi's Egyptian) — useful color if the party ever deals with a foreign temple or trader, and a reminder that Dunmanifestin isn't the only court in business.</p>
+      </section>
+
+      <section id="smallgods">
+        <h2>Small Gods</h2>
+        <p>Below a certain following, a god is <em>small</em> — sometimes literally the size of a lizard, easily stepped on, occasionally reduced to shouting at passing beetles for attention. Every major god on the list above started here. The Charter's Cosmology section and the "Small God" entry in Threats Worth Naming both touch on this; the table below is for generating a new one on the spot.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>A Small God, on the spot (d10)</caption>
+            <thead><tr><th class="roll">d10</th><th>Domain</th></tr></thead>
+            <tbody>
+              <tr><td class="roll">1</td><td>Odd socks — specifically, the one that vanishes from every pair.</td></tr>
+              <tr><td class="roll">2</td><td>The last match left in the box.</td></tr>
+              <tr><td class="roll">3</td><td>Doors left slightly ajar.</td></tr>
+              <tr><td class="roll">4</td><td>The second slice of cake, after you'd already said no to the first.</td></tr>
+              <tr><td class="roll">5</td><td>Near-rhymes.</td></tr>
+              <tr><td class="roll">6</td><td>Tea, gone cold while you were doing something else.</td></tr>
+              <tr><td class="roll">7</td><td>The right word, arriving three days too late to use it.</td></tr>
+              <tr><td class="roll">8</td><td>Splinters.</td></tr>
+              <tr><td class="roll">9</td><td>The empty seat next to you on an otherwise full bench.</td></tr>
+              <tr><td class="roll">10</td><td>Almost remembering someone's name.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <span class="eyebrow">GM Tip</span>
+          Play a Small God as anxious and sincere, never comic-menacing — it wants followers, not vengeance, and it's used to being ignored. Anoia and Bilious both made it all the way to Dunmanifestin from a table exactly like this one.
+        </div>
+      </section>
+
+      <section id="auditors">
+        <h2>The Auditors of Reality</h2>
+        <p>The Auditors appear as empty grey cloaks and always speak as "we" — a collective, never fewer than three at a time so each can watch the others for any flicker of individuality. They maintain the universe's basic mechanics: gravity, cause and effect, atoms behaving the way atoms are supposed to.</p>
+        <p>Their motive is simple and genuinely alien: they find individual life untidy. Imagination, metaphor, specificity, a person who wants things — all of it reads to them as an error in an otherwise clean system, and their preferred fix is to make the error stop existing, usually through rules, paperwork, and inevitability rather than force.</p>
+        <div class="callout wax">
+          <span class="eyebrow">Their weakness</span>
+          An Auditor forced into a single body and a single point of view starts to come apart — suddenly there's a taste, a color, a feeling, and their multi-perspective thinking can't hold. A genuine logical paradox does the same thing faster. Direct force from an Auditor is a last resort, and a small sign they've already lost.
+        </div>
+        <p>See Threats Worth Naming for the mechanical version. As a presence in a campaign, they're best used sparingly and almost never seen directly — a rule that's suddenly, inexplicably stricter than it used to be; a gap where something should be and now isn't.</p>
+      </section>
+
+      <section id="horsemen">
+        <h2>The Horsemen &amp; Other Personifications</h2>
+        <p>A god is shaped by belief from nothing. An <strong>anthropomorphic personification</strong> is different — it embodies something that would exist whether or not anyone believed in it, though belief still shapes how it appears and how stable that shape stays.</p>
+        <h3>Death</h3>
+        <p>The most approachable of the personifications by a wide margin — see his full entry in <a href="https://claude.ai/code/artifact/6f0a03ed-5e72-42e5-9f82-7322639af928">Names Worth Knowing</a> rather than duplicating it here.</p>
+        <h3>War, Famine, and Pestilence</h3>
+        <p>Death's fellow Horsemen. Their portfolios are exactly what they sound like — not written as villains so much as inevitabilities given shape and, occasionally, opinions. Use them as rare, weighty, almost entirely background figures; a campaign should feel their presence in what's happening to a place, not host them at the table.</p>
+        <h3>Kaos</h3>
+        <p>A fifth Horseman who left the group early over "artistic differences," and now represents chaos in the modern sense — chaos theory, not simple disorder: apparently random events that still obey an underlying rule. A nice, safe piece of texture if a scene needs a personification of things spiraling, without the weight of the other three.</p>
+        <div class="callout">
+          <span class="eyebrow">GM Tip</span>
+          None of these belong in a fight. Their value is entirely in what their presence signals — bring one into a scene (even at a remove, even just referenced) only when you want the players to feel the stakes jump.
+        </div>
+      </section>
+
+      <section id="elves">
+        <h2>Elves &amp; Fairyland</h2>
+        <p>Not 5e's default elves — the Disc's are genuinely dangerous, and worth playing that way if they show up at all. They come from Fairyland, a separate realm that depends on worlds like the Disc the way a parasite depends on a host.</p>
+        <h3>Glamour</h3>
+        <p>An elf's beauty is a supernatural effect, not a trait — anyone nearby feels drab, worthless, and eager to please by comparison, whether they want to or not. Elves can also read surface thoughts and are gifted, effortless liars. At the table, treat sustained exposure to an active elf's glamour as advantage on their Charisma checks against the party, or a flat save against being charmed — GM's call, and never something a character can simply notice and shake off through Insight alone.</p>
+        <h3>Cruelty</h3>
+        <p>Elves have no empathy and don't experience mercy as a concept worth having. They're famous for music and art they didn't actually make — what they're skilled at is drawing it out of captured humans, and they find prolonged cruelty more entertaining than any of it. Play this understated: an elf's threat is in how casually it treats suffering, not in how much it monologues about it.</p>
+        <h3>Iron</h3>
+        <p>Elves navigate partly by a magnetic sixth sense, and iron scrambles it — real disorientation, real pain, described by one as being buried alive. Cold iron is the practical, in-fiction defense against them, not a symbolic one.</p>
+        <h3>Crossing Over</h3>
+        <p>The barrier between Fairyland and the Disc isn't fixed — it thins on a roughly generational cycle, and thinking or talking about elves directly weakens it further. That's the in-world reason old traditions default to euphemism ("the Fair Folk," "the Lords and Ladies") instead of naming them outright — a detail worth actually using at the table if a scene calls for elves being nearby.</p>
+        <p>Standing stones and stone circles are the classic crossing points. The Charter already notes Lancre has "thin walls between worlds" (§III) — that's exactly this, and the most natural place in this setting for elves to matter.</p>
+        <div class="callout wax">
+          <span class="eyebrow">GM Tip</span>
+          Play an incursion as dread building through wrongness, not a monster reveal — colors too vivid, music too perfect, everyone else in the scene having a wonderful time. The unsettling part for the party should be that nobody else notices anything's wrong. For a mechanical version, a Green Hag or Redcap reflavored (deceptive, glamour-adjacent, genuinely cruel) is the closest existing 5e fit if a table wants to actually fight one.
+        </div>
+      </section>
+
+      <section id="causality">
+        <h2>Narrative Causality</h2>
+        <p>The Disc runs partly on story logic — a million-to-one chance works nine times out of ten, if the story genuinely needs it to. This is the same idea the Charter opens on: the setting has read enough fantasy to know how it's supposed to go, and it usually goes that way anyway.</p>
+        <p>This isn't a resource players spend on demand — it's a GM tool for the rare moment a long-shot has been earned, or a suspiciously convenient failure catches up with someone who's been cutting corners all session.</p>
+        <div class="callout">
+          <span class="eyebrow">GM Tip</span>
+          Spend it rarely and visibly. Once or twice a "book" (see the Charter's pacing house rule) reads as fate noticing; used every session, it just reads as GM favoritism. Pair it with <a href="https://claude.ai/code/artifact/aa9c8638-9514-46ea-86b4-bc23edf61318">Playing It Straight</a>'s technique for how to narrate it without breaking the voice.
+        </div>
+      </section>
+
+      <section id="notes">
+        <h2>Table Notes</h2>
+        <p>Nothing on this page changes a 5e rule — it's all flavor and GM judgement, the same discipline as everywhere else in this repo. If a god, an Auditor, or an elf becomes a real fixture of the campaign, note it in your <strong>campaign log</strong>'s Established Canon so later sessions stay consistent with what you decided here.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="colophon">Companion reference to The Discworld Charter. Compiled without official sanction of any Guild.</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('tocToggle');
+  var list = document.getElementById('tocList');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = list.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = new Map();
+    sections.forEach(function(sec, i){ map.set(sec, links[i]); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map.get(entry.target);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  }
+})();
+</script>
