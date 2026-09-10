@@ -16,17 +16,17 @@ The working memory for this campaign. Every other file in this repo is prep mate
 |---|---|
 | Campaign name | *(unset)* |
 | Session zero date | 2026-09-09 |
-| Current session # | 5 |
-| Party level | 1 |
+| Current session # | 6 |
+| Party level | 2 |
 | Using The Long Climb? | Yes |
-| In-game date | 8th of Ick, night — Nevil Coyne arrested, confession taken, case substantively closed |
-| Current "book" / arc | Book One — "The New God" — **central mystery resolved.** Vimes raided the Coyne house personally; Bob caught Nevil Coyne fleeing and made the arrest himself (clean salute, second time ever — both times on an actual arrest). Upstairs, the locked room revealed the truth: Alderman Josiah Coyne, dying and mentally failing, became genuinely convinced he could will a real god into being through bought belief — "The New God" was never a con for money at its root, it was an old man trying to buy his way out of death. Nevil tried to stop him confronting him that night; it went further than intended, and Josiah died. Nevil panicked, had the body shipped out via the Docks under a false manifest (arranged through "Ossie," now missing), and kept the whole fraud running for a year purely to avoid anyone ever asking why the money — and his father — had disappeared, dragging in the Harrows and Garrick as leverage and hired silence along the way. Full confession given. Coda still open: Josiah's body was shipped toward Quirm under false papers and hasn't been recovered; Ossie is still unaccounted for. Book One is narratively closed pending that physical resolution |
+| In-game date | 9th of Ick, morning — Book Two opens at the Docks |
+| Current "book" / arc | Book Two — *(untitled, just opening)*. Book One, "The New God," is fully closed in substance (see Session 5 log for the resolution). Today picks up its one remaining physical thread — Josiah Coyne's body and the missing "Ossie" — via the Docks lead Vimes sent Carrot to chase. Milestone level-up applied for closing Book One: Bob is now Fighter 2 with Action Surge |
 
 ## Party Roster
 
 | Character | Player | Species / Class | Origin | Rank (if Long Climb) | Notes |
 |---|---|---|---|---|---|
-| Bob NoLastname | (you) | Human Fighter 1 | City Watch | Recruit | STR 17 DEX 12 CON 14 INT 10 WIS 12 CHA 13. HP 12, AC 14. Dueling style, longsword + chain shirt. Skills: Athletics, Insight, Intimidation, Perception. Ideal: "the easy way, not the stupid way." Flaw: protests too much about bribes. Backstory: one dropped coin from a life of crime; talked his way onto a diplomatic escort to get here. |
+| Bob NoLastname | (you) | Human Fighter 2 | City Watch | Recruit | STR 17 DEX 12 CON 14 INT 10 WIS 12 CHA 13. HP 20 (rolled 6 + 2 CON on the level 2 hit die), AC 14. Dueling style, longsword + chain shirt. Action Surge (level 2). Skills: Athletics, Insight, Intimidation, Perception. Ideal: "the easy way, not the stupid way." Flaw: protests too much about bribes. Backstory: one dropped coin from a life of crime; talked his way onto a diplomatic escort to get here. Milestone level-up on closing Book One. |
 
 ## Faction & Relationship Standing
 
